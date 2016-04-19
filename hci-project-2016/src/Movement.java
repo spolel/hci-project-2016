@@ -1,6 +1,4 @@
-/**
- * Created by BMW on 19/04/2016.
- */
+
 public class Movement {
 
     private int x;
@@ -9,11 +7,11 @@ public class Movement {
 
         x=1;
     }
-/** test comment*/
+/** test comment cacca*/
 
     public int test(int value){
         if(value == 0){
-            return 0;
+            return 1;
         }
         else return value;
     }
