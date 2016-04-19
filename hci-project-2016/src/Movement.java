@@ -16,4 +16,11 @@ public class Movement {
         }
         else return value;
     }
+
+    public int test2(int value){
+        if(value == 1){
+            return 1;
+        }
+        else return value;
+    }
 }
