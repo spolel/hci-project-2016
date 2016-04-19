@@ -5,7 +5,7 @@ public class Movement {
 
     public Movement(){
 
-        x=1000;
+        x=666;
     }
 /** test comment cacca*/
 /**non usate git hub fa solo cazini porco dio ladro */
@@ -13,14 +13,14 @@ public class Movement {
  *  gg ez no code no nota the end is coming zigo points */
     public int test(int value){
         if(value == 0){
-            return 0;
+            return 666;
         }
         else return value;
     }
 
     public int test2(int value){
         if(value == 10){
-            return 1;
+            return 666;
         }
         else return value;
     }
