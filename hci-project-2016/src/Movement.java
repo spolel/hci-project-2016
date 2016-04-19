@@ -9,6 +9,7 @@ public class Movement {
 
         x=1;
     }
+/** test comment*/
 
     public int test(int value){
         if(value == 0){
