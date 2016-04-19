@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f46e4617-ded4-4fed-8265-060e3a8f16d3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hci-project-2016/src/Movement.java" afterPath="$PROJECT_DIR$/hci-project-2016/src/Movement.java" />
     </list>
     <ignored path="hci-project-2016.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,8 +38,8 @@
       <file leaf-file-name="Movement.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/hci-project-2016/src/Movement.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+            <state relative-caret-position="195">
+              <caret line="13" column="31" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -191,7 +192,7 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/Media/Manifesto_del_partito_comunista.pdf</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/Media/4235793.jpeg</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Deleted" />
@@ -199,6 +200,7 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="true" />
           <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/4235793.jpeg</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Restored" />
@@ -698,7 +700,7 @@
       <workItem from="1461079997612" duration="207000" />
       <workItem from="1461080242671" duration="45000" />
       <workItem from="1461080326155" duration="43000" />
-      <workItem from="1461080446919" duration="282000" />
+      <workItem from="1461080446919" duration="560000" />
     </task>
     <task id="LOCAL-00001" summary="prova">
       <created>1461079502262</created>
@@ -728,11 +730,18 @@
       <option name="project" value="LOCAL" />
       <updated>1461080646139</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="comment">
+      <created>1461080744439</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1461080744439</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1079000" />
+    <option name="totallyTimeSpent" value="1357000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="6" y="23" width="1434" height="877" extended-state="6" />
@@ -869,8 +878,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/hci-project-2016/src/Movement.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+        <state relative-caret-position="195">
+          <caret line="13" column="31" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
           <folding />
         </state>
       </provider>
