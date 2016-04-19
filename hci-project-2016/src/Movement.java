@@ -5,7 +5,7 @@ public class Movement {
 
     public Movement(){
 
-        x=1;
+        x=10;
     }
 /** test comment cacca*/
 
@@ -17,7 +17,7 @@ public class Movement {
     }
 
     public int test2(int value){
-        if(value == 1){
+        if(value == 10){
             return 1;
         }
         else return value;
