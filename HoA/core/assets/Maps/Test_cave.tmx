@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="15" height="15" tilewidth="32" tileheight="32" nextobjectid="1">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="15" height="15" tilewidth="32" tileheight="32" nextobjectid="17">
  <tileset firstgid="1" name="bw_citrine_tileset__resized_by_chimcharsfireworkd-d3rcwpe" tilewidth="32" tileheight="32" tilecount="3840" columns="8">
-  <image source="../../../Desktop/bw_citrine_tileset__resized_by_chimcharsfireworkd-d3rcwpe.png" trans="6b6b6b" width="256" height="15360"/>
+  <image source="bw_citrine_tileset__resized_by_chimcharsfireworkd-d3rcwpe.png" trans="6b6b6b" width="256" height="15360"/>
  </tileset>
  <layer name="Base Terrain" width="15" height="15">
   <data encoding="base64">
@@ -13,4 +13,22 @@
    /QEAAP0BAAD9AQAA/QEAAP0BAAD9AQAA/QEAAP0BAAD9AQAA/QEAAP0BAAD9AQAA/QEAAP0BAAD9AQAA/QEAAOwBAAAFAgAABQIAAAUCAAAFAgAABQIAAAUCAAAFAgAABQIAAAUCAAAFAgAABQIAAO4BAAD9AQAA/QEAAP4BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPwBAAD9AQAA/QEAAP4BAAAAAAAAYgUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHUFAAAAAAAAAAAAAPwBAAD9AQAA/QEAAP4BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH0FAAAAAAAAAAAAAPwBAAD9AQAA/QEAAP4BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB1BQAAAAAAAPwBAAD9AQAA/QEAAP4BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGIFAAAAAAAAAAAAAAAAAAB9BQAAAAAAAPwBAAD9AQAA/QEAAP4BAAAAAAAAAAAAAAAAAABiBQAAAAAAAAAAAAAAAAAAAAAAAHUFAAAAAAAAAAAAAPwBAAD9AQAA/QEAAP4BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH0FAAAAAAAAAAAAAPwBAAD9AQAA/QEAAP4BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPwBAAD9AQAA/QEAAP4BAACvBQAAsAUAAAAAAABiBQAAAAAAAAAAAABiBQAAAAAAAAAAAAAAAAAAAAAAAPwBAAD9AQAA/QEAAP4BAAC3BQAAuAUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPwBAAD9AQAA/QEAAP4BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPwBAAD9AQAA/QEAAAwCAAD1AQAA9QEAAPUBAAD1AQAA9gEAAAAAAAD0AQAA9QEAAPUBAAD1AQAA9QEAAA4CAAD9AQAA/QEAAP0BAAD9AQAA/QEAAP0BAAD9AQAA/gEAAAAAAAD8AQAA/QEAAP0BAAD9AQAA/QEAAP0BAAD9AQAA
   </data>
  </layer>
+ <objectgroup name="Collision">
+  <object id="1" x="-11.236" y="-6.2422" width="513.109" height="68.6642"/>
+  <object id="2" x="400.749" y="-29.9625" width="1.24844"/>
+  <object id="3" x="411.985" y="-28.7141" width="101.124" height="531.835"/>
+  <object id="4" x="257.179" y="419.476" width="257.179" height="111.111"/>
+  <object id="5" x="-8.73908" y="419.476" width="230.961" height="84.8939"/>
+  <object id="6" x="-41.1985" y="-26.2172" width="103.62" height="458.177"/>
+  <object id="7" x="56.1798" y="319.6" width="69.9126" height="61.1735"/>
+  <object id="8" x="319.6" y="97.3783" width="32.4594" height="63.6704"/>
+  <object id="9" x="353.308" y="162.297" width="29.9625" height="59.9251"/>
+  <object id="10" x="320.849" y="227.216" width="31.211" height="59.9251"/>
+  <object id="11" x="225.968" y="194.757" width="27.4657" height="27.4657"/>
+  <object id="12" x="97.3783" y="97.3783" width="28.7141" height="27.4657"/>
+  <object id="13" x="161.049" y="225.968" width="28.7141" height="28.7141"/>
+  <object id="14" x="161.049" y="322.097" width="29.9625" height="28.7141"/>
+  <object id="15" x="258.427" y="322.097" width="28.7141" height="28.7141"/>
+  <object id="16" x="559.301" y="335.83"/>
+ </objectgroup>
 </map>
