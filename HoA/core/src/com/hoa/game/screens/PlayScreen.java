@@ -28,13 +28,20 @@ import com.badlogic.gdx.math.Rectangle;
  */
 public class PlayScreen implements Screen {
 
+    //game class
     private HoA game;
 
-    // Current game camera & screen display
+    // Current game camera & screen display, currently a FitViewPort
     private OrthographicCamera gamecam;
     private Viewport gamePort;
+
+    //hud of the program
     private Hud hud;
+
+    //speed of camera movement
     private int speed = 4;
+    //speed of char
+    private float speedchar = 20f;
 
     //map loader and renderer
     private TmxMapLoader mapLoader;
@@ -45,21 +52,38 @@ public class PlayScreen implements Screen {
     private World world;
     private Box2DDebugRenderer b2dr;
 
+    private Player player;
+
 
     public PlayScreen(HoA game){
+        //actual game variable
         this.game = game;
+
+        //camera variable
         gamecam = new OrthographicCamera();
         gamePort = new FitViewport(HoA.screenWidth, HoA.screenHeight, gamecam);
+
+        //hud
         hud = new Hud(game.batch);
 
+        //world, 0,0 = no gravity, if body at rest calculate no physics
+        world = new World(new Vector2(0,0), true);
+        //shows outlines debug
+        b2dr = new Box2DDebugRenderer();
+
+
+        player = new Player(world);
+
+        //map
         mapLoader = new TmxMapLoader();
         map = mapLoader.load("Maps/test_map.tmx");
         renderer = new OrthogonalTiledMapRenderer(map);
         gamecam.position.set(gamePort.getWorldWidth()/2, gamePort.getWorldHeight()/2, 0);
 
 
-        world = new World(new Vector2(0,0), true);
-        b2dr = new Box2DDebugRenderer();
+
+
+
 
         /** for now here but later on its own class*/
         BodyDef bdef = new BodyDef();
@@ -69,6 +93,7 @@ public class PlayScreen implements Screen {
 
         /** cycling through all objects from the collision layer of the TILED map */
         /** Here we set the collision layer for collision*/
+        //
         for(MapObject object : map.getLayers().get(4).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
 
@@ -92,16 +117,21 @@ public class PlayScreen implements Screen {
     public void handleInput(float dt){
 
         if (Gdx.input.isKeyPressed(Input.Keys.D)){
-            gamecam.position.x += speed;
+            player.b2body.applyLinearImpulse(new Vector2(speedchar,0), player.b2body.getWorldCenter(), false);
+
+            //gamecam.position.x += speed;
         }
         if (Gdx.input.isKeyPressed(Input.Keys.W)){
-            gamecam.position.y += speed;
+            player.b2body.applyLinearImpulse(new Vector2(0, speedchar), player.b2body.getWorldCenter(), false);
+            //gamecam.position.y += speed;
         }
         if (Gdx.input.isKeyPressed(Input.Keys.S)){
-            gamecam.position.y += -1*speed;
+            player.b2body.applyLinearImpulse(new Vector2(0, -speedchar), player.b2body.getWorldCenter(), false);
+            //gamecam.position.y += -1*speed;
         }
         if (Gdx.input.isKeyPressed(Input.Keys.A)){
-            gamecam.position.x += -1*speed;
+            player.b2body.applyLinearImpulse(new Vector2(-speedchar,0), player.b2body.getWorldCenter(), false);
+            //gamecam.position.x += -1*speed;
         }
 
     }
@@ -109,8 +139,12 @@ public class PlayScreen implements Screen {
     public void update(float dt){
         handleInput(dt);
 
+
         /** 60 times a second calculate the physics*/
-        world.step(1/60f, 6 ,2);
+        world.step(1/60f, 0 ,0);
+
+        gamecam.position.x = player.b2body.getPosition().x;
+        gamecam.position.y = player.b2body.getPosition().y;
 
         gamecam.update();
         renderer.setView(gamecam);
