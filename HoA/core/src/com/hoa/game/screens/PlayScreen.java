@@ -29,7 +29,7 @@ public class PlayScreen implements Screen {
     private OrthographicCamera gamecam;
     private Viewport gamePort;
     private Hud hud;
-    private int speed = 3;
+    private int speed = 4;
 
     //map loader and renderer
     private TmxMapLoader mapLoader;
@@ -53,6 +53,11 @@ public class PlayScreen implements Screen {
     }
 
 
+
+    // This part moves the camera on the wasd key input.
+    // created by shughi
+    // problemino : diagonal movement vector is twice as fast as the horizontal and vertical one.
+    // solverino : old school games feelings. We keep it that way.
     public void handleInput(float dt){
 
         if (Gdx.input.isKeyPressed(Input.Keys.D)){
