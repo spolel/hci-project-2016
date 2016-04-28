@@ -27,9 +27,9 @@ public class Hud {
     Label countdownLabel;
     Label scoreLabel;
     Label timeLabel;
-    Label levelLable;
-    Label worldLable;
-    Label playerLable;
+    Label levelLabel;
+    Label worldLabel;
+    Label playerLabel;
 
     public Hud(SpriteBatch spriteBatch){
         worldTimer = 300;
@@ -47,17 +47,17 @@ public class Hud {
 
         /** I don't understant what was done here still have to see the effects*/
         countdownLabel = new Label(String.format("%03d", worldTimer), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-        scoreLabel = new Label("TIME", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-        timeLabel = new Label("1-1", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-        levelLable = new Label("WORLD", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-        playerLable = new Label("PLAYER", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-
-        table.add(playerLable).expandX().padTop(10);
-        table.add(worldLable).expandX().padTop(10);
+        scoreLabel =new Label(String.format("%06d", score), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        timeLabel = new Label("TIME", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        levelLabel = new Label("1-1", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        worldLabel = new Label("WORLD", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        playerLabel = new Label("MARIO", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        table.add(playerLabel).expandX().padTop(10);
+        table.add(playerLabel).expandX().padTop(10);
         table.add(timeLabel).expandX().padTop(10);
         table.row();
         table.add(scoreLabel).expandX();
-        table.add(levelLable).expandX();
+        table.add(levelLabel).expandX();
         table.add(countdownLabel).expandX();
 
         stage.addActor(table);
