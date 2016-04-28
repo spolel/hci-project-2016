@@ -13,7 +13,6 @@ import com.hoa.game.screens.PlayScreen;
 public class HoA extends Game {
 	public static final int screenWidth = 800;
 	public static final int screenHeight = 600;
-	public static final int PPM = 20;
 
 	public SpriteBatch batch;
 

@@ -35,6 +35,7 @@ public class Hud implements Disposable{
         timeCount = 0;
         score = 0;
 
+
         viewport = new FitViewport(HoA.screenWidth, HoA.screenHeight, new OrthographicCamera());
         stage = new Stage(viewport, spriteBatch);
 

@@ -18,13 +18,13 @@ public class Player extends Sprite{
     /** Defining the player */
     public void definePlayer(){
         BodyDef bdef = new BodyDef();
-        bdef.position.set(400,300);
+        bdef.position.set(800,800);
         bdef.type = BodyDef.BodyType.DynamicBody;
         b2body = world.createBody(bdef);
 
         FixtureDef fdef = new FixtureDef();
         CircleShape shape = new CircleShape();
-        shape.setRadius(20);
+        shape.setRadius(15);
 
         fdef.shape = shape;
         b2body.createFixture(fdef);

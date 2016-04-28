@@ -42,7 +42,7 @@ public class PlayScreen implements Screen {
     //speed of camera movement
     private int speed = 4;
     //speed of char
-    private float speedchar = 2000;
+    private float speedchar = 100f;
 
     //map loader and renderer
     private TmxMapLoader mapLoader;
@@ -75,6 +75,7 @@ public class PlayScreen implements Screen {
 
         player = new Player(world);
 
+
         //map
         mapLoader = new TmxMapLoader();
         map = mapLoader.load("Maps/test_map.tmx");
@@ -90,26 +91,25 @@ public class PlayScreen implements Screen {
 
     // This part moves the camera on the wasd key input.
     // created by shughi
-    // problemino : diagonal movement vector is twice as fast as the horizontal and vertical one.
-    // solverino : old school games feelings. We keep it that way.
+    //using raw velocity, stops when stop pressing;
+    //only one key usable now
+    //if the else if is removed weird stuff happens
     public void handleInput(float dt){
 
         if (Gdx.input.isKeyPressed(Input.Keys.D)){
             player.b2body.setLinearVelocity(speedchar, 0);
 
-            //gamecam.position.x += speed;
+
         }
         else if (Gdx.input.isKeyPressed(Input.Keys.W)){
             player.b2body.setLinearVelocity(0, speedchar);
-            //gamecam.position.y += speed;
+
         }
         else if (Gdx.input.isKeyPressed(Input.Keys.S)){
             player.b2body.setLinearVelocity(0, -speedchar);
-            //gamecam.position.y += -1*speed;
         }
         else if (Gdx.input.isKeyPressed(Input.Keys.A)){
             player.b2body.setLinearVelocity(-speedchar, 0);
-            //gamecam.position.x += -1*speed;
         }
 
         else{
@@ -123,7 +123,7 @@ public class PlayScreen implements Screen {
 
 
         /** 60 times a second calculate the physics*/
-        world.step(1/60f, 0 ,0);
+        world.step(1/32f,0 ,0);
 
         gamecam.position.x = player.b2body.getPosition().x;
         gamecam.position.y = player.b2body.getPosition().y;
