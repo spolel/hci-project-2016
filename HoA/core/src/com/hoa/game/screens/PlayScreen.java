@@ -1,6 +1,7 @@
 package com.hoa.game.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -15,6 +16,8 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.hoa.game.HoA;
 import com.hoa.game.Scenes.Hud;
 
+import static com.badlogic.gdx.Input.Buttons.RIGHT;
+
 /**
  * Created by BMW on 26/04/2016.
  */
@@ -26,6 +29,7 @@ public class PlayScreen implements Screen {
     private OrthographicCamera gamecam;
     private Viewport gamePort;
     private Hud hud;
+    private int speed = 3;
 
     //map loader and renderer
     private TmxMapLoader mapLoader;
@@ -51,8 +55,17 @@ public class PlayScreen implements Screen {
 
     public void handleInput(float dt){
 
-        if (Gdx.input.isTouched()){
-            gamecam.position.y += 2;
+        if (Gdx.input.isKeyPressed(Input.Keys.D)){
+            gamecam.position.x += speed;
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.W)){
+            gamecam.position.y += speed;
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.S)){
+            gamecam.position.y += -1*speed;
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.A)){
+            gamecam.position.x += -1*speed;
         }
 
     }
