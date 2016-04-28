@@ -36,21 +36,31 @@ public class PlayScreen implements Screen {
         this.game = game;
         gamecam = new OrthographicCamera();
         gamePort = new FitViewport(HoA.screenWidth, HoA.screenHeight, gamecam);
+        hud = new Hud(game.batch);
+
         mapLoader = new TmxMapLoader();
         map = mapLoader.load("Maps/test_map.tmx");
         renderer = new OrthogonalTiledMapRenderer(map);
-        gamecam.position.set(gamePort.getScreenWidth()/2, gamePort.getScreenHeight()/2, 0);
-        hud = new Hud(game.batch);
+        gamecam.position.set(gamePort.getWorldWidth()/2, gamePort.getWorldHeight()/2, 0);
+
 
 
 
     }
 
 
+    public void handleInput(float dt){
+
+        if (Gdx.input.isTouched()){
+            gamecam.position.x =+ 100 * dt;
+        }
+    }
+
     public void update(float dt){
-        handleInput();
-        
+        handleInput(dt);
+
         gamecam.update();
+        renderer.setView(gamecam);
     }
 
 
@@ -63,6 +73,7 @@ public class PlayScreen implements Screen {
     public void render(float delta) {
         Gdx.gl.glClearColor(1, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        renderer.render();
 
         game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
         hud.stage.draw();
