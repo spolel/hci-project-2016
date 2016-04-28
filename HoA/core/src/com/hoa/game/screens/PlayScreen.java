@@ -22,6 +22,7 @@ import com.hoa.game.Sprites.Player;
 import com.badlogic.gdx.math.Vector2;
 import static com.badlogic.gdx.Input.Buttons.RIGHT;
 import com.badlogic.gdx.math.Rectangle;
+import com.hoa.game.Tools.B2WorldCreator;
 
 /**
  * Created by BMW on 26/04/2016.
@@ -82,30 +83,7 @@ public class PlayScreen implements Screen {
 
 
 
-
-
-
-        /** for now here but later on its own class*/
-        BodyDef bdef = new BodyDef();
-        PolygonShape shape = new PolygonShape();
-        FixtureDef fdef = new FixtureDef();
-        Body body;
-
-        /** cycling through all objects from the collision layer of the TILED map */
-        /** Here we set the collision layer for collision*/
-        //
-        for(MapObject object : map.getLayers().get(4).getObjects().getByType(RectangleMapObject.class)){
-            Rectangle rect = ((RectangleMapObject) object).getRectangle();
-
-            bdef.type = BodyDef.BodyType.StaticBody;
-            bdef.position.set(rect.getX() + rect.getWidth() / 2, rect.getY() + rect.getHeight() / 2);
-
-            body = world.createBody(bdef);
-
-            shape.setAsBox(rect.getWidth() / 2, rect.getHeight() / 2);
-            fdef.shape = shape;
-            body.createFixture(fdef);
-        }
+        new B2WorldCreator(world,map);
     }
 
 
