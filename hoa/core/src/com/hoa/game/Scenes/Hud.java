@@ -44,10 +44,10 @@ public class Hud {
         table.setFillParent(true);
 
         /** I don't understant what was done here still have to see the effects*/
-        healthLabel =new Label(String.format("%06d", score), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-        levelLabel = new Label("1-1", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        healthLabel =new Label(String.format("%05d", score), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        levelLabel = new Label("Early Stage", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
         zoneLabel = new Label("ZONE", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-        playerLabel = new Label("PLAYER", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        playerLabel = new Label("GOLD", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
         table.add(playerLabel).expandX().padTop(10);
         table.add(zoneLabel).expandX().padTop(10);
         table.row();
