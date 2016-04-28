@@ -45,13 +45,22 @@ public class Hud {
         /** This will se the table to the size of the screen */
         table.setFillParent(true);
 
+        /** I don't understant what was done here still have to see the effects*/
         countdownLabel = new Label(String.format("%03d", worldTimer), new Label.LabelStyle(new BitmapFont(), Color.WHITE)));
         scoreLabel = new Label("TIME", new Label.LabelStyle(new BitmapFont(), Color.WHITE)));
         timeLabel = new Label("1-1", new Label.LabelStyle(new BitmapFont(), Color.WHITE)));
         levelLable = new Label("WORLD", new Label.LabelStyle(new BitmapFont(), Color.WHITE)));
         playerLable = new Label("PLAYER", new Label.LabelStyle(new BitmapFont(), Color.WHITE)));
 
-//        table.add(playerLable).expand()
+        table.add(playerLable).expandX().padTop(10);
+        table.add(worldLable).expandX().padTop(10);
+        table.add(timeLabel).expandX().padTop(10);
+        table.row();
+        table.add(scoreLabel).expandX();
+        table.add(levelLable).expandX();
+        table.add(countdownLabel).expandX();
+
+        stage.addActor(table);
     }
 
 
