@@ -24,11 +24,9 @@ public class Hud {
     private float timeCount;
     private Integer score;
 
-    Label countdownLabel;
-    Label scoreLabel;
-    Label timeLabel;
+    Label healthLabel;
     Label levelLabel;
-    Label worldLabel;
+    Label zoneLabel;
     Label playerLabel;
 
     public Hud(SpriteBatch spriteBatch){
@@ -46,19 +44,15 @@ public class Hud {
         table.setFillParent(true);
 
         /** I don't understant what was done here still have to see the effects*/
-        countdownLabel = new Label(String.format("%03d", worldTimer), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-        scoreLabel =new Label(String.format("%06d", score), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-        timeLabel = new Label("TIME", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        healthLabel =new Label(String.format("%06d", score), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
         levelLabel = new Label("1-1", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-        worldLabel = new Label("WORLD", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        zoneLabel = new Label("ZONE", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
         playerLabel = new Label("PLAYER", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
         table.add(playerLabel).expandX().padTop(10);
-        table.add(playerLabel).expandX().padTop(10);
-        table.add(timeLabel).expandX().padTop(10);
+        table.add(zoneLabel).expandX().padTop(10);
         table.row();
-        table.add(scoreLabel).expandX();
+        table.add(healthLabel).expandX();
         table.add(levelLabel).expandX();
-        table.add(countdownLabel).expandX();
 
         stage.addActor(table);
     }
