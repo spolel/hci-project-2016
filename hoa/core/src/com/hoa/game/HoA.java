@@ -11,6 +11,9 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.hoa.game.screens.PlayScreen;
 
 public class HoA extends Game {
+	public static final int screenWidth = 800;
+	public static final int screenHeight = 600;
+
 	public SpriteBatch batch;
 
 	@Override

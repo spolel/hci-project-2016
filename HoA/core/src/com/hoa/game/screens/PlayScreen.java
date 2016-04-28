@@ -25,7 +25,7 @@ public class PlayScreen implements Screen {
         this.game = game;
         this.texture = new Texture("badlogic.jpg");
         gamecam = new OrthographicCamera();
-        gamePort = new FitViewport(800, 600, gamecam);
+        gamePort = new FitViewport(HoA.screenWidth, HoA.screenHeight, gamecam);
 
 
     }
