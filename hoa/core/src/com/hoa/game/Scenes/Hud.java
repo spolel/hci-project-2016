@@ -51,7 +51,7 @@ public class Hud {
         timeLabel = new Label("TIME", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
         levelLabel = new Label("1-1", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
         worldLabel = new Label("WORLD", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-        playerLabel = new Label("MARIO", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        playerLabel = new Label("PLAYER", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
         table.add(playerLabel).expandX().padTop(10);
         table.add(playerLabel).expandX().padTop(10);
         table.add(timeLabel).expandX().padTop(10);
