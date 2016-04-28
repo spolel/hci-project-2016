@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" nextobjectid="77">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="32" tileheight="32" nextobjectid="86">
  <tileset firstgid="1" name="bw_citrine_tileset__resized_by_chimcharsfireworkd-d3rcwpe" tilewidth="32" tileheight="32" tilecount="3840" columns="8">
   <image source="bw_citrine_tileset__resized_by_chimcharsfireworkd-d3rcwpe.png" trans="6b6b6b" width="256" height="15360"/>
  </tileset>
@@ -70,7 +70,6 @@
   <object id="63" x="323.615" y="548.105" width="61.2245" height="24.7813"/>
   <object id="64" x="320.7" y="228.863" width="30.6122" height="319.242"/>
   <object id="65" x="322.157" y="228.863" width="255.102" height="193.878"/>
-  <object id="67" x="406.706" y="412.536" width="46.6472" height="34.9854"/>
   <object id="68" x="482.507" y="513.12" width="59.7668" height="32.07"/>
   <object id="69" x="575.802" y="514.577" width="65.5977" height="32.07"/>
   <object id="70" x="65.5977" y="67.0554" width="61.2245" height="731.778"/>
@@ -80,5 +79,11 @@
   <object id="74" x="2.42895" y="2.42895" width="99.5871" height="27.933"/>
   <object id="75" x="2.42895" y="129.949" width="65.5817" height="941.219"/>
   <object id="76" x="578.091" y="258.684" width="66.7962" height="81.3699"/>
+ </objectgroup>
+ <objectgroup name="cave entrance">
+  <object id="78" x="1308.27" y="191.192" width="40.1003" height="64.4468"/>
+ </objectgroup>
+ <objectgroup name="tavern entrance">
+  <object id="85" x="406.731" y="416.04" width="42.9646" height="30.7913"/>
  </objectgroup>
 </map>
