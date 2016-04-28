@@ -42,7 +42,7 @@ public class PlayScreen implements Screen {
     //speed of camera movement
     private int speed = 4;
     //speed of char
-    private float speedchar = 20f;
+    private float speedchar = 2000;
 
     //map loader and renderer
     private TmxMapLoader mapLoader;
@@ -95,21 +95,25 @@ public class PlayScreen implements Screen {
     public void handleInput(float dt){
 
         if (Gdx.input.isKeyPressed(Input.Keys.D)){
-            player.b2body.applyLinearImpulse(new Vector2(speedchar,0), player.b2body.getWorldCenter(), false);
+            player.b2body.setLinearVelocity(speedchar, 0);
 
             //gamecam.position.x += speed;
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.W)){
-            player.b2body.applyLinearImpulse(new Vector2(0, speedchar), player.b2body.getWorldCenter(), false);
+        else if (Gdx.input.isKeyPressed(Input.Keys.W)){
+            player.b2body.setLinearVelocity(0, speedchar);
             //gamecam.position.y += speed;
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.S)){
-            player.b2body.applyLinearImpulse(new Vector2(0, -speedchar), player.b2body.getWorldCenter(), false);
+        else if (Gdx.input.isKeyPressed(Input.Keys.S)){
+            player.b2body.setLinearVelocity(0, -speedchar);
             //gamecam.position.y += -1*speed;
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.A)){
-            player.b2body.applyLinearImpulse(new Vector2(-speedchar,0), player.b2body.getWorldCenter(), false);
+        else if (Gdx.input.isKeyPressed(Input.Keys.A)){
+            player.b2body.setLinearVelocity(-speedchar, 0);
             //gamecam.position.x += -1*speed;
+        }
+
+        else{
+            player.b2body.setLinearVelocity(0,0);
         }
 
     }
