@@ -48,7 +48,9 @@ public class PlayScreen implements Screen {
 
 
     public void update(float dt){
-       // handleInput();
+        handleInput();
+        
+        gamecam.update();
     }
 
 
