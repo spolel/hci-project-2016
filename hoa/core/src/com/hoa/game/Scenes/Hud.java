@@ -55,6 +55,7 @@ public class Hud {
         table.add(levelLabel).expandX();
 
         stage.addActor(table);
+        
     }
 
 
