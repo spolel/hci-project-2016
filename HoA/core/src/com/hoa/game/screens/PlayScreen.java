@@ -40,9 +40,9 @@ public class PlayScreen implements Screen {
     private Hud hud;
 
     //speed of camera movement
-    private int speed = 4;
+    private int speed = 1000;
     //speed of char
-    private float speedchar = 100f;
+    private float speedchar = 10f;
 
     //map loader and renderer
     private TmxMapLoader mapLoader;
@@ -96,23 +96,20 @@ public class PlayScreen implements Screen {
     //if the else if is removed weird stuff happens
     public void handleInput(float dt){
 
-        if (Gdx.input.isKeyPressed(Input.Keys.D)){
-            player.b2body.setLinearVelocity(speedchar, 0);
 
-
+        if (Gdx.input.isKeyPressed(Input.Keys.W) && player.b2body.getLinearVelocity().y <= speed){
+            player.b2body.applyLinearImpulse(new Vector2(0, speedchar), player.b2body.getWorldCenter(),true);
         }
-        else if (Gdx.input.isKeyPressed(Input.Keys.W)){
-            player.b2body.setLinearVelocity(0, speedchar);
-
+        else if (Gdx.input.isKeyPressed(Input.Keys.S) && player.b2body.getLinearVelocity().y >= -speed){
+            player.b2body.applyLinearImpulse(new Vector2(0, -speedchar), player.b2body.getWorldCenter(),true);
         }
-        else if (Gdx.input.isKeyPressed(Input.Keys.S)){
-            player.b2body.setLinearVelocity(0, -speedchar);
+        else if (Gdx.input.isKeyPressed(Input.Keys.A) && player.b2body.getLinearVelocity().x >= -speed){
+            player.b2body.applyLinearImpulse(new Vector2(-speedchar,0), player.b2body.getWorldCenter(),true);
         }
-        else if (Gdx.input.isKeyPressed(Input.Keys.A)){
-            player.b2body.setLinearVelocity(-speedchar, 0);
+        else if (Gdx.input.isKeyPressed(Input.Keys.D) && player.b2body.getLinearVelocity().x <= speed){
+            player.b2body.applyLinearImpulse(new Vector2(speedchar, 0), player.b2body.getWorldCenter(),true);
         }
-
-        else{
+        else {
             player.b2body.setLinearVelocity(0,0);
         }
 
