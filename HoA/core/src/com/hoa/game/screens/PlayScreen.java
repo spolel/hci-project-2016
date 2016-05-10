@@ -23,6 +23,7 @@ import com.badlogic.gdx.math.Vector2;
 import static com.badlogic.gdx.Input.Buttons.RIGHT;
 import com.badlogic.gdx.math.Rectangle;
 import com.hoa.game.Tools.B2WorldCreator;
+import com.hoa.game.Tools.WorldContactListener;
 
 /**
  * Created by BMW on 26/04/2016.
@@ -47,7 +48,7 @@ public class PlayScreen implements Screen {
     //map loader and renderer
     private TmxMapLoader mapLoader;
     private TiledMap map;
-    private OrthogonalTiledMapRenderer renderer;
+    public OrthogonalTiledMapRenderer renderer;
 
     //box2d
     private World world;
@@ -76,6 +77,7 @@ public class PlayScreen implements Screen {
         player = new Player(world);
 
 
+
         //map
         mapLoader = new TmxMapLoader();
         map = mapLoader.load("Maps/test_map.tmx");
@@ -85,6 +87,9 @@ public class PlayScreen implements Screen {
 
 
         new B2WorldCreator(world,map);
+
+        world.setContactListener(new WorldContactListener(){});
+
     }
 
 

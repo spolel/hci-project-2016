@@ -10,5 +10,11 @@ import com.badlogic.gdx.physics.box2d.World;
 public class CollisionBox extends InteractiveTile{
     public CollisionBox(World world, TiledMap map, Rectangle bounds) {
         super(world, map, bounds);
+        fixture.setUserData(this);
+    }
+
+    @Override
+    public void onCollision() {
+
     }
 }

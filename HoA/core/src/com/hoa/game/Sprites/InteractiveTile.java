@@ -2,6 +2,7 @@ package com.hoa.game.Sprites;
 
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTile;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.*;
 
@@ -14,6 +15,8 @@ public abstract class InteractiveTile {
     protected TiledMapTile tile;
     protected Rectangle bounds;
     protected Body body;
+    protected Fixture fixture;
+    protected TmxMapLoader mapLoader;
 
     public InteractiveTile(World world, TiledMap map, Rectangle bounds) {
         this.world = world;
@@ -31,6 +34,8 @@ public abstract class InteractiveTile {
 
         shape.setAsBox(bounds.getWidth() / 2, bounds.getHeight() / 2);
         fdef.shape = shape;
-        body.createFixture(fdef);
+        fixture = body.createFixture(fdef);
     }
+
+    public abstract void onCollision();
 }
