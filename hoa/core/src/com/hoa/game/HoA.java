@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.hoa.game.screens.PlayScreen;
+import com.hoa.game.screens.CombatScreen;
 
 public class HoA extends Game {
 	public static final int screenWidth = 800;
@@ -20,7 +21,7 @@ public class HoA extends Game {
 	public void create() {
 		batch = new SpriteBatch();
 		setScreen(new PlayScreen(this));
-	}
+;	}
 
 	@Override
 
