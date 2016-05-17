@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.hoa.game.screens.MainMenuScreen;
 import com.hoa.game.screens.PlayScreen;
 import com.hoa.game.screens.CombatScreen;
 
@@ -20,7 +21,7 @@ public class HoA extends Game {
 	@Override
 	public void create() {
 		batch = new SpriteBatch();
-		setScreen(new PlayScreen(this));
+		setScreen(new MainMenuScreen(this));
 ;	}
 
 	@Override
