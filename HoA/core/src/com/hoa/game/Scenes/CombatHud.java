@@ -3,15 +3,19 @@ package com.hoa.game.Scenes;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -37,6 +41,7 @@ public class CombatHud extends Table implements Disposable{
     private Label Title;
     private Label Counter;
     private Label Out;
+    private Image enemy;
 
 
 
@@ -45,11 +50,18 @@ public class CombatHud extends Table implements Disposable{
 
 
 
-    public CombatHud(SpriteBatch spriteBatch){
+    public CombatHud(SpriteBatch batch){
 
 
         viewport = new FitViewport(HoA.screenWidth, HoA.screenHeight, new OrthographicCamera());
-        stage = new Stage(viewport, spriteBatch);
+        stage = new Stage(viewport, batch);
+
+        Texture texenemy = new Texture("Sprites/Bosses/Flaming_ent.png");
+        Sprite sprenemy = new Sprite(texenemy);
+        sprenemy.setSize(1000f, 1000f);
+        SpriteDrawable drawenemy = new SpriteDrawable(sprenemy);
+        enemy = new Image(drawenemy);
+
 
         /** the table is used to place the elements of the screen */
         Table table = new Table();
@@ -63,7 +75,7 @@ public class CombatHud extends Table implements Disposable{
         Out = new Label("press H to return to the game, V to add counter", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 
 
-        Title.setFontScale(2, 2);
+        Title.setFontScale(1.2f, 1.2f);
         Counter.setFontScale(1.2f, 1.2f);
         Out.setFontScale(1.2f, 1.2f);
 
@@ -72,6 +84,8 @@ public class CombatHud extends Table implements Disposable{
         table.add(Title).expandX().padTop(100);
         table.row();
         table.add(Counter).expandX().padTop(50);
+        table.row();
+        table.add(enemy);
         table.row();
         table.row();
         table.add(Out).expandX().padTop(50);
