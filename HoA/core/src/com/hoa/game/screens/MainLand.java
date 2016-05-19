@@ -104,6 +104,12 @@ public class MainLand implements Screen {
     public void handleInput(float dt){
 
 
+        // PRESS G OPEN THE COMBAT SCREEN, JUST TO TEST
+        if (Gdx.input.isKeyPressed(Input.Keys.G)){
+            game.setScreen(new CombatScreen(game));
+        }
+
+
         if (Gdx.input.isKeyPressed(Input.Keys.W) && player.b2body.getLinearVelocity().y <= speed){
             player.b2body.applyLinearImpulse(new Vector2(0, speedchar), player.b2body.getWorldCenter(),true);
         }
@@ -119,6 +125,9 @@ public class MainLand implements Screen {
         else {
             player.b2body.setLinearVelocity(0,0);
         }
+
+
+
 
     }
 
