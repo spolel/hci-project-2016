@@ -94,7 +94,7 @@ public class Cave implements Screen {
     //only one key usable now
     //if the else if is removed weird stuff happens
     public void handleInput(float dt){
-        
+
 
         if (Gdx.input.isKeyPressed(Input.Keys.W) && player.b2body.getLinearVelocity().y <= speed){
             player.b2body.applyLinearImpulse(new Vector2(0, speedchar), player.b2body.getWorldCenter(),true);

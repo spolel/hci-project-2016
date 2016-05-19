@@ -105,9 +105,14 @@ public class MainLand implements Screen {
 
 
         // PRESS G OPEN THE COMBAT SCREEN, JUST TO TEST
-        if (Gdx.input.isKeyPressed(Input.Keys.G)){
+        if (Gdx.input.isKeyJustPressed(Input.Keys.G)){
             game.setPos((int)player.b2body.getPosition().x, (int)player.b2body.getPosition().y);
             game.setScreen(new CombatScreen(game));
+        }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)){
+            game.setPos((int)player.b2body.getPosition().x, (int)player.b2body.getPosition().y);
+            game.setScreen(new ResumeMenuScreen(game));
         }
 
 
