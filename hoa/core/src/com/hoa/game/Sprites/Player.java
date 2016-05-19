@@ -1,5 +1,7 @@
 package com.hoa.game.Sprites;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.PolygonRegion;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
@@ -11,8 +13,10 @@ public class Player extends Sprite{
     public World world;
     public Body b2body;
 
+
     public Player(World world, int x, int y){
         this.world = world;
+
         definePlayer(x, y);
     }
 
@@ -54,6 +58,7 @@ public class Player extends Sprite{
         fdef.shape = right;
         fdef.isSensor = true;
         b2body.createFixture(fdef).setUserData("right");
+
 
     }
 }

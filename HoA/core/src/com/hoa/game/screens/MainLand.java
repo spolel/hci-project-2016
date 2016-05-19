@@ -6,12 +6,15 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.*;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
@@ -32,6 +35,7 @@ public class MainLand implements Screen {
 
     //game class
     public HoA game;
+    public Image textureplayer;
 
     // Current game camera & screen display, currently a FitViewPort
     private OrthographicCamera gamecam;
@@ -75,8 +79,11 @@ public class MainLand implements Screen {
 
 
         player = new Player(world, game.getPosx(), game.getPosy());
+        //texplayer = new Texture("Sprites/pg/HoA_sprite.png");
+
 
         //player = new Player(world, 1200, 1000);
+
 
 
 
@@ -168,7 +175,7 @@ public class MainLand implements Screen {
         hud.stage.draw();
 
         // render the Box2d lines
-        b2dr.render(world,gamecam.combined);
+        //b2dr.render(world,gamecam.combined);
     }
 
     @Override

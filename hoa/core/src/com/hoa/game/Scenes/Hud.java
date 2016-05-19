@@ -2,11 +2,15 @@ package com.hoa.game.Scenes;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -24,11 +28,13 @@ public class Hud implements Disposable{
     private Integer worldTimer;
     private float timeCount;
     private Integer score;
+    private Image textureplayer;
 
     Label healthLabel;
     Label levelLabel;
     Label zoneLabel;
     Label playerLabel;
+    Label nullLabel;
 
     public Hud(SpriteBatch spriteBatch){
         worldTimer = 300;
@@ -38,6 +44,14 @@ public class Hud implements Disposable{
 
         viewport = new FitViewport(HoA.screenWidth, HoA.screenHeight, new OrthographicCamera());
         stage = new Stage(viewport, spriteBatch);
+
+
+        Texture texplayer = new Texture("Sprites/pg/HoA_sprite.png");
+        Sprite splayer = new Sprite(texplayer);
+        splayer.setSize(35f, 35f);
+        splayer.setPosition(splayer.getX()+15f, splayer.getY());
+        SpriteDrawable drawplayer = new SpriteDrawable(splayer);
+        textureplayer = new Image(drawplayer);
 
         /** the table is used to place the elements of the screen */
         Table table = new Table();
@@ -51,10 +65,17 @@ public class Hud implements Disposable{
         zoneLabel = new Label("ZONE", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
         playerLabel = new Label("GOLD", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
         table.add(playerLabel).expandX().padTop(10);
+        table.add(nullLabel);
         table.add(zoneLabel).expandX().padTop(10);
         table.row();
         table.add(healthLabel).expandX();
+        table.add(nullLabel);
         table.add(levelLabel).expandX();
+        table.row();
+        table.add(nullLabel);
+        table.add(textureplayer).pad(0, 30f,50f,0).padTop(viewport.getScreenHeight()/2);
+        table.add(nullLabel);
+
 
         stage.addActor(table);
         
