@@ -110,6 +110,11 @@ public class MainLand implements Screen {
             game.setScreen(new CombatScreen(game));
         }
 
+        if (Gdx.input.isKeyPressed(Input.Keys.M)){
+            game.setPos((int)player.b2body.getPosition().x, (int)player.b2body.getPosition().y);
+            game.setScreen(new MainMenuScreen(game));
+        }
+
 
         if (Gdx.input.isKeyPressed(Input.Keys.W) && player.b2body.getLinearVelocity().y <= speed){
             player.b2body.applyLinearImpulse(new Vector2(0, speedchar), player.b2body.getWorldCenter(),true);
