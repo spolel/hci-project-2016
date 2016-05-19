@@ -58,7 +58,7 @@ public class CombatHud extends Table implements Disposable{
 
         Texture texenemy = new Texture("Sprites/Bosses/Flaming_ent.png");
         Sprite sprenemy = new Sprite(texenemy);
-        sprenemy.setSize(1000f, 1000f);
+        sprenemy.setSize(500f, 1000f);
         SpriteDrawable drawenemy = new SpriteDrawable(sprenemy);
         enemy = new Image(drawenemy);
 

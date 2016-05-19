@@ -68,7 +68,7 @@ public class Cave implements Screen {
         b2dr = new Box2DDebugRenderer();
 
 
-        player = new Player(world, 200, 80);
+        player = new Player(world, 230, 60);
 
 
 
