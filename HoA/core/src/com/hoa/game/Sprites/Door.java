@@ -1,13 +1,13 @@
 package com.hoa.game.Sprites;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
-import com.hoa.game.screens.PlayScreen;
+import com.hoa.game.HoA;
+import com.hoa.game.screens.MainLand;
 
 
 /**
@@ -15,8 +15,8 @@ import com.hoa.game.screens.PlayScreen;
  */
 public class Door extends InteractiveTile {
 
-    public Door(World world, TiledMap map, Rectangle bounds) {
-        super(world, map, bounds);
+    public Door(World world, TiledMap map, Rectangle bounds, HoA game) {
+        super(world, map, bounds, game);
         fixture.setUserData(this);
 
 
@@ -36,7 +36,8 @@ public class Door extends InteractiveTile {
 
     @Override
     public void onCollision() {
-        //map = mapLoader.load("Maps/Test_cave.tmx");
+        super.game.setScreen(new MainLand(game));
+                //map = mapLoader.load("Maps/Test_cave.tmx");
     }
 
 

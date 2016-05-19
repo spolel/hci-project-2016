@@ -4,28 +4,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.hoa.game.HoA;
-import com.hoa.game.Scenes.Hud;
 import com.hoa.game.Scenes.Mainmenu;
-import com.hoa.game.Sprites.Player;
-import com.hoa.game.Tools.B2WorldCreator;
-import com.hoa.game.Tools.WorldContactListener;
 
 /**
  * Created by BMW on 17/05/2016.
@@ -82,7 +66,8 @@ public class MainMenuScreen implements Screen {
         //insert click listener
 
         if (Gdx.input.isKeyPressed(Input.Keys.N)){
-            game.setScreen(new PlayScreen(game));
+            game.setPos(800, 1000);
+            game.setScreen(new MainLand(game));
         }
     }
 

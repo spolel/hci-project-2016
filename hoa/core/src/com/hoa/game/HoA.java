@@ -1,22 +1,31 @@
 package com.hoa.game;
 
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.hoa.game.screens.MainMenuScreen;
-import com.hoa.game.screens.PlayScreen;
-import com.hoa.game.screens.CombatScreen;
 
 public class HoA extends Game {
 	public static final int screenWidth = 800;
 	public static final int screenHeight = 600;
+	public int posx;
+	public int posy;
 
 	public SpriteBatch batch;
+
+	public int getPosx() {
+		return posx;
+	}
+
+	public int getPosy() {
+		return posy;
+	}
+
+	public void setPos(int x, int y)
+	{
+		posx = x;
+		posy = y;
+	}
+
 
 	@Override
 	public void create() {
