@@ -28,12 +28,6 @@ public class CombatHud extends Table implements Disposable{
     public Viewport viewport;
 
 
-    //
-    //private Actor newGame;
-//    private Actor Instructions;
-//     private Actor Credits;
-//    private Actor Exit;
-
     private Label Title;
     private Label Counter;
     private Label Out;
@@ -88,34 +82,7 @@ public class CombatHud extends Table implements Disposable{
     }
 
 
-
-
-
-//
-//    newGame = new NewGame();
-//    addActor(newGame);
-//    setSize
-//    setPosition
-//Label.setText();
-//
-//    extends Button
-//    set texture
-//            super (new SpriteDrawable(new Sprite(texture)))
-
-//    addListener(new InputListener)
-//
-//
-//        addListener(new InputListener(){
-//            public void touchDown() {
-//                //...
-//            }
-//
-//            private Image image = new Image();
-//        })
-//
-//
-//
-//            Label name = new Label(text, Label.LabelStyle(font, size, color))
+    
 
     @Override
     public void dispose() {
