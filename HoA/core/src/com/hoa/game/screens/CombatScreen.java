@@ -82,7 +82,7 @@ public class CombatScreen implements Screen {
 
         //insert click listener
 
-        if (Gdx.input.isKeyPressed(Input.Keys.H)){
+        if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
             game.setScreen(new MainLand(game));
         }
         //DOES NOT WORK
