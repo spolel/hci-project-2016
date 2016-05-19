@@ -7,15 +7,16 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.hoa.game.HoA;
-import com.hoa.game.screens.MainLand;
+import com.hoa.game.screens.Cave;
+import com.hoa.game.screens.Tavern;
 
 
 /**
  * Created by BMW on 03/05/2016.
  */
-public class Door extends InteractiveTile {
+public class EnterTavern extends InteractiveTile {
 
-    public Door(World world, TiledMap map, Rectangle bounds, HoA game) {
+    public EnterTavern(World world, TiledMap map, Rectangle bounds, HoA game) {
         super(world, map, bounds, game);
         fixture.setUserData(this);
 
@@ -36,7 +37,8 @@ public class Door extends InteractiveTile {
 
     @Override
     public void onCollision() {
-        super.game.setScreen(new MainLand(game));
+        super.game.setPos(600,400);
+        super.game.setScreen(new Tavern(game));
                 //map = mapLoader.load("Maps/Test_cave.tmx");
     }
 

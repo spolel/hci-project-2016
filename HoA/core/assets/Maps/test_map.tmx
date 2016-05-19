@@ -86,4 +86,6 @@
  <objectgroup name="Tavern entrance">
   <object id="81" x="407.843" y="410.458" width="44.4444" height="37.9085"/>
  </objectgroup>
+ <objectgroup name="null"/>
+ <objectgroup name="null"/>
 </map>

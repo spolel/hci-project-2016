@@ -28,10 +28,10 @@ import com.hoa.game.Tools.WorldContactListener;
 /**
  * Created by BMW on 26/04/2016.
  */
-public class PlayScreen implements Screen {
+public class MainLand implements Screen {
 
     //game class
-    private HoA game;
+    public HoA game;
 
     // Current game camera & screen display, currently a FitViewPort
     private OrthographicCamera gamecam;
@@ -57,7 +57,7 @@ public class PlayScreen implements Screen {
     private Player player;
 
 
-    public PlayScreen(HoA game){
+    public MainLand(HoA game){
         //actual game variable
         this.game = game;
 
@@ -74,7 +74,9 @@ public class PlayScreen implements Screen {
         b2dr = new Box2DDebugRenderer();
 
 
-        player = new Player(world);
+        player = new Player(world, game.getPosx(), game.getPosy());
+
+        //player = new Player(world, 1200, 1000);
 
 
 
@@ -86,7 +88,7 @@ public class PlayScreen implements Screen {
 
 
 
-        new B2WorldCreator(world,map);
+        new B2WorldCreator(world,map, game);
 
         world.setContactListener(new WorldContactListener(){});
 

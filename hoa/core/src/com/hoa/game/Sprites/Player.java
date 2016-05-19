@@ -11,15 +11,15 @@ public class Player extends Sprite{
     public World world;
     public Body b2body;
 
-    public Player(World world){
+    public Player(World world, int x, int y){
         this.world = world;
-        definePlayer();
+        definePlayer(x, y);
     }
 
     /** Defining the player */
-    public void definePlayer(){
+    public void definePlayer(int x, int y){
         BodyDef bdef = new BodyDef();
-        bdef.position.set(800,800);
+        bdef.position.set(x,y);
         bdef.type = BodyDef.BodyType.DynamicBody;
         b2body = world.createBody(bdef);
 
