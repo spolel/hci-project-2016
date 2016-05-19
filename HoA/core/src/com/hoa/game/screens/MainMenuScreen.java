@@ -69,6 +69,10 @@ public class MainMenuScreen implements Screen {
             game.setPos(800, 1000);
             game.setScreen(new MainLand(game));
         }
+        // exit game
+        else if (Gdx.input.isKeyPressed(Input.Keys.E)){
+            Gdx.app.exit();
+        }
     }
 
     public void update(float dt){
