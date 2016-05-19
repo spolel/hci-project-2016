@@ -58,9 +58,9 @@ public class CombatHud extends Table implements Disposable{
         table.setFillParent(true);
 
 
-        Title =new Label("This is a combat screen test", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-        Counter =new Label(countertot, new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-        Out = new Label("press H to return to the game, V to add counter", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        Title =new Label("This is a combat screen test", new Label.LabelStyle(new BitmapFont(), Color.BLACK));
+        Counter =new Label(countertot, new Label.LabelStyle(new BitmapFont(), Color.RED));
+        Out = new Label("press H to return to the game, V to add counter", new Label.LabelStyle(new BitmapFont(), Color.BLACK));
 
 
         Title.setFontScale(2, 2);
