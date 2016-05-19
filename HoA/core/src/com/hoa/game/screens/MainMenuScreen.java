@@ -5,7 +5,9 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.hoa.game.HoA;
@@ -23,6 +25,8 @@ public class MainMenuScreen implements Screen {
     private Stage stage;
     private InputMultiplexer input;
 
+    private Image background;
+
     // Current game camera & screen display, currently a FitViewPort
 
 
@@ -36,6 +40,8 @@ public class MainMenuScreen implements Screen {
 
         //actual game variable
         this.game = game;
+
+        background = new Image(new Texture("Menu/HoA_menu.jpg"));
 
         stage = new Stage(new FitViewport(HoA.screenWidth, HoA.screenHeight));
         input = new InputMultiplexer();
@@ -89,6 +95,7 @@ public class MainMenuScreen implements Screen {
     @Override
     public void render(float delta) {
         update(delta);
+
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
@@ -97,6 +104,8 @@ public class MainMenuScreen implements Screen {
 
         //stage.getViewport().apply();
         mainmenu.stage.draw();
+
+       // background.draw(game.batch, 10f);
 
 
 

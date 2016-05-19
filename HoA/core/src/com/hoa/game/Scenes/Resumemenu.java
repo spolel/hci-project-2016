@@ -2,9 +2,11 @@ package com.hoa.game.Scenes;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Disposable;
@@ -32,6 +34,7 @@ public class Resumemenu extends Table implements Disposable{
     private Label resume;
     private Label mainmenu;
     private Label Exit;
+    private Image background;
 
 
 
@@ -41,6 +44,8 @@ public class Resumemenu extends Table implements Disposable{
 
         viewport = new FitViewport(HoA.screenWidth, HoA.screenHeight, new OrthographicCamera());
         stage = new Stage(viewport, spriteBatch);
+
+        background = new Image(new Texture("Menu/Pause screen.png"));
 
         /** the table is used to place the elements of the screen */
         Table table = new Table();
@@ -60,14 +65,16 @@ public class Resumemenu extends Table implements Disposable{
         Exit.setFontScale(1.2f, 1.2f);
 
 
-        table.add(Title).expandX().padTop(100);
-        table.row();
-        table.row();
-        table.add(resume).expandX().padTop(50);
-        table.row();
-        table.add(mainmenu).expandX().padTop(50);
-        table.row();
-        table.add(Exit).expandX().padTop(50);
+//        table.add(Title).expandX().padTop(100);
+//        table.row();
+//        table.row();
+//        table.add(resume).expandX().padTop(50);
+//        table.row();
+//        table.add(mainmenu).expandX().padTop(50);
+//        table.row();
+//        table.add(Exit).expandX().padTop(50);
+
+        table.add(background).expandX();
 
         stage.addActor(table);
 
