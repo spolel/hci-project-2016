@@ -91,7 +91,7 @@ public class CombatHud extends Table implements Disposable{
 
     // method to call in the CombatScreen class
     public void addCounter(){
-        tot = tot+1;
+        tot = tot+420;
         Counter.setText("counter is : " + tot);
     }
 
