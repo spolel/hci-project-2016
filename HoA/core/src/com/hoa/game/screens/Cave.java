@@ -68,13 +68,13 @@ public class Cave implements Screen {
         b2dr = new Box2DDebugRenderer();
 
 
-//        player = new Player(world, 230, 60);
+        //player = new Player(world, 230, 60);
 
 
 
         //map
         mapLoader = new TmxMapLoader();
-        map = mapLoader.load("Maps/Test_cave.tmx");
+        map = mapLoader.load("Maps/Dungeon_1.tmx");
         renderer = new OrthogonalTiledMapRenderer(map);
         gamecam.position.set(gamePort.getWorldWidth()/2, gamePort.getWorldHeight()/2, 0);
 

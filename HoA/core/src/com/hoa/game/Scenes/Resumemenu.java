@@ -26,7 +26,7 @@ public class Resumemenu extends Table implements Disposable{
 
     //
     //private Actor newGame;
-//    private Actor Instructions;
+//    private Actor Instruction;
 //     private Actor Credits;
 //    private Actor Exit;
 

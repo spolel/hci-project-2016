@@ -80,6 +80,14 @@ public class MainMenuScreen implements Screen {
             game.setPos(6150, 7100);
             game.setScreen(new MainLand(game));
         }
+
+        if (Gdx.input.isKeyPressed(Input.Keys.I)){
+            game.setScreen(new InstructionScreen(game));
+        }
+
+        if (Gdx.input.isKeyPressed(Input.Keys.C)){
+            game.setScreen(new CreditScreen(game));
+        }
         // exit game
         else if (Gdx.input.isKeyPressed(Input.Keys.E)){
             Gdx.app.exit();

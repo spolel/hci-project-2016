@@ -16,6 +16,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.hoa.game.HoA;
 import com.hoa.game.Scenes.Hud;
+import com.hoa.game.Scenes.Instruction;
 import com.hoa.game.Sprites.Player;
 import com.hoa.game.Tools.B2WorldCreator;
 import com.hoa.game.Tools.WorldContactListener;
@@ -23,7 +24,7 @@ import com.hoa.game.Tools.WorldContactListener;
 /**
  * Created by BMW on 26/04/2016.
  */
-public class Instructions implements Screen {
+public class InstructionScreen implements Screen {
 
     //game class
     public HoA game;
@@ -34,10 +35,10 @@ public class Instructions implements Screen {
     private Viewport gamePort;
 
     //hud of the program
-    private Hud hud;
+    private Instruction hud;
 
 
-    public Instructions(HoA game){
+    public InstructionScreen(HoA game){
         //actual game variable
         this.game = game;
 
@@ -46,7 +47,7 @@ public class Instructions implements Screen {
         gamePort = new FitViewport(HoA.screenWidth, HoA.screenHeight, gamecam);
 
         //hud
-        hud = new Hud(game.batch);
+        hud = new Instruction(game.batch);
 
     }
 
@@ -86,7 +87,6 @@ public class Instructions implements Screen {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
         hud.stage.draw();
 
     }

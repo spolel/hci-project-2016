@@ -31,29 +31,67 @@ public class B2WorldCreator {
             new CollisionBox(world, map, rect, game);
         }
 
-        //tavern
+        //d1 entrance
         for(MapObject object : map.getLayers().get(6).getObjects().getByType(RectangleMapObject.class)) {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
             new EnterCave(world, map, rect, game);
         }
 
-        //Cave
+        //d1 exit
         for(MapObject object : map.getLayers().get(7).getObjects().getByType(RectangleMapObject.class)) {
-            Rectangle rect = ((RectangleMapObject) object).getRectangle();
-            new EnterTavern(world, map, rect, game);
-        }
-
-        //Caveexit
-        for(MapObject object : map.getLayers().get(8).getObjects().getByType(RectangleMapObject.class)) {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
             new Door(world, map, rect, game);
         }
 
-        //tavernexit
+        //d2 entrance
+        for(MapObject object : map.getLayers().get(8).getObjects().getByType(RectangleMapObject.class)) {
+            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+            new EnterCave(world, map, rect, game);
+            //TEMPORARY
+        }
+
+        //d2 exit
         for(MapObject object : map.getLayers().get(9).getObjects().getByType(RectangleMapObject.class)) {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
             new Door(world, map, rect, game);
         }
+
+        //tavernentrance
+        for(MapObject object : map.getLayers().get(10).getObjects().getByType(RectangleMapObject.class)) {
+            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+            new EnterTavern(world, map, rect, game);
+        }
+
+        //tavernexit
+        for(MapObject object : map.getLayers().get(11).getObjects().getByType(RectangleMapObject.class)) {
+            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+            new Door(world, map, rect, game);
+        }
+
+        //bonus
+        for(MapObject object : map.getLayers().get(12).getObjects().getByType(RectangleMapObject.class)) {
+            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+            new Door(world, map, rect, game);
+        }
+
+        //bonus
+        for(MapObject object : map.getLayers().get(13).getObjects().getByType(RectangleMapObject.class)) {
+            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+            new Door(world, map, rect, game);
+        }
+
+        //bonus
+        for(MapObject object : map.getLayers().get(14).getObjects().getByType(RectangleMapObject.class)) {
+            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+            new Door(world, map, rect, game);
+        }
+
+        //bonus
+        for(MapObject object : map.getLayers().get(15).getObjects().getByType(RectangleMapObject.class)) {
+            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+            new Door(world, map, rect, game);
+        }
+
 
 
 

@@ -38,7 +38,6 @@ public class EnterCave extends InteractiveTile {
     public void onCollision() {
         super.game.setPos(1320,1320);
         super.game.setScreen(new Cave(game));
-                //map = mapLoader.load("Maps/Test_cave.tmx");
     }
 
 
