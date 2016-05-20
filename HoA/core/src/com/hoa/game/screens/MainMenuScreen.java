@@ -7,6 +7,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -27,6 +28,7 @@ public class MainMenuScreen implements Screen {
 
     private Image background;
 
+
     // Current game camera & screen display, currently a FitViewPort
 
 
@@ -40,6 +42,9 @@ public class MainMenuScreen implements Screen {
 
         //actual game variable
         this.game = game;
+
+        //newgame = new Button(newbutton, );
+                //new Button()
 
         background = new Image(new Texture("Menu/HoA_menu.jpg"));
 
@@ -72,7 +77,7 @@ public class MainMenuScreen implements Screen {
         //insert click listener
 
         if (Gdx.input.isKeyPressed(Input.Keys.N)){
-            game.setPos(800, 1000);
+            game.setPos(6150, 7100);
             game.setScreen(new MainLand(game));
         }
         // exit game

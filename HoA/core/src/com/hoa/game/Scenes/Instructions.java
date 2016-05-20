@@ -1,24 +1,15 @@
 package com.hoa.game.Scenes;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-
-import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
@@ -26,13 +17,11 @@ import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.hoa.game.HoA;
-import com.hoa.game.screens.*;
-import com.hoa.game.screens.Instructions;
 
 /**
  * Created by BMW on 17/05/2016.
  */
-public class Mainmenu extends Table implements Disposable{
+public class Instructions extends Table implements Disposable{
 
     public HoA game;
     public Stage stage;
@@ -45,24 +34,13 @@ public class Mainmenu extends Table implements Disposable{
 //     private Actor Credits;
 //    private Actor Exit;
 
-    private Label Title;
-    //private Label newGame;
-    private Label Instructions;
-    private Label Credits;
-    private Label Exit;
     private Drawable background;
 
 
-    private Button newgame;
-    private Button credits;
-    private Button instructions;
-    private Button exit;
+    private Button back;
 
 
-    private Drawable newbutton;
-    private Drawable credbutton;
-    private Drawable instbutton;
-    private Drawable exbutton;
+    private Drawable backbt;
 
     private float buttwidth;
     private float buttheight;
@@ -70,7 +48,7 @@ public class Mainmenu extends Table implements Disposable{
 
 
 
-    public Mainmenu(SpriteBatch spriteBatch){
+    public Instructions(SpriteBatch spriteBatch){
 
         buttheight = 50;
         buttwidth = 200;
@@ -83,15 +61,10 @@ public class Mainmenu extends Table implements Disposable{
 
 
 
-        newbutton = new SpriteDrawable( new Sprite(new Texture("Menu/newgamebutton.png")));
-        credbutton = new SpriteDrawable( new Sprite(new Texture("Menu/creditsbutton.png")));
-        instbutton = new SpriteDrawable( new Sprite(new Texture("Menu/Instructionsbutton.png")));
-        exbutton = new SpriteDrawable( new Sprite(new Texture("Menu/exitbutton.png")));
+        backbt = new SpriteDrawable( new Sprite(new Texture("Menu/newgamebutton.png")));
 
-        newgame = new Button(newbutton);
-        credits = new Button(credbutton);
-        instructions = new Button(instbutton);
-        exit = new Button(exbutton);
+        back = new Button(backbt);
+
 
         //newgame.setSize(10f, 10f);
         //instructions.setSize(10f, 10f);
@@ -137,57 +110,20 @@ public class Mainmenu extends Table implements Disposable{
 //             }
 //        });
 
-        newgame.addListener(new ClickListener() {
+        back.addListener(new ClickListener() {
             public void clicked (InputEvent event, float x, float y)
             {
-                newgame.setSize(100, 100);
-                //game.setPos(6150, 7100);
-                //game.setScreen(new MainLand(game));
+                back.setSize(100, 100);
+                //game.setScreen(new MainMenuScreen(game));
             }
         });
 
-        credits.addListener(new ClickListener() {
-            public void clicked (InputEvent event, float x, float y)
-            {
-                credits.setSize(100, 100);
-                //game.setPos(6150, 7100);
-                //game.setScreen(new MainLand(game));
-            }
-        });
-
-        instructions.addListener(new ClickListener() {
-            public void clicked (InputEvent event, float x, float y)
-            {
-                instructions.setSize(100, 100);
-                game.setScreen(new Instructions(game));
-            }
-        });
-
-        exit.addListener(new ClickListener() {
-            public void clicked (InputEvent event, float x, float y)
-            {
-                Gdx.app.exit();
-            }
-        });
 
         table.setBackground(background);
 
         table.add();
-        table.add(newgame).width(buttwidth).height(buttheight).padTop(50);
+        table.add(back).width(buttwidth).height(buttheight).pad(50,0,0,0);
         table.add();
-        table.row();
-        table.add();
-        table.add(instructions).width(buttwidth).height(buttheight).padTop(50);
-        table.add();
-        table.row();
-        table.add();
-        table.add(credits).width(buttwidth).height(buttheight).padTop(50);
-        table.add();
-        table.row();
-        table.add();
-        table.add(exit).width(buttwidth).height(buttheight).padTop(50);
-        table.add();
-        //table.add(background).expandX();
 
         stage.addActor(table);
 

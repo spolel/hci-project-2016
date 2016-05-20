@@ -5,33 +5,25 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.maps.MapObject;
-import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.physics.box2d.*;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
+import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.hoa.game.HoA;
 import com.hoa.game.Scenes.Hud;
 import com.hoa.game.Sprites.Player;
-import com.badlogic.gdx.math.Vector2;
-import static com.badlogic.gdx.Input.Buttons.RIGHT;
-import com.badlogic.gdx.math.Rectangle;
 import com.hoa.game.Tools.B2WorldCreator;
 import com.hoa.game.Tools.WorldContactListener;
 
 /**
  * Created by BMW on 26/04/2016.
  */
-public class MainLand implements Screen {
+public class Credits implements Screen {
 
     //game class
     public HoA game;
@@ -61,7 +53,7 @@ public class MainLand implements Screen {
     private Player player;
 
 
-    public MainLand(HoA game){
+    public Credits(HoA game){
         //actual game variable
         this.game = game;
 
@@ -126,13 +118,13 @@ public class MainLand implements Screen {
 // warps to cave
         if (Gdx.input.isKeyJustPressed(Input.Keys.C)) {
             game.setPos(8888, 8888);
-            game.setScreen(new MainLand(game));
+            game.setScreen(new Credits(game));
         }
 
         // warps to cave
         if (Gdx.input.isKeyJustPressed(Input.Keys.T)) {
             game.setPos(6150, 7100);
-            game.setScreen(new MainLand(game));
+            game.setScreen(new Credits(game));
         }
 
         if (Gdx.input.isKeyPressed(Input.Keys.W)){ //&& player.b2body.getLinearVelocity().y <= speed){
