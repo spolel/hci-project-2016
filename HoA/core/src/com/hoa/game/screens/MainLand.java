@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -27,6 +28,7 @@ import static com.badlogic.gdx.Input.Buttons.RIGHT;
 import com.badlogic.gdx.math.Rectangle;
 import com.hoa.game.Tools.B2WorldCreator;
 import com.hoa.game.Tools.WorldContactListener;
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 
 /**
  * Created by BMW on 26/04/2016.
@@ -36,6 +38,7 @@ public class MainLand implements Screen {
     //game class
     public HoA game;
     public Image textureplayer;
+    private TextureAtlas atlas;
 
     // Current game camera & screen display, currently a FitViewPort
     private OrthographicCamera gamecam;
@@ -62,6 +65,10 @@ public class MainLand implements Screen {
 
 
     public MainLand(HoA game){
+        //sprite
+        atlas = new TextureAtlas("Sprites/packs/player.pack");
+
+
         //actual game variable
         this.game = game;
 
@@ -78,13 +85,11 @@ public class MainLand implements Screen {
         b2dr = new Box2DDebugRenderer();
 
 
-        player = new Player(world, game.getPosx(), game.getPosy());
+        player = new Player(world, this, game.getPosx(), game.getPosy());
         //texplayer = new Texture("Sprites/pg/HoA_sprite.png");
 
 
         //player = new Player(world, 1200, 1000);
-
-
 
 
         //map
@@ -100,6 +105,11 @@ public class MainLand implements Screen {
         world.setContactListener(new WorldContactListener(){});
 
     }
+
+    public TextureAtlas getAtlas() {
+        return atlas;
+    }
+
 
 
 
@@ -151,6 +161,8 @@ public class MainLand implements Screen {
         /** 60 times a second calculate the physics*/
         world.step(1/32f,0 ,0);
 
+        player.update(dt);
+
         gamecam.position.x = player.b2body.getPosition().x;
         gamecam.position.y = player.b2body.getPosition().y;
 
@@ -170,6 +182,12 @@ public class MainLand implements Screen {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         renderer.render();
+
+        game.batch.setProjectionMatrix(gamecam.combined);
+        game.batch.begin();
+        player.draw(game.batch);
+        game.batch.end();
+
 
         game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
         hud.stage.draw();

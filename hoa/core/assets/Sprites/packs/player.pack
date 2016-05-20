@@ -3,28 +3,28 @@ player.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-HoA_sprite
+player-down
   rotate: false
   xy: 1, 1
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-HoA_sprite_back
+player-up
   rotate: false
   xy: 35, 1
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-HoA_sprite_sx
+player-left
   rotate: false
   xy: 69, 1
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-PG_dx
+player-right
   rotate: false
   xy: 103, 1
   size: 32, 32
