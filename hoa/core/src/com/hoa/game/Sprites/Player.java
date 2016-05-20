@@ -3,8 +3,10 @@ package com.hoa.game.Sprites;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.PolygonRegion;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
+import com.hoa.game.screens.MainLand;
 
 /**
  * Created by lorenzo on 28/04/16.
@@ -12,12 +14,24 @@ import com.badlogic.gdx.physics.box2d.*;
 public class Player extends Sprite{
     public World world;
     public Body b2body;
+    private TextureRegion playerIdle;
 
 
-    public Player(World world, int x, int y){
+    public Player(World world, MainLand screen, int x, int y){
+
+        super(screen.getAtlas().findRegion("player-down"));
+
         this.world = world;
 
+        playerIdle = new TextureRegion(getTexture(), 0, 0, 32, 32);
+        setBounds(0, 0, 32, 32);
+        setRegion(playerIdle);
+
         definePlayer(x, y);
+    }
+
+    public void update(float dt){
+        setPosition(b2body.getPosition().x - getWidth() / 2,b2body.getPosition().y - getHeight() / 2);
     }
 
     /** Defining the player */
