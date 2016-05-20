@@ -85,10 +85,12 @@ public class CombatScreen implements Screen {
         if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
             game.setScreen(new MainLand(game));
         }
-        //DOES NOT WORK
-        else if(Gdx.input.isKeyPressed(Input.Keys.V)){
+
+        else if (Gdx.input.justTouched()) {
+
             combatscene.addCounter();
         }
+
     }
 
     public void update(float dt){
