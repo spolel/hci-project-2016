@@ -45,11 +45,6 @@ public class Mainmenu extends Table implements Disposable{
 //     private Actor Credits;
 //    private Actor Exit;
 
-    private Label Title;
-    //private Label newGame;
-    private Label Instructions;
-    private Label Credits;
-    private Label Exit;
     private Drawable background;
 
 
@@ -57,12 +52,14 @@ public class Mainmenu extends Table implements Disposable{
     private Button credits;
     private Button instructions;
     private Button exit;
+    private Button title;
 
 
     private Drawable newbutton;
     private Drawable credbutton;
     private Drawable instbutton;
     private Drawable exbutton;
+    private Drawable titlebutt;
 
     private float buttwidth;
     private float buttheight;
@@ -87,11 +84,14 @@ public class Mainmenu extends Table implements Disposable{
         credbutton = new SpriteDrawable( new Sprite(new Texture("Menu/creditsbutton.png")));
         instbutton = new SpriteDrawable( new Sprite(new Texture("Menu/Instructionsbutton.png")));
         exbutton = new SpriteDrawable( new Sprite(new Texture("Menu/exitbutton.png")));
+        titlebutt = new SpriteDrawable( new Sprite(new Texture("Menu/title.png")));
+
 
         newgame = new Button(newbutton);
         credits = new Button(credbutton);
         instructions = new Button(instbutton);
         exit = new Button(exbutton);
+        title = new Button(titlebutt);
 
         //newgame.setSize(10f, 10f);
         //instructions.setSize(10f, 10f);
@@ -172,23 +172,15 @@ public class Mainmenu extends Table implements Disposable{
 
         table.setBackground(background);
 
-        table.add();
-        table.add(newgame).width(buttwidth).height(buttheight).padTop(50);
-        table.add();
+        table.add(title).width(4*buttwidth).height(3*buttheight).padTop(20);
         table.row();
-        table.add();
+        table.add(newgame).width(buttwidth).height(buttheight).padTop(70);
+        table.row();
         table.add(instructions).width(buttwidth).height(buttheight).padTop(50);
-        table.add();
         table.row();
-        table.add();
         table.add(credits).width(buttwidth).height(buttheight).padTop(50);
-        table.add();
         table.row();
-        table.add();
         table.add(exit).width(buttwidth).height(buttheight).padTop(50);
-        table.add();
-        //table.add(background).expandX();
-
         stage.addActor(table);
 
     }
