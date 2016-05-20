@@ -28,7 +28,6 @@ import static com.badlogic.gdx.Input.Buttons.RIGHT;
 import com.badlogic.gdx.math.Rectangle;
 import com.hoa.game.Tools.B2WorldCreator;
 import com.hoa.game.Tools.WorldContactListener;
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 
 /**
  * Created by BMW on 26/04/2016.
@@ -146,9 +145,9 @@ public class MainLand implements Screen {
         }
 
         if (Gdx.input.isKeyPressed(Input.Keys.W)){ //&& player.b2body.getLinearVelocity().y <= speed){
-            //player.b2body.applyLinearImpulse(new Vector2(0, speedchar), player.b2body.getWorldCenter(),true);
+            player.b2body.applyLinearImpulse(new Vector2(0, speedchar), player.b2body.getWorldCenter(),true);
             //player.b2body.
-                    player.b2body.setLinearVelocity(player.b2body.getLinearVelocity().x, player.b2body.getLinearVelocity().y+1000);
+                   // player.b2body.setLinearVelocity(player.b2body.getLinearVelocity().x, player.b2body.getLinearVelocity().y+1000);
         }
         else if (Gdx.input.isKeyPressed(Input.Keys.S) && player.b2body.getLinearVelocity().y >= -speed){
             player.b2body.applyLinearImpulse(new Vector2(0, -speedchar), player.b2body.getWorldCenter(),true);
@@ -160,8 +159,8 @@ public class MainLand implements Screen {
             player.b2body.applyLinearImpulse(new Vector2(speedchar, 0), player.b2body.getWorldCenter(),true);
         }
         else {
-            player.b2body.setLinearVelocity(player.b2body.getLinearVelocity().x, player.b2body.getLinearVelocity().y);
-           // player.b2body.setLinearVelocity(0,0);
+            //player.b2body.setLinearVelocity(player.b2body.getLinearVelocity().x, player.b2body.getLinearVelocity().y);
+            player.b2body.setLinearVelocity(0,0);
         }
 
 

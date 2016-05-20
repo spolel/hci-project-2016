@@ -70,7 +70,7 @@ public class Credits implements Screen {
         b2dr = new Box2DDebugRenderer();
 
 
-        player = new Player(world, game.getPosx(), game.getPosy());
+//        player = new Player(world, game.getPosx(), game.getPosy());
         //texplayer = new Texture("Sprites/pg/HoA_sprite.png");
 
 

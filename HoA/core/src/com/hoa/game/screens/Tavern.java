@@ -68,7 +68,7 @@ public class Tavern implements Screen {
         b2dr = new Box2DDebugRenderer();
 
 
-        player = new Player(world, 380, 60);
+        //player = new Player(world, 380, 60);
 
 
 
