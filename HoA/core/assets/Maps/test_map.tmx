@@ -88,4 +88,5 @@
  </objectgroup>
  <objectgroup name="null"/>
  <objectgroup name="null"/>
+ <imagelayer name="Image Layer 1" offsetx="8.07926" offsety="2.29585"/>
 </map>
