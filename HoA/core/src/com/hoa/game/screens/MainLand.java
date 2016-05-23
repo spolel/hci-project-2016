@@ -11,6 +11,7 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.hoa.game.HoA;
@@ -53,6 +54,8 @@ public class MainLand implements Screen {
     private Box2DDebugRenderer b2dr;
 
     private Player player;
+    private boolean inventory;
+    private inventorySidebar inventoryhud;
 
 
     public MainLand(HoA game){
@@ -69,6 +72,12 @@ public class MainLand implements Screen {
 
         //hud
         hud = new Hud(game.batch, game);
+        inventoryhud = new inventorySidebar(game.batch, game);
+
+        hud.addListener(new ClickListener(){});
+        inventoryhud.addListener(new ClickListener(){});
+
+        Gdx.input.setInputProcessor(hud.stage);
 
         //world, 0,0 = no gravity, if body at rest calculate no physics
         world = new World(new Vector2(0,0), true);
@@ -118,7 +127,7 @@ public class MainLand implements Screen {
     //          game.setScreen(new CombatScreen(game,));
    //     }
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)){
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)|| hud.options.isPressed()){
             game.setPos((int)player.b2body.getPosition().x, (int)player.b2body.getPosition().y);
 
             game.setScreen(new ResumeMenuScreen(game));
@@ -133,13 +142,23 @@ public class MainLand implements Screen {
 
 
         // warps to cave
-        if (Gdx.input.isKeyJustPressed(Input.Keys.I) || hud.inventory.isPressed()) {
+        if (inventory == false && (Gdx.input.isKeyJustPressed(Input.Keys.I) || hud.inventory.isPressed())) {
+            inventory = true;
+
 
             //hud = new inventoryHud(game.batch, game);
             hud.inventory.setSize(200,200);
-            hud.sidebar.setVisible(true);
+            //hud.sidebar.setVisible(true);
         }
 
+        if (inventory == true && (Gdx.input.isKeyJustPressed(Input.Keys.I) || inventoryhud.exit.isPressed())) {
+            inventory = false;
+            hud.inventory.setSize(100,100);
+
+            //hud = new inventoryHud(game.batch, game);
+            //hud.inventory.setSize(200,200);
+            //hud.sidebar.setVisible(true);
+        }
 
         // warps to cave
         if (Gdx.input.isKeyJustPressed(Input.Keys.T)) {
@@ -221,7 +240,14 @@ public class MainLand implements Screen {
 
 
         game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
-        hud.stage.draw();
+
+
+//        if(inventory){
+//            inventoryhud.stage.draw();
+//        }
+//        else{
+            hud.stage.draw();
+//        }
 
         // render the Box2d lines
         b2dr.render(world,gamecam.combined);
@@ -255,6 +281,7 @@ public class MainLand implements Screen {
         world.dispose();
         b2dr.dispose();
         hud.dispose();
+        inventoryhud.dispose();
 
     }
 }
