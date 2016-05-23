@@ -9,7 +9,6 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.hoa.game.HoA;
-import com.hoa.game.Scenes.Mainmenu;
 import com.hoa.game.Scenes.Resumemenu;
 
 /**
@@ -66,14 +65,14 @@ public class ResumeMenuScreen implements Screen {
 
         //insert click listener
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.R) || Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)){
+        if (Gdx.input.isKeyJustPressed(Input.Keys.R) || Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE) || resumemenu.resume.isPressed()){
             game.setScreen(new MainLand(game));
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.M)){
+        if (Gdx.input.isKeyPressed(Input.Keys.M) || resumemenu.mainmenu.isPressed()){
             game.setScreen(new MainMenuScreen(game));
         }
         // exit game
-        else if (Gdx.input.isKeyPressed(Input.Keys.E)){
+        else if (Gdx.input.isKeyPressed(Input.Keys.E) || resumemenu.exit.isPressed()){
             Gdx.app.exit();
         }
     }

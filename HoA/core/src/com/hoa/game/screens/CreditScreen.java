@@ -26,7 +26,7 @@ public class CreditScreen implements Screen {
     private Viewport gamePort;
 
     //hud of the program
-    private Credit hud;
+    private Credit credit;
 
 
     public CreditScreen(HoA game){
@@ -38,7 +38,7 @@ public class CreditScreen implements Screen {
         gamePort = new FitViewport(HoA.screenWidth, HoA.screenHeight, gamecam);
 
         //hud
-        hud = new Credit(game.batch);
+        credit = new Credit(game.batch);
 
     }
 
@@ -54,7 +54,7 @@ public class CreditScreen implements Screen {
 
 
 // warps to cave
-        if (Gdx.input.isKeyJustPressed(Input.Keys.B)) {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.B) || credit.back.isPressed()) {
             game.setScreen(new MainMenuScreen(game));
         }
 
@@ -78,7 +78,7 @@ public class CreditScreen implements Screen {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        hud.stage.draw();
+        credit.stage.draw();
 
     }
 
@@ -105,7 +105,7 @@ public class CreditScreen implements Screen {
 
     @Override
     public void dispose() {
-        hud.dispose();
+        credit.dispose();
 
     }
 }

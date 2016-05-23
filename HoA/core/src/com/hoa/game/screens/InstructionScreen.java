@@ -35,7 +35,7 @@ public class InstructionScreen implements Screen {
     private Viewport gamePort;
 
     //hud of the program
-    private Instruction hud;
+    private Instruction instruction;
 
 
     public InstructionScreen(HoA game){
@@ -47,7 +47,7 @@ public class InstructionScreen implements Screen {
         gamePort = new FitViewport(HoA.screenWidth, HoA.screenHeight, gamecam);
 
         //hud
-        hud = new Instruction(game.batch);
+        instruction = new Instruction(game.batch);
 
     }
 
@@ -63,7 +63,7 @@ public class InstructionScreen implements Screen {
 
 
 // warps to cave
-        if (Gdx.input.isKeyJustPressed(Input.Keys.B)) {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.B) || instruction.back.isPressed()) {
             game.setScreen(new MainMenuScreen(game));
         }
 
@@ -87,7 +87,7 @@ public class InstructionScreen implements Screen {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        hud.stage.draw();
+        instruction.stage.draw();
 
     }
 
@@ -114,7 +114,7 @@ public class InstructionScreen implements Screen {
 
     @Override
     public void dispose() {
-        hud.dispose();
+        instruction.dispose();
 
     }
 }
