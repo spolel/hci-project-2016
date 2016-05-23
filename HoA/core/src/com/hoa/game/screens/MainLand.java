@@ -121,10 +121,10 @@ public class MainLand implements Screen {
 
 
         // PRESS G OPEN THE COMBAT SCREEN, JUST TO TEST
-        if (Gdx.input.isKeyJustPressed(Input.Keys.G)){
-            game.setPos((int)player.b2body.getPosition().x, (int)player.b2body.getPosition().y);
-            game.setScreen(new CombatScreen(game));
-        }
+  //      if (Gdx.input.isKeyJustPressed(Input.Keys.G)){
+   //         game.setPos((int)player.b2body.getPosition().x, (int)player.b2body.getPosition().y)
+    //          game.setScreen(new CombatScreen(game,));
+   //     }
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)){
             game.setPos((int)player.b2body.getPosition().x, (int)player.b2body.getPosition().y);
@@ -134,7 +134,7 @@ public class MainLand implements Screen {
 
 // warps to cave
         if (Gdx.input.isKeyJustPressed(Input.Keys.C)) {
-            game.setPos(8888, 8888);
+            game.setPos(9200, 8888);
             game.setScreen(new MainLand(game));
         }
 

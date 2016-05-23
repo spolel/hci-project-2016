@@ -27,6 +27,7 @@ import com.hoa.game.Scenes.CombatHud;
 import com.hoa.game.Sprites.Player;
 import com.hoa.game.Tools.B2WorldCreator;
 import com.hoa.game.Tools.WorldContactListener;
+import com.badlogic.gdx.graphics.Texture;
 
 /**
  * Created by shughi on 17/05/2016.
@@ -45,14 +46,16 @@ public class CombatScreen implements Screen {
 
     //hud of the program
     private CombatHud combatscene;
+    private Texture texture;
 
     //Label newGame;
     //Label
 
-    public CombatScreen (HoA game){
+    public CombatScreen (HoA game, Texture texture){
 
         //actual game variable
         this.game = game;
+        this.texture = texture;
 
         stage = new Stage(new FitViewport(HoA.screenWidth, HoA.screenHeight));
         input = new InputMultiplexer();
@@ -60,7 +63,7 @@ public class CombatScreen implements Screen {
         gamePort = new FitViewport(HoA.screenWidth, HoA.screenHeight);
 
         //hud
-        combatscene = new CombatHud(game.batch);
+        combatscene = new CombatHud(game.batch, texture);
 
 
 

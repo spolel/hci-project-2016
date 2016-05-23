@@ -1,5 +1,6 @@
 package com.hoa.game.Tools;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -10,7 +11,7 @@ import com.hoa.game.Sprites.CollisionBox;
 import com.hoa.game.Sprites.Door;
 import com.hoa.game.Sprites.EnterCave;
 import com.hoa.game.Sprites.EnterTavern;
-
+import com.hoa.game.Sprites.Boss1;
 /**
  * Created by lorenzo on 28/04/16.
  */
@@ -21,6 +22,9 @@ public class B2WorldCreator {
     PolygonShape shape = new PolygonShape();
     FixtureDef fdef = new FixtureDef();
     Body body;
+
+    Texture boss1 = new Texture("Sprites/Bosses/Flaming_ent.png");
+    Texture boss2 = new Texture("Sprites/Bosses/Boss2.png");
 
     public B2WorldCreator(World world, TiledMap map, HoA game){
 
@@ -68,10 +72,10 @@ public class B2WorldCreator {
             new Door(world, map, rect, game);
         }
 
-        //bonus
+        //Boss1
         for(MapObject object : map.getLayers().get(12).getObjects().getByType(RectangleMapObject.class)) {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
-            new Door(world, map, rect, game);
+            new Boss1(world, map, rect, game, boss2);
         }
 
         //bonus
