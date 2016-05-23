@@ -33,7 +33,7 @@ public class inventorySidebar extends Table implements Disposable{
     private Drawable background;
 
 
-    public Button inventory;
+    public Button exit;
     public Button health;
 
 
@@ -48,7 +48,7 @@ public class inventorySidebar extends Table implements Disposable{
     //    private ImageTextButton xpButton;
 //    private Drawable xpbuttonimg;
     private Drawable healthbutton;
-    private Drawable invbutton;
+    private Drawable exitbutton;
 
 
     private float buttwidth;
@@ -87,8 +87,8 @@ public class inventorySidebar extends Table implements Disposable{
 
         health = new Button (healthbutton);
 
-        invbutton = new SpriteDrawable(new Sprite(new Texture("Icons/inventory.png")));
-        inventory = new Button(invbutton);
+        exitbutton = new SpriteDrawable(new Sprite(new Texture("Icons/inventory.png")));
+        exit = new Button(exitbutton);
 
         levelLabel = new Label("Level: " + Integer.toString(game.level), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
         xpLabel = new Label("XP: " + Integer.toString(game.xp) + " / " + Integer.toString(game.xpthresh), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
@@ -110,8 +110,11 @@ public class inventorySidebar extends Table implements Disposable{
         table.setFillParent(true);
         Gdx.input.setInputProcessor(stage);
 
+        //background.setLeftWidth(400);
+        //background.set(200);
 
-        inventory.addListener(new ClickListener() {});
+
+        exit.addListener(new ClickListener() {});
 
         table.add(nullLabel).expandX();
         table.add(nullLabel).expandX();
@@ -129,7 +132,10 @@ public class inventorySidebar extends Table implements Disposable{
         table.add(nullLabel).expandX();
         table.add(zoneLabel).expandX().padTop(10);
         table.row();
-        table.add(inventory);
+        table.add(nullLabel).expandX();
+        table.add(nullLabel).expandX();
+        table.add(exit).expandX().pad(300,0,0,0);
+        table.setSize(200,600);
         table.setBackground(background);
 
 //        table.setSize(200,600);

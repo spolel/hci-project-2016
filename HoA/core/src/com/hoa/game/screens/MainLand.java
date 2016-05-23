@@ -72,9 +72,10 @@ public class MainLand implements Screen {
 
         //hud
         hud = new Hud(game.batch, game);
-        //inventoryhud = new inventorySidebar(game.batch, game);
+        inventoryhud = new inventorySidebar(game.batch, game);
 
         hud.addListener(new ClickListener(){});
+        inventoryhud.addListener(new ClickListener(){});
 
         Gdx.input.setInputProcessor(hud.stage);
 
@@ -141,11 +142,21 @@ public class MainLand implements Screen {
 
 
         // warps to cave
-        if (Gdx.input.isKeyJustPressed(Input.Keys.I) || hud.inventory.isPressed()) {
+        if (inventory == false && (Gdx.input.isKeyJustPressed(Input.Keys.I) || hud.inventory.isPressed())) {
             inventory = true;
+
 
             //hud = new inventoryHud(game.batch, game);
             hud.inventory.setSize(200,200);
+            //hud.sidebar.setVisible(true);
+        }
+
+        if (inventory == true && (Gdx.input.isKeyJustPressed(Input.Keys.I) || inventoryhud.exit.isPressed())) {
+            inventory = false;
+            hud.inventory.setSize(100,100);
+
+            //hud = new inventoryHud(game.batch, game);
+            //hud.inventory.setSize(200,200);
             //hud.sidebar.setVisible(true);
         }
 
@@ -234,9 +245,9 @@ public class MainLand implements Screen {
 //        if(inventory){
 //            inventoryhud.stage.draw();
 //        }
-      //  else{
+//        else{
             hud.stage.draw();
-     //   }
+//        }
 
         // render the Box2d lines
         b2dr.render(world,gamecam.combined);
@@ -270,6 +281,7 @@ public class MainLand implements Screen {
         world.dispose();
         b2dr.dispose();
         hud.dispose();
+        inventoryhud.dispose();
 
     }
 }
