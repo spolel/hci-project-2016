@@ -44,13 +44,13 @@ public class CombatHud extends Table implements Disposable{
 
 
 
-    public CombatHud(SpriteBatch batch){
+    public CombatHud(SpriteBatch batch, Texture texture){
 
 
         viewport = new FitViewport(HoA.screenWidth, HoA.screenHeight, new OrthographicCamera());
         stage = new Stage(viewport, batch);
 
-        Texture texenemy = new Texture("Sprites/Bosses/Flaming_ent.png");
+        Texture texenemy = texture;
         Sprite sprenemy = new Sprite(texenemy);
         sprenemy.setSize(500f, 1000f);
         SpriteDrawable drawenemy = new SpriteDrawable(sprenemy);
