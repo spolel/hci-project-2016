@@ -120,6 +120,7 @@ public class Hud extends Table implements Disposable{
 
     public Button inventory;
     public Button health;
+    public Table sidebar;
 
 
 
@@ -134,6 +135,7 @@ public class Hud extends Table implements Disposable{
 //    private Drawable xpbuttonimg;
     private Drawable healthbutton;
     private Drawable invbutton;
+    private Drawable invsidebar;
 
 
     private float buttwidth;
@@ -174,6 +176,11 @@ public class Hud extends Table implements Disposable{
         invbutton = new SpriteDrawable(new Sprite(new Texture("Icons/inventory.png")));
         inventory = new Button(invbutton);
 
+        sidebar = new inventorySidebar(spriteBatch, game);
+ //       sidebar.setSize(200, 600);
+
+
+
         //healthLabel =new Label("Health: "+ Integer.toString(game.health) + " / " + Integer.toString(game.healththresh), new Label.LabelStyle(new BitmapFont(), Color.RED));
         levelLabel = new Label("Level: " + Integer.toString(game.level), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
         xpLabel = new Label("XP: " + Integer.toString(game.xp) + " / " + Integer.toString(game.xpthresh), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
@@ -201,11 +208,15 @@ public class Hud extends Table implements Disposable{
 
 //        table.setBackground(background);
 
-
+//
         table.add(health).padTop(10);
         table.add(nullLabel).expandX();
         table.add(zoneLabel).expandX().padTop(10);
-
+        //table.add(new inventorySidebar(spriteBatch, game));
+//
+//        //sidebar.setVisible(true);
+//
+        table.add(sidebar);
 
         table.row();
         table.add(levelLabel);
@@ -219,9 +230,21 @@ public class Hud extends Table implements Disposable{
         table.add(nullLabel);
         table.add(inventory).pad(450,0,0,0);
 
-        //table.add(newgame).width(buttwidth).height(buttheight).padTop(70);
-        stage.addActor(table);
+        //addActor(sidebar);
+        table.row();
 
+        //table.add(newgame).width(buttwidth).height(buttheight).padTop(70);
+//        Table a = new Table();
+//        table.top();
+//        /** This will se the table to the size of the screen */
+//        table.setFillParent(true);
+//        a.add(table).expandX();
+//        a.add(nullLabel).expandX();
+//        a.add(sidebar).expandX();
+
+        stage.addActor(table);
+//        stage.addActor(table);
+        stage.addActor(sidebar);
     }
 
 

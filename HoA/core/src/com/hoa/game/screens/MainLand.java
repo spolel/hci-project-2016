@@ -15,7 +15,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.hoa.game.HoA;
 import com.hoa.game.Scenes.Hud;
-import com.hoa.game.Scenes.inventoryHud;
+import com.hoa.game.Scenes.inventorySidebar;
 import com.hoa.game.Sprites.Player;
 import com.badlogic.gdx.math.Vector2;
 import com.hoa.game.Tools.B2WorldCreator;
@@ -137,6 +137,7 @@ public class MainLand implements Screen {
 
             //hud = new inventoryHud(game.batch, game);
             hud.inventory.setSize(200,200);
+            hud.sidebar.setVisible(true);
         }
 
 
@@ -149,12 +150,14 @@ public class MainLand implements Screen {
         // warps to cave
         if (Gdx.input.isKeyJustPressed(Input.Keys.M)) {
             game.decreaseHealth();
+            game.setPos((int)player.b2body.getPosition().x, (int)player.b2body.getPosition().y);
             game.setScreen(new MainLand(game));
         }
 
         // warps to cave
         if (Gdx.input.isKeyJustPressed(Input.Keys.N)) {
             game.addHealth();
+            game.setPos((int)player.b2body.getPosition().x, (int)player.b2body.getPosition().y);
             game.setScreen(new MainLand(game));
         }
 

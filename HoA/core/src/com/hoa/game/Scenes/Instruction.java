@@ -56,6 +56,9 @@ public class Instruction extends Table implements Disposable{
         viewport = new FitViewport(HoA.screenWidth, HoA.screenHeight, new OrthographicCamera());
         stage = new Stage(viewport, spriteBatch);
 
+        Gdx.input.setInputProcessor(stage);
+
+
         background = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
 
 
@@ -81,14 +84,7 @@ public class Instruction extends Table implements Disposable{
 //             }
 //        });
 
-        back.addListener(new ClickListener() {
-            public void clicked (InputEvent event, float x, float y)
-            {
-                //back.setSize(100, 100);
-                //HoA a = new HoA();
-                //game.setScreen(new MainMenuScreen(game));
-            }
-        });
+        back.addListener(new ClickListener(){});
 
 
 
