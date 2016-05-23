@@ -66,8 +66,8 @@ public class Resumemenu extends Table implements Disposable{
 
 
         //MUST UPDATE
-        resumebutton = new SpriteDrawable( new Sprite(new Texture("Menu/newgamebutton.png")));
-        mainmenubutton = new SpriteDrawable( new Sprite(new Texture("Menu/newgamebutton.png")));
+        resumebutton = new SpriteDrawable( new Sprite(new Texture("Menu/resumebutton.png")));
+        mainmenubutton = new SpriteDrawable( new Sprite(new Texture("Menu/mainmenubutton.png")));
         exbutton = new SpriteDrawable( new Sprite(new Texture("Menu/exitbutton.png")));
         titlebutt = new SpriteDrawable( new Sprite(new Texture("Menu/title.png")));
 
