@@ -9,6 +9,12 @@ public class HoA extends Game {
 	public static final int screenHeight = 600;
 	public int posx;
 	public int posy;
+	public int health;
+	public int healththresh;
+	public int xp;
+	public int xpthresh;
+	public int level;
+	public String zone;
 
 	public SpriteBatch batch;
 
@@ -26,6 +32,14 @@ public class HoA extends Game {
 		posy = y;
 	}
 
+	public void setZone (String zone){
+		this.zone = zone;
+	}
+
+	public String getZone(){
+		return zone;
+	}
+
 
 	@Override
 	public void create() {
@@ -37,5 +51,25 @@ public class HoA extends Game {
 
 	public void render () {
 		super.render();
+	}
+
+	public void setHealthThreshold(int healthThreshold) {
+		this.healththresh = healthThreshold;
+	}
+
+	public void setHealth(int health) {
+		this.health = health;
+	}
+
+	public void setXP(int XP) {
+		this.xp = XP;
+	}
+
+	public void setXPThreshold(int XPThreshold) {
+		this.xpthresh = XPThreshold;
+	}
+
+	public void setLevel(int level){
+		this.level = level;
 	}
 }

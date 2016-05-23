@@ -38,6 +38,7 @@ public class EnterTavern extends InteractiveTile {
     @Override
     public void onCollision() {
         super.game.setPos(430,1130);
+        super.game.setZone("Tavern");
         super.game.setScreen(new Tavern(game));
                 //map = mapLoader.load("Maps/Test_cave.tmx");
     }

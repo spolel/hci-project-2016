@@ -36,6 +36,7 @@ public class Door extends InteractiveTile {
 
     @Override
     public void onCollision() {
+        super.game.setZone("Main Land");
         super.game.setScreen(new MainLand(game));
                 //map = mapLoader.load("Maps/Test_cave.tmx");
     }

@@ -60,7 +60,7 @@ public class Tavern implements Screen {
         gamePort = new FitViewport(HoA.screenWidth, HoA.screenHeight, gamecam);
 
         //hud
-        hud = new Hud(game.batch);
+        hud = new Hud(game.batch, game);
 
         //world, 0,0 = no gravity, if body at rest calculate no physics
         world = new World(new Vector2(0,0), true);
