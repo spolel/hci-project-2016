@@ -22,6 +22,9 @@ public class Boss {
 
     }
 
+    // Getter methods below
+
+
     public String getName(){
 
         return name;

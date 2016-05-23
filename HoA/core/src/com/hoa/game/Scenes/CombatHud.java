@@ -26,11 +26,17 @@ import com.hoa.game.Sprites.Boss;
 /**
  * Created by shughi on 19/05/2016.
  */
+
+
 public class CombatHud extends Table implements Disposable{
 
     public HoA game;
     public Stage stage;
     public Viewport viewport;
+
+    long startTime;
+    long endTime;
+    long fightlast;
 
 
     private Label Title;
@@ -38,34 +44,49 @@ public class CombatHud extends Table implements Disposable{
     private Label Out;
     private Image enemy;
 
+    private Boss enemyBoss;
 
+    private String bossName;
+    private int bossLife;
+    private Texture bossTexture;
 
     private int tot = 0;
-    private String countertot = "counter is : " + tot;
+    private String countertot;
+
+    private Table table;
+
 
 
 
     public CombatHud(SpriteBatch batch, Boss boss){
 
 
+
+
         viewport = new FitViewport(HoA.screenWidth, HoA.screenHeight, new OrthographicCamera());
         stage = new Stage(viewport, batch);
 
-        Boss enemyBoss = boss;
-        Texture texenemy = enemyBoss.getTexture();
-        Sprite sprenemy = new Sprite(texenemy);
+        enemyBoss = boss;
+
+        bossLife = enemyBoss.getLife();
+        bossName = enemyBoss.getName();
+        bossTexture = enemyBoss.getTexture();
+
+        countertot = "Boss life : " + bossLife;
+
+        Sprite sprenemy = new Sprite(bossTexture);
         sprenemy.setSize(500f, 1000f);
         SpriteDrawable drawenemy = new SpriteDrawable(sprenemy);
         enemy = new Image(drawenemy);
 
 
         /** the table is used to place the elements of the screen */
-        Table table = new Table();
+        table = new Table();
         table.top();
         /** This will se the table to the size of the screen */
         table.setFillParent(true);
 
-        String title1 = "You are fighting now: " + enemyBoss.getName() ;
+        String title1 = "You are fighting now: " + bossName ;
         Title =new Label(title1, new Label.LabelStyle(new BitmapFont(), Color.BLACK));
         Counter =new Label(countertot, new Label.LabelStyle(new BitmapFont(), Color.RED));
         Out = new Label("press ESC to return to the game, click to add counter", new Label.LabelStyle(new BitmapFont(), Color.BLACK));
@@ -92,9 +113,44 @@ public class CombatHud extends Table implements Disposable{
     }
 
     // method to call in the CombatScreen class
-    public void addCounter(){
-        tot = tot+1;
-        Counter.setText("counter is : " + tot);
+    public void addCounter() {
+
+        if(tot == 0){
+
+        startTime = System.currentTimeMillis();
+            tot = tot + 1;
+            int giorgio = bossLife - tot;
+            Counter.setText("Boss life : " + giorgio);
+
+        }
+        else if (tot == bossLife-1) {
+            tot = tot+1;
+            fightlast = ((System.currentTimeMillis() - startTime) / 1000);
+            String ciao = "Time passed since the fight started: " + fightlast;
+            Counter.setText(ciao);
+
+        }
+        else if(tot >= bossLife){
+
+            if(fightlast <= 10){
+
+            Counter.setText("Boss is dead! You gained 100 exp!");
+                // add experience
+
+        }
+            else{
+                Counter.setText("Too slow! You lost 1 heart!");
+                //remove 1 life
+            }
+
+
+            }
+
+        else {
+            tot = tot + 1;
+            int giorgio = bossLife - tot;
+            Counter.setText("Boss life : " + giorgio);
+        }
     }
 
 
