@@ -13,14 +13,14 @@ import com.badlogic.gdx.graphics.Texture;
 
 public class Boss1 extends InteractiveTile {
 
-    private Texture texture;
+    private Boss boss;
 
 
-    public Boss1(World world, TiledMap map, Rectangle bounds, HoA game, Texture boss) {
+    public Boss1(World world, TiledMap map, Rectangle bounds, HoA game, Boss boss) {
         super(world, map, bounds, game);
         fixture.setUserData(this);
 
-        texture = boss;
+        this.boss = boss;
         BodyDef bdef = new BodyDef();
         FixtureDef fdef = new FixtureDef();
         PolygonShape shape = new PolygonShape();
@@ -38,7 +38,7 @@ public class Boss1 extends InteractiveTile {
 
         @Override
         public void onCollision() {
-            game.setScreen(new CombatScreen(game, texture));
+            game.setScreen(new CombatScreen(game, boss));
         }
 
 }

@@ -21,6 +21,7 @@ import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.hoa.game.HoA;
+import com.hoa.game.Sprites.Boss;
 
 /**
  * Created by shughi on 19/05/2016.
@@ -44,13 +45,14 @@ public class CombatHud extends Table implements Disposable{
 
 
 
-    public CombatHud(SpriteBatch batch, Texture texture){
+    public CombatHud(SpriteBatch batch, Boss boss){
 
 
         viewport = new FitViewport(HoA.screenWidth, HoA.screenHeight, new OrthographicCamera());
         stage = new Stage(viewport, batch);
 
-        Texture texenemy = texture;
+        Boss enemyBoss = boss;
+        Texture texenemy = enemyBoss.getTexture();
         Sprite sprenemy = new Sprite(texenemy);
         sprenemy.setSize(500f, 1000f);
         SpriteDrawable drawenemy = new SpriteDrawable(sprenemy);
@@ -63,8 +65,8 @@ public class CombatHud extends Table implements Disposable{
         /** This will se the table to the size of the screen */
         table.setFillParent(true);
 
-
-        Title =new Label("This is a combat screen test", new Label.LabelStyle(new BitmapFont(), Color.BLACK));
+        String title1 = "You are fighting now: " + enemyBoss.getName() ;
+        Title =new Label(title1, new Label.LabelStyle(new BitmapFont(), Color.BLACK));
         Counter =new Label(countertot, new Label.LabelStyle(new BitmapFont(), Color.RED));
         Out = new Label("press ESC to return to the game, click to add counter", new Label.LabelStyle(new BitmapFont(), Color.BLACK));
 

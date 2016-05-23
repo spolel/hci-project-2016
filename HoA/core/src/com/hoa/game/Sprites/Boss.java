@@ -1,23 +1,44 @@
 package com.hoa.game.Sprites;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.physics.box2d.World;
-import com.hoa.game.HoA;
+
+import com.badlogic.gdx.graphics.Texture;
 
 /**
- * Created by BMW on 03/05/2016.
+ * Created by shughi on 23/05/2016.
  */
-public class Boss extends InteractiveTile{
 
-    public Boss(World world, TiledMap map, Rectangle bounds, HoA game) {
-        super(world, map, bounds, game);
-        fixture.setUserData(this);
+public class Boss {
+
+    private int life;
+    private String name;
+    private Texture texture;
+
+    public Boss(int life, String name, Texture texture){
+
+        this.life = life;
+        this.name = name;
+        this.texture = texture;
+
+
     }
 
-    @Override
-    public void onCollision() {
+    public String getName(){
+
+        return name;
 
     }
+
+    public int getLife(){
+
+        return life;
+
+    }
+
+    public Texture getTexture(){
+
+        return texture;
+
+    }
+
+
 }

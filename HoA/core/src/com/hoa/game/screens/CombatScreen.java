@@ -24,6 +24,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.hoa.game.HoA;
 import com.hoa.game.Scenes.Hud;
 import com.hoa.game.Scenes.CombatHud;
+import com.hoa.game.Sprites.Boss;
 import com.hoa.game.Sprites.Player;
 import com.hoa.game.Tools.B2WorldCreator;
 import com.hoa.game.Tools.WorldContactListener;
@@ -46,16 +47,16 @@ public class CombatScreen implements Screen {
 
     //hud of the program
     private CombatHud combatscene;
-    private Texture texture;
+    private Boss boss;
 
     //Label newGame;
     //Label
 
-    public CombatScreen (HoA game, Texture texture){
+    public CombatScreen (HoA game, Boss boss){
 
         //actual game variable
         this.game = game;
-        this.texture = texture;
+        this.boss = boss;
 
         stage = new Stage(new FitViewport(HoA.screenWidth, HoA.screenHeight));
         input = new InputMultiplexer();
@@ -63,7 +64,7 @@ public class CombatScreen implements Screen {
         gamePort = new FitViewport(HoA.screenWidth, HoA.screenHeight);
 
         //hud
-        combatscene = new CombatHud(game.batch, texture);
+        combatscene = new CombatHud(game.batch, boss);
 
 
 

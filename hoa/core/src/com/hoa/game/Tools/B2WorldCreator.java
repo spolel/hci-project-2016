@@ -12,9 +12,12 @@ import com.hoa.game.Sprites.Door;
 import com.hoa.game.Sprites.EnterCave;
 import com.hoa.game.Sprites.EnterTavern;
 import com.hoa.game.Sprites.Boss1;
+import com.hoa.game.Sprites.Boss;
+
 /**
  * Created by lorenzo on 28/04/16.
  */
+
 public class B2WorldCreator {
     /** for now here but later on its own class*/
     public HoA game;
@@ -22,6 +25,10 @@ public class B2WorldCreator {
     PolygonShape shape = new PolygonShape();
     FixtureDef fdef = new FixtureDef();
     Body body;
+
+
+    Boss boss1_test = new Boss(25,"Flaming Ent",new Texture("Sprites/Bosses/Flaming_ent.png"));
+    Boss boss2_test = new Boss(30,"Flaming Ent Crying",new Texture("Sprites/Bosses/Boss2.png"));
 
     Texture boss1 = new Texture("Sprites/Bosses/Flaming_ent.png");
     Texture boss2 = new Texture("Sprites/Bosses/Boss2.png");
@@ -75,7 +82,7 @@ public class B2WorldCreator {
         //Boss1
         for(MapObject object : map.getLayers().get(12).getObjects().getByType(RectangleMapObject.class)) {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
-            new Boss1(world, map, rect, game, boss2);
+            new Boss1(world, map, rect, game, boss1_test);
         }
 
         //bonus
@@ -87,7 +94,7 @@ public class B2WorldCreator {
         //bonus
         for(MapObject object : map.getLayers().get(14).getObjects().getByType(RectangleMapObject.class)) {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
-            new Door(world, map, rect, game);
+            new Boss1(world, map, rect, game, boss2_test);
         }
 
         //bonus
