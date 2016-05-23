@@ -66,7 +66,7 @@ public class CombatHud extends Table implements Disposable{
 
         Title =new Label("This is a combat screen test", new Label.LabelStyle(new BitmapFont(), Color.BLACK));
         Counter =new Label(countertot, new Label.LabelStyle(new BitmapFont(), Color.RED));
-        Out = new Label("press ESC to return to the game, V to add counter", new Label.LabelStyle(new BitmapFont(), Color.BLACK));
+        Out = new Label("press ESC to return to the game, click to add counter", new Label.LabelStyle(new BitmapFont(), Color.BLACK));
 
 
         Title.setFontScale(1.2f, 1.2f);
@@ -91,7 +91,7 @@ public class CombatHud extends Table implements Disposable{
 
     // method to call in the CombatScreen class
     public void addCounter(){
-        tot = tot+420;
+        tot = tot+1;
         Counter.setText("counter is : " + tot);
     }
 
