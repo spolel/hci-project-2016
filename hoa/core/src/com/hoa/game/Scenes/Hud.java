@@ -119,6 +119,7 @@ public class Hud extends Table implements Disposable{
 
 
     public Button inventory;
+    public Button options;
     public Button health;
     public Table sidebar;
 
@@ -135,7 +136,8 @@ public class Hud extends Table implements Disposable{
 //    private Drawable xpbuttonimg;
     private Drawable healthbutton;
     private Drawable invbutton;
-    private Drawable invsidebar;
+//    private Drawable invsidebar;
+    private Drawable optionsbutton;
 
 
     private float buttwidth;
@@ -176,15 +178,19 @@ public class Hud extends Table implements Disposable{
         invbutton = new SpriteDrawable(new Sprite(new Texture("Icons/inventory.png")));
         inventory = new Button(invbutton);
 
+        optionsbutton = new SpriteDrawable(new Sprite(new Texture("Items/ironsword.png")));
+
+        options = new Button(optionsbutton);
+
         sidebar = new inventorySidebar(spriteBatch, game);
  //       sidebar.setSize(200, 600);
 
 
 
         //healthLabel =new Label("Health: "+ Integer.toString(game.health) + " / " + Integer.toString(game.healththresh), new Label.LabelStyle(new BitmapFont(), Color.RED));
-        levelLabel = new Label("Level: " + Integer.toString(game.level), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-        xpLabel = new Label("XP: " + Integer.toString(game.xp) + " / " + Integer.toString(game.xpthresh), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-        zoneLabel = new Label("Zone: " + game.getZone(), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        levelLabel = new Label("Level: " + Integer.toString(game.level), new Label.LabelStyle(new BitmapFont(), Color.RED));
+        xpLabel = new Label("XP: " + Integer.toString(game.xp) + " / " + Integer.toString(game.xpthresh), new Label.LabelStyle(new BitmapFont(), Color.RED));
+        zoneLabel = new Label("Zone: " + game.getZone(), new Label.LabelStyle(new BitmapFont(), Color.RED));
 
 
 
@@ -204,6 +210,7 @@ public class Hud extends Table implements Disposable{
 
 
         inventory.addListener(new ClickListener() {});
+        options.addListener(new ClickListener(){});
 
 
 //        table.setBackground(background);
@@ -212,8 +219,7 @@ public class Hud extends Table implements Disposable{
         table.add(health).padTop(10);
         table.add(nullLabel).expandX();
         table.add(zoneLabel).expandX().padTop(10);
-        //table.add(new inventorySidebar(spriteBatch, game));
-//
+//        table.add(new inventorySidebar(spriteBatch, game));
 //        //sidebar.setVisible(true);
 //
         table.add(sidebar);
@@ -226,8 +232,10 @@ public class Hud extends Table implements Disposable{
         table.add(nullLabel);
         table.add(nullLabel);
         table.row();
+        table.add(options).pad(450,0,0,0);
         table.add(nullLabel);
         table.add(nullLabel);
+
         table.add(inventory).pad(450,0,0,0);
 
         //addActor(sidebar);

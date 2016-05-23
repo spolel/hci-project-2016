@@ -70,7 +70,7 @@ public class inventorySidebar extends Table implements Disposable{
         stage = new Stage(viewport, spriteBatch);
 
 
-        background = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
+        background = new SpriteDrawable(new Sprite(new Texture("Menu/menubackground.png")));
 
 
         //CHANGE IMAGE OF HEARTS
@@ -87,7 +87,7 @@ public class inventorySidebar extends Table implements Disposable{
 
         health = new Button (healthbutton);
 
-        invbutton = new SpriteDrawable(new Sprite(new Texture("Items/ironsword.png")));
+        invbutton = new SpriteDrawable(new Sprite(new Texture("Icons/inventory.png")));
         inventory = new Button(invbutton);
 
         levelLabel = new Label("Level: " + Integer.toString(game.level), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
@@ -113,17 +113,24 @@ public class inventorySidebar extends Table implements Disposable{
 
         inventory.addListener(new ClickListener() {});
 
-
+        table.add(nullLabel).expandX();
+        table.add(nullLabel).expandX();
         table.add(health).expandX().padTop(20);
         table.row();
+        table.add(nullLabel).expandX();
+        table.add(nullLabel).expandX();
         table.add(levelLabel).expandX().padTop(20);
         table.row();
+        table.add(nullLabel).expandX();
+        table.add(nullLabel).expandX();
         table.add(xpLabel).expandX().padTop(20);
         table.row();
+        table.add(nullLabel).expandX();
+        table.add(nullLabel).expandX();
         table.add(zoneLabel).expandX().padTop(10);
         table.row();
         table.add(inventory);
-//        table.setBackground(background);
+        table.setBackground(background);
 
 //        table.setSize(200,600);
         stage.addActor(table);
