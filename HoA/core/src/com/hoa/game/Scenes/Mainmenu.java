@@ -1,6 +1,7 @@
 package com.hoa.game.Scenes;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -39,10 +40,10 @@ public class Mainmenu extends Table implements Disposable{
     private Drawable background;
 
 
-    private Button newgame;
-    private Button credits;
-    private Button instructions;
-    private Button exit;
+    public Button newgame;
+    public Button credits;
+    public Button instructions;
+    public Button exit;
     private Button title;
 
 
@@ -93,26 +94,20 @@ public class Mainmenu extends Table implements Disposable{
         Gdx.input.setInputProcessor(stage);
 
 
-//        newgame.addListener(new ClickListener(){
-//            public void clicked(InputEvent e, float x, float y) {
-//                game.setPos(6150, 7100);
-//                game.setScreen(new MainLand(game));
-//             }
-//        });
-
         newgame.addListener(new ClickListener() {
             public void clicked (InputEvent event, float x, float y)
             {
-                newgame.setSize(100, 100);
-                game.setPos(6150, 7100);
-                game.setScreen(new MainLand(game));
+                //newgame.setSize(100, 100);
+                //MainMenuScreen a = new MainMenuScreen(game);
+                //game.setPos(6150, 7100);
+                //game.setScreen(new MainLand(game));
             }
         });
 
         credits.addListener(new ClickListener() {
             public void clicked (InputEvent event, float x, float y)
             {
-                credits.setSize(100, 100);
+                //credits.setSize(100, 100);
                 //game.setPos(6150, 7100);
                 //game.setScreen(new MainLand(game));
             }
@@ -121,8 +116,8 @@ public class Mainmenu extends Table implements Disposable{
         instructions.addListener(new ClickListener() {
             public void clicked (InputEvent event, float x, float y)
             {
-                instructions.setSize(100, 100);
-                game.setScreen(new InstructionScreen(game));
+                //instructions.setSize(100, 100);
+                //game.setScreen(new InstructionScreen(game));
             }
         });
 
@@ -146,6 +141,10 @@ public class Mainmenu extends Table implements Disposable{
         table.add(exit).width(buttwidth).height(buttheight).padTop(50);
         stage.addActor(table);
 
+    }
+
+    public Button getNewgame(){
+        return newgame;
     }
 
 

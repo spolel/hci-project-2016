@@ -36,7 +36,7 @@ public class Instruction extends Table implements Disposable{
     private Drawable background;
 
 
-    private Button back;
+    public Button back;
 
 
     private Drawable backbt;
@@ -84,9 +84,9 @@ public class Instruction extends Table implements Disposable{
         back.addListener(new ClickListener() {
             public void clicked (InputEvent event, float x, float y)
             {
-                back.setSize(100, 100);
+                //back.setSize(100, 100);
                 //HoA a = new HoA();
-                game.setScreen(new MainMenuScreen(game));
+                //game.setScreen(new MainMenuScreen(game));
             }
         });
 
