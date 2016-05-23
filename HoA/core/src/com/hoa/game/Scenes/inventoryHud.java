@@ -108,7 +108,7 @@ import com.hoa.game.HoA;
 /**
  * Created by BMW on 17/05/2016.
  */
-public class Hud extends Table implements Disposable{
+public class inventoryHud extends Table implements Disposable{
 
     public HoA game;
     public Stage stage;
@@ -130,7 +130,7 @@ public class Hud extends Table implements Disposable{
     private Label nullLabel;
 
 
-//    private ImageTextButton xpButton;
+    //    private ImageTextButton xpButton;
 //    private Drawable xpbuttonimg;
     private Drawable healthbutton;
     private Drawable invbutton;
@@ -144,7 +144,7 @@ public class Hud extends Table implements Disposable{
 
 
 
-    public Hud(SpriteBatch spriteBatch, HoA game){
+    public inventoryHud(SpriteBatch spriteBatch, HoA game){
 
         buttheight = 50;
         buttwidth = 200;
@@ -159,19 +159,19 @@ public class Hud extends Table implements Disposable{
 
         //CHANGE IMAGE OF HEARTS
         switch (game.health){
-            case 1: healthbutton =  new SpriteDrawable(new Sprite(new Texture("Icons/1hp.png")));
+            case 1: healthbutton =  new SpriteDrawable(new Sprite(new Texture("Items/ironsword.png")));
                 break;
-            case 2: healthbutton =  new SpriteDrawable(new Sprite(new Texture("Icons/2hp.png")));
+            case 2: healthbutton =  new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
                 break;
-            case 3: healthbutton =  new SpriteDrawable(new Sprite(new Texture("Icons/3hp.png")));
+            case 3: healthbutton =  new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
                 break;
-            case 4: healthbutton =  new SpriteDrawable(new Sprite(new Texture("Icons/4hp.png")));
+            case 4: healthbutton =  new SpriteDrawable(new Sprite(new Texture("Items/ironsword.png")));
                 break;
         }
 
         health = new Button (healthbutton);
 
-        invbutton = new SpriteDrawable(new Sprite(new Texture("Icons/inventory.png")));
+        invbutton = new SpriteDrawable(new Sprite(new Texture("Items/ironsword.png")));
         inventory = new Button(invbutton);
 
         //healthLabel =new Label("Health: "+ Integer.toString(game.health) + " / " + Integer.toString(game.healththresh), new Label.LabelStyle(new BitmapFont(), Color.RED));
@@ -185,7 +185,7 @@ public class Hud extends Table implements Disposable{
 
 
 
-       // newgame = new Button(newbutton);
+        // newgame = new Button(newbutton);
 
 
         /** the table is used to place the elements of the screen */

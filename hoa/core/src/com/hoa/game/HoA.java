@@ -1,6 +1,7 @@
 package com.hoa.game;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.hoa.game.screens.MainMenuScreen;
 
@@ -71,5 +72,19 @@ public class HoA extends Game {
 
 	public void setLevel(int level){
 		this.level = level;
+	}
+
+	public void decreaseHealth() {
+		health = health-1;
+		if (health <= 0){
+			Gdx.app.exit();
+		}
+	}
+
+	public void addHealth() {
+		health = health+1;
+		if (health >= healththresh){
+			health = healththresh;
+		}
 	}
 }

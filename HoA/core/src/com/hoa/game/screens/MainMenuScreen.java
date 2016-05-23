@@ -80,9 +80,6 @@ public class MainMenuScreen implements Screen {
 
         //insert click listener
 
-        if (mainmenu.newgame.isPressed()){
-
-        }
 
         if (Gdx.input.isKeyPressed(Input.Keys.N) || mainmenu.newgame.isPressed()){
             game.setPos(6150, 7100);
