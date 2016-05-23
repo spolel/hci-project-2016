@@ -72,7 +72,7 @@ public class CombatHud extends Table implements Disposable{
         bossName = enemyBoss.getName();
         bossTexture = enemyBoss.getTexture();
 
-        countertot = "Boss life : " + bossLife;
+        countertot = bossName+" life : " + bossLife;
 
         Sprite sprenemy = new Sprite(bossTexture);
         sprenemy.setSize(500f, 1000f);
@@ -115,41 +115,52 @@ public class CombatHud extends Table implements Disposable{
     // method to call in the CombatScreen class
     public void addCounter() {
 
-        if(tot == 0){
+        if(tot == 0){  // fight is about to start
 
         startTime = System.currentTimeMillis();
             tot = tot + 1;
             int giorgio = bossLife - tot;
-            Counter.setText("Boss life : " + giorgio);
+            Counter.setText(bossName+" life : " + giorgio);
 
         }
-        else if (tot == bossLife-1) {
+        else if (tot == bossLife-1) {  // boss is dead. This is the click that kills him
             tot = tot+1;
             fightlast = ((System.currentTimeMillis() - startTime) / 1000);
-            String ciao = "Time passed since the fight started: " + fightlast;
-            Counter.setText(ciao);
-
-        }
-        else if(tot >= bossLife){
 
             if(fightlast <= 10){
+                String ciao = "You beated the "+bossName+" in : " + fightlast + " seconds!";
+                Counter.setText(ciao);
 
-            Counter.setText("Boss is dead! You gained 100 exp!");
-                // add experience
+            }
+            else{
+                String ciao = ""+"Too slow! The "+bossName+ " beated you in " + fightlast+" seconds!";  //added the ""+ at the beginning just to avoid a stupid feature on intelliJ about duplicates
+                Counter.setText(ciao);
+            }
+
+
+
 
         }
+        else if(tot >= bossLife){  // click after you kill the boss
+
+            if(fightlast <= 10){
+                String ciao = "You beated the "+bossName+" in : " + fightlast + " seconds!";
+                Counter.setText(ciao);
+                // add experience
+                // deactivate the layers  --> GOD DONUT NEED TO IMPLEMENT LAYER NUMBER IN BOSS CLASS
+            }
             else{
-                Counter.setText("Too slow! You lost 1 heart!");
-                //remove 1 life
+                String ciao = "Too slow! The "+bossName+ " beated you in " + fightlast+" seconds!";
+                Counter.setText(ciao);
+                // remove 1 life
+                // return to tavern
             }
+        }
 
-
-            }
-
-        else {
+        else {  // fight is going on
             tot = tot + 1;
             int giorgio = bossLife - tot;
-            Counter.setText("Boss life : " + giorgio);
+            Counter.setText(bossName+" life : " + giorgio);
         }
     }
 
