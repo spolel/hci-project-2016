@@ -11,6 +11,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.hoa.game.HoA;
 import com.hoa.game.Scenes.Credit;
 import com.hoa.game.Scenes.Instruction;
+import com.hoa.game.Scenes.inventorySidebar;
 
 /**
  * Created by BMW on 26/04/2016.
@@ -85,6 +86,8 @@ public class CreditScreen implements Screen {
     @Override
     public void resize(int width, int height) {
         gamePort.update(width, height);
+        credit = new Credit(game.batch);
+
 
     }
 

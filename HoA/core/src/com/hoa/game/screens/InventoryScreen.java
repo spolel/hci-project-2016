@@ -2,58 +2,45 @@ package com.hoa.game.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.hoa.game.HoA;
+import com.hoa.game.Scenes.Instruction;
 import com.hoa.game.Scenes.Mainmenu;
-import com.hoa.game.Scenes.Resumemenu;
+import com.hoa.game.Scenes.inventorySidebar;
 
 /**
- * Created by BMW on 17/05/2016.
+ * Created by BMW on 26/04/2016.
  */
-public class ResumeMenuScreen implements Screen {
+public class InventoryScreen implements Screen {
 
     //game class
-    private HoA game;
-    private Viewport gamePort;
-
-    private Stage stage;
-    private InputMultiplexer input;
+    public HoA game;
 
     // Current game camera & screen display, currently a FitViewPort
-
+    private OrthographicCamera gamecam;
+    private Viewport gamePort;
 
     //hud of the program
-    private Resumemenu resumemenu;
+    private inventorySidebar inventory;
 
-    //Label newGame;
-    //Label
 
-    public ResumeMenuScreen(HoA game){
-
+    public InventoryScreen(HoA game){
         //actual game variable
         this.game = game;
 
-        stage = new Stage(new FitViewport(HoA.screenWidth, HoA.screenHeight));
-        input = new InputMultiplexer();
-
-        gamePort = new FitViewport(HoA.screenWidth, HoA.screenHeight);
+        //camera variable
+        gamecam = new OrthographicCamera();
+        gamePort = new FitViewport(HoA.screenWidth, HoA.screenHeight, gamecam);
 
         //hud
-        resumemenu = new Resumemenu(game.batch);
-
-
-
+        inventory = new inventorySidebar(game.batch, game);
 
     }
-
-
-
-
 
 
 
@@ -64,19 +51,15 @@ public class ResumeMenuScreen implements Screen {
     //if the else if is removed weird stuff happens
     public void handleInput(float dt){
 
-        //insert click listener
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.R) || Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE) || resumemenu.resume.isPressed()){
+
+// warps to cave
+        if (Gdx.input.isKeyJustPressed(Input.Keys.I) || Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE) || inventory.exit.isPressed()) {
             game.setScreen(new MainLand(game));
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.M) || resumemenu.mainmenu.isPressed()){
-            game.setScreen(new MainMenuScreen(game));
-        }
-        // exit game
-        else if (Gdx.input.isKeyPressed(Input.Keys.E) || resumemenu.exit.isPressed()){
-            Gdx.app.exit();
-        }
+
     }
+
 
     public void update(float dt){
         handleInput(dt);
@@ -95,22 +78,14 @@ public class ResumeMenuScreen implements Screen {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-       // stage.act(delta);
-        //stage.setDebugAll();
-
-        //stage.getViewport().apply();
-        resumemenu.stage.draw();
-
-
+        inventory.stage.draw();
 
     }
 
     @Override
     public void resize(int width, int height) {
         gamePort.update(width, height);
-        stage.getViewport().update(width, height);
-        resumemenu = new Resumemenu(game.batch);
-
+        inventory = new inventorySidebar(game.batch, game);
 
     }
 
@@ -131,7 +106,7 @@ public class ResumeMenuScreen implements Screen {
 
     @Override
     public void dispose() {
-       // mainmenu.dispose();
+        inventory.dispose();
 
     }
 }

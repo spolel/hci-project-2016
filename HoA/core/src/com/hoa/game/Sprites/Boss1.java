@@ -1,5 +1,6 @@
 package com.hoa.game.Sprites;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.BodyDef;
@@ -38,6 +39,7 @@ public class Boss1 extends InteractiveTile {
 
         @Override
         public void onCollision() {
+            super.game.setPos(boss.getX(), boss.getY());
             game.setScreen(new CombatScreen(game, boss));
         }
 

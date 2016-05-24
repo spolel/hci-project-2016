@@ -17,6 +17,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.hoa.game.HoA;
 import com.hoa.game.Scenes.Hud;
 import com.hoa.game.Scenes.Instruction;
+import com.hoa.game.Scenes.inventorySidebar;
 import com.hoa.game.Sprites.Player;
 import com.hoa.game.Tools.B2WorldCreator;
 import com.hoa.game.Tools.WorldContactListener;
@@ -94,6 +95,8 @@ public class InstructionScreen implements Screen {
     @Override
     public void resize(int width, int height) {
         gamePort.update(width, height);
+        instruction = new Instruction(game.batch);
+
 
     }
 
