@@ -144,6 +144,7 @@ public class MainLand implements Screen {
         // warps to cave
         if (inventory == false && (Gdx.input.isKeyJustPressed(Input.Keys.I) || hud.inventory.isPressed())) {
             inventory = true;
+            game.setScreen(new InventoryScreen(game));
 
 
             //hud = new inventoryHud(game.batch, game);
@@ -151,14 +152,14 @@ public class MainLand implements Screen {
             //hud.sidebar.setVisible(true);
         }
 
-        if (inventory == true && (Gdx.input.isKeyJustPressed(Input.Keys.I) || inventoryhud.exit.isPressed())) {
-            inventory = false;
-            hud.inventory.setSize(100,100);
+//        if (inventory == true && (Gdx.input.isKeyJustPressed(Input.Keys.I) || inventoryhud.exit.isPressed())) {
+//            inventory = false;
+//            hud.inventory.setSize(100,100);
 
             //hud = new inventoryHud(game.batch, game);
             //hud.inventory.setSize(200,200);
             //hud.sidebar.setVisible(true);
-        }
+       // }
 
         // warps to cave
         if (Gdx.input.isKeyJustPressed(Input.Keys.T)) {
@@ -256,6 +257,7 @@ public class MainLand implements Screen {
     @Override
     public void resize(int width, int height) {
         gamePort.update(width, height);
+
 
     }
 

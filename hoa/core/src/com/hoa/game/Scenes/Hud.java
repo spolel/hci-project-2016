@@ -153,7 +153,7 @@ public class Hud extends Table implements Disposable{
 
         buttheight = 50;
         buttwidth = 200;
-        invpadding = game.screenHeight*2/3;
+        invpadding = game.screenHeight*4/5;
         //test = game.getZone();
 
 
@@ -180,7 +180,7 @@ public class Hud extends Table implements Disposable{
         invbutton = new SpriteDrawable(new Sprite(new Texture("Icons/inventory.png")));
         inventory = new Button(invbutton);
 
-        optionsbutton = new SpriteDrawable(new Sprite(new Texture("Items/ironsword.png")));
+        optionsbutton = new SpriteDrawable(new Sprite(new Texture("Icons/gear.png")));
 
         options = new Button(optionsbutton);
 
@@ -220,19 +220,22 @@ public class Hud extends Table implements Disposable{
 //
         table.add(health).padTop(10);
         table.add(nullLabel).expandX();
-        table.add(zoneLabel).expandX().padTop(10);
+        table.add(nullLabel).expandX();
+        table.add(nullLabel).expandX();
+        //table.add(zoneLabel).expandX().padTop(10);
 //        table.add(new inventorySidebar(spriteBatch, game));
 //        //sidebar.setVisible(true);
 //
-        table.add(sidebar);
+//        table.add(sidebar);
 
         table.row();
-        table.add(levelLabel);
-        table.add(nullLabel);
+ //       table.add(levelLabel);
+   //     table.add(nullLabel);
         table.row();
-        table.add(xpLabel);
-        table.add(nullLabel);
-        table.add(nullLabel);
+
+//        table.add(xpLabel);
+//        table.add(nullLabel);
+//        table.add(nullLabel);
         table.row();
         table.add(options).pad(invpadding,0,0,0);
         table.add(nullLabel);
@@ -286,6 +289,7 @@ public class Hud extends Table implements Disposable{
 //
 //
 //            Label name = new Label(text, Label.LabelStyle(font, size, color))
+
 
     @Override
     public void dispose() {

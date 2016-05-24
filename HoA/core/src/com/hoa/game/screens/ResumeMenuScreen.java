@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.hoa.game.HoA;
+import com.hoa.game.Scenes.Mainmenu;
 import com.hoa.game.Scenes.Resumemenu;
 
 /**
@@ -108,6 +109,8 @@ public class ResumeMenuScreen implements Screen {
     public void resize(int width, int height) {
         gamePort.update(width, height);
         stage.getViewport().update(width, height);
+        resumemenu = new Resumemenu(game.batch);
+
 
     }
 
