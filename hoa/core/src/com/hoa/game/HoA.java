@@ -15,6 +15,8 @@ public class HoA extends Game {
 	public int xp;
 	public int xpthresh;
 	public int level;
+	public int lvdmg = 1;
+	public int dmg = 1 * lvdmg;
 	public String zone;
 
 	public SpriteBatch batch;
