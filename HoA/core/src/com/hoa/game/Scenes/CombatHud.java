@@ -1,27 +1,22 @@
 package com.hoa.game.Scenes;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-
-import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.hoa.game.HoA;
 import com.hoa.game.Sprites.Boss;
+
 
 /**
  * Created by shughi on 19/05/2016.
@@ -52,16 +47,17 @@ public class CombatHud extends Table implements Disposable{
 
     private int tot = 0;
     private String countertot;
+    boolean killed = false;
 
     private Table table;
 
 
 
 
-    public CombatHud(SpriteBatch batch, Boss boss){
+    public CombatHud(SpriteBatch batch, Boss boss , HoA game){
 
 
-
+        this.game = game;
 
         viewport = new FitViewport(HoA.screenWidth, HoA.screenHeight, new OrthographicCamera());
         stage = new Stage(viewport, batch);
@@ -115,56 +111,89 @@ public class CombatHud extends Table implements Disposable{
     // method to call in the CombatScreen class
     public void addCounter() {
 
-        if(tot == 0){  // fight is about to start
+        if(killed){   // this is to make this if enter only once.
 
-        startTime = System.currentTimeMillis();
-            tot = tot + 1;
-            int giorgio = bossLife - tot;
-            Counter.setText(bossName+" life : " + giorgio);
+         if (tot >= bossLife-1 || ((System.currentTimeMillis() - startTime)/1000)<0) {  // boss is dead. This is the click that kills him, or 10 sec have passed.
 
-        }
-        else if (tot == bossLife-1) {  // boss is dead. This is the click that kills him
-            tot = tot+1;
-            fightlast = ((System.currentTimeMillis() - startTime) / 1000);
 
-            if(fightlast <= 10){
-                String ciao = "You beated the "+bossName+" in : " + fightlast + " seconds!";
+            if (fightlast <= 10) {
+                String ciao = "You beated the " + bossName + " in : " + fightlast + " seconds!";
                 Counter.setText(ciao);
-
-            }
-            else{
-                String ciao = ""+"Too slow! The "+bossName+ " beated you in " + fightlast+" seconds!";  //added the ""+ at the beginning just to avoid a stupid feature on intelliJ about duplicates
+            } else {
+                String ciao = "" + "Too slow! The " + bossName + " beated you in " + fightlast + " seconds!";  //added the ""+ at the beginning just to avoid a stupid feature on intelliJ about duplicates
                 Counter.setText(ciao);
-            }
-
-
-
-
-        }
-        else if(tot >= bossLife){  // click after you kill the boss
-
-            if(fightlast <= 10){
-                String ciao = "You beated the "+bossName+" in : " + fightlast + " seconds!";
-                Counter.setText(ciao);
-                // add experience
-                // deactivate the layers  --> GOD DONUT NEED TO IMPLEMENT LAYER NUMBER IN BOSS CLASS
-            }
-            else{
-                String ciao = "Too slow! The "+bossName+ " beated you in " + fightlast+" seconds!";
-                Counter.setText(ciao);
-                // remove 1 life
-                // return to tavern
             }
         }
 
-        else {  // fight is going on
-            tot = tot + 1;
-            int giorgio = bossLife - tot;
-            Counter.setText(bossName+" life : " + giorgio);
+
+        }
+
+        else  {
+
+            if (tot == 0) {  // fight is about to start
+
+                startTime = System.currentTimeMillis();
+                tot = tot + 1;
+                int giorgio = bossLife - tot;
+                Counter.setText(bossName + " life : " + giorgio);
+
+            }
+            else if(tot==bossLife-1){
+
+                endTime = System.currentTimeMillis();
+                fightlast = ((endTime - startTime) / 1000);
+
+
+                killed = true;
+
+                if (fightlast <= 10) {
+                    String ciao = "You beated the " + bossName + " in : " + fightlast + " seconds!";
+                    Counter.setText(ciao);
+                    victory();
+
+                } else {
+                    String ciao = "" + "Too slow! The " + bossName + " beated you in " + fightlast + " seconds!";  //added the ""+ at the beginning just to avoid a stupid feature on intelliJ about duplicates
+                    Counter.setText(ciao);
+                    defeat();
+                }
+
+
+            }
+            else {  // fight is going on
+                tot = tot + 1;
+                int giorgio = bossLife - tot;
+                Counter.setText(bossName + " life : " + giorgio);
+            }
+
         }
     }
 
 
+
+
+
+    private void victory(){
+
+        int currentxp = game.xp;
+        int boss_xp = enemyBoss.getXp();
+
+        if( (currentxp + boss_xp) >= game.xpthresh){
+            game.setLevel(game.level+1);
+            game.setXP((currentxp + boss_xp) - game.xpthresh);
+            game.setXPThreshold(game.xpthresh * 2);
+        }
+        else{
+            game.setXP(game.xp + boss_xp);
+        }
+        // deactivate the layers  --> GOD DONUT NEED TO IMPLEMENT LAYER NUMBER IN BOSS CLASS
+
+    }
+
+    private void defeat() {
+
+        game.decreaseHealth();
+
+    }
     
 
     @Override

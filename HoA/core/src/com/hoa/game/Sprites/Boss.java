@@ -15,14 +15,16 @@ public class Boss {
     private int layer;
     private int x_pos;
     private int y_pos;
+    private int xp;
 
-    public Boss(int life, String name, Texture texture,int layer, int x_pos, int y_pos){
+    public Boss(int life, String name, Texture texture,int layer, int x_pos, int y_pos, int xp){
 
         this.life = life;
         this.name = name;
         this.texture = texture;
         this.x_pos = x_pos;
         this.y_pos = y_pos;
+        this.xp = xp;
 
     }
 
@@ -60,6 +62,11 @@ public class Boss {
     public int getLayer(){
 
         return layer;
+    }
+
+    public int getXp(){
+
+        return xp;
     }
 
 

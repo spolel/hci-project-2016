@@ -64,7 +64,7 @@ public class CombatScreen implements Screen {
         gamePort = new FitViewport(HoA.screenWidth, HoA.screenHeight);
 
         //hud
-        combatscene = new CombatHud(game.batch, boss);
+        combatscene = new CombatHud(game.batch, boss , game);
 
 
 
