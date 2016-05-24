@@ -84,8 +84,7 @@ public class CombatHud extends Table implements Disposable{
         SpriteDrawable drawenemy = new SpriteDrawable(sprenemy);
       //  enemy = new Image(drawenemy);
 
-        enemy = new bossButton(drawenemy);
-
+        enemy = new Button(drawenemy);
 
 
 
