@@ -26,9 +26,9 @@ public class B2WorldCreator {
     FixtureDef fdef = new FixtureDef();
     Body body;
 
-
-    Boss boss1_test = new Boss(25,"Flaming Ent",new Texture("Sprites/Bosses/Flaming_ent.png"));
-    Boss boss2_test = new Boss(30,"Flaming Ent Crying",new Texture("Sprites/Bosses/Boss2.png"));
+    // Boss definition down here
+    Boss boss1_test = new Boss(25,"Flaming Ent",new Texture("Sprites/Bosses/Flaming_ent.png"), 12, 9200, 8888);
+    Boss boss2_test = new Boss(30,"Flaming Ent Crying",new Texture("Sprites/Bosses/Boss2.png"), 14, 9500, 8888);
 
     Texture boss1 = new Texture("Sprites/Bosses/Flaming_ent.png");
     Texture boss2 = new Texture("Sprites/Bosses/Boss2.png");
@@ -91,7 +91,7 @@ public class B2WorldCreator {
             new Door(world, map, rect, game);
         }
 
-        //bonus
+        //Boss2
         for(MapObject object : map.getLayers().get(14).getObjects().getByType(RectangleMapObject.class)) {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
             new Boss1(world, map, rect, game, boss2_test);
