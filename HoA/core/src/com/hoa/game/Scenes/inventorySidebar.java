@@ -157,7 +157,7 @@ public class inventorySidebar extends Table implements Disposable{
         table.add(nullLabel).expandX();
         table.add(nullLabel).expandX();
 
-        table.add(exit).pad(game.screenHeight*4/10,0, 0, 3*invpadding);
+        table.add(exit).pad(game.screenHeight*4/10,0, 0, 6*invpadding);
         table.setSize(200,600);
         table.setBackground(background);
 

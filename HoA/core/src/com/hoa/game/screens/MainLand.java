@@ -152,14 +152,6 @@ public class MainLand implements Screen {
             //hud.sidebar.setVisible(true);
         }
 
-//        if (inventory == true && (Gdx.input.isKeyJustPressed(Input.Keys.I) || inventoryhud.exit.isPressed())) {
-//            inventory = false;
-//            hud.inventory.setSize(100,100);
-
-            //hud = new inventoryHud(game.batch, game);
-            //hud.inventory.setSize(200,200);
-            //hud.sidebar.setVisible(true);
-       // }
 
         // warps to cave
         if (Gdx.input.isKeyJustPressed(Input.Keys.T)) {
@@ -242,13 +234,8 @@ public class MainLand implements Screen {
 
         game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
 
+        hud.stage.draw();
 
-//        if(inventory){
-//            inventoryhud.stage.draw();
-//        }
-//        else{
-            hud.stage.draw();
-//        }
 
         // render the Box2d lines
         b2dr.render(world,gamecam.combined);
@@ -257,6 +244,7 @@ public class MainLand implements Screen {
     @Override
     public void resize(int width, int height) {
         gamePort.update(width, height);
+        hud = new Hud(game.batch, game);
 
 
     }

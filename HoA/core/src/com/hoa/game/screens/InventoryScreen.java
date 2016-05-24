@@ -10,6 +10,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.hoa.game.HoA;
 import com.hoa.game.Scenes.Instruction;
+import com.hoa.game.Scenes.Mainmenu;
 import com.hoa.game.Scenes.inventorySidebar;
 
 /**
@@ -84,6 +85,7 @@ public class InventoryScreen implements Screen {
     @Override
     public void resize(int width, int height) {
         gamePort.update(width, height);
+        inventory = new inventorySidebar(game.batch, game);
 
     }
 
