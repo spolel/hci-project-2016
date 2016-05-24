@@ -1,15 +1,20 @@
 package com.hoa.game.Scenes;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -37,7 +42,9 @@ public class CombatHud extends Table implements Disposable{
     private Label Title;
     private Label Counter;
     private Label Out;
-    private Image enemy;
+    public Button enemy;
+//    private Button enemyrender;
+
 
     private Boss enemyBoss;
 
@@ -61,6 +68,8 @@ public class CombatHud extends Table implements Disposable{
 
         viewport = new FitViewport(HoA.screenWidth, HoA.screenHeight, new OrthographicCamera());
         stage = new Stage(viewport, batch);
+        Gdx.input.setInputProcessor(stage);
+
 
         enemyBoss = boss;
 
@@ -71,9 +80,13 @@ public class CombatHud extends Table implements Disposable{
         countertot = bossName+" life : " + bossLife;
 
         Sprite sprenemy = new Sprite(bossTexture);
-        sprenemy.setSize(500f, 1000f);
+        sprenemy.setSize(300f, 300f);
         SpriteDrawable drawenemy = new SpriteDrawable(sprenemy);
-        enemy = new Image(drawenemy);
+      //  enemy = new Image(drawenemy);
+
+        enemy = new bossButton(drawenemy);
+
+
 
 
         /** the table is used to place the elements of the screen */
@@ -91,6 +104,14 @@ public class CombatHud extends Table implements Disposable{
         Title.setFontScale(1.2f, 1.2f);
         Counter.setFontScale(1.2f, 1.2f);
         Out.setFontScale(1.2f, 1.2f);
+
+        enemy.addListener(new ClickListener(Input.Keys.LEFT){
+            @Override
+            public boolean keyUp(InputEvent event, int keycode) {
+                addCounter();
+                return super.keyUp(event, keycode);
+            }
+        });
 
 
 
@@ -193,6 +214,10 @@ public class CombatHud extends Table implements Disposable{
 
         game.decreaseHealth();
 
+    }
+
+    public Button getEnemy(){
+        return enemy;
     }
     
 
