@@ -26,6 +26,7 @@ import com.hoa.game.screens.InstructionScreen;
  */
 public class Mainmenu extends Table implements Disposable{
 
+
     public HoA game;
     public Stage stage;
     public Viewport viewport;
@@ -55,14 +56,18 @@ public class Mainmenu extends Table implements Disposable{
 
     private float buttwidth;
     private float buttheight;
+    private float buttonpad;
+    private final float titlepad;
 
 
 
 
     public Mainmenu(SpriteBatch spriteBatch){
 
-        buttheight = 50;
-        buttwidth = 200;
+        buttheight = game.screenHeight/12;
+        buttwidth = game.screenWidth/4;
+        buttonpad = game.screenHeight/20;
+        titlepad = game.screenHeight/8.5f;
 
 
         viewport = new FitViewport(HoA.screenWidth, HoA.screenHeight, new OrthographicCamera());
@@ -97,27 +102,21 @@ public class Mainmenu extends Table implements Disposable{
         newgame.addListener(new ClickListener() {
             public void clicked (InputEvent event, float x, float y)
             {
-                //newgame.setSize(100, 100);
-                //MainMenuScreen a = new MainMenuScreen(game);
-                //game.setPos(6150, 7100);
-                //game.setScreen(new MainLand(game));
+
             }
         });
 
         credits.addListener(new ClickListener() {
             public void clicked (InputEvent event, float x, float y)
             {
-                //credits.setSize(100, 100);
-                //game.setPos(6150, 7100);
-                //game.setScreen(new MainLand(game));
+
             }
         });
 
         instructions.addListener(new ClickListener() {
             public void clicked (InputEvent event, float x, float y)
             {
-                //instructions.setSize(100, 100);
-                //game.setScreen(new InstructionScreen(game));
+
             }
         });
 
@@ -130,15 +129,16 @@ public class Mainmenu extends Table implements Disposable{
 
         table.setBackground(background);
 
-        table.add(title).width(4*buttwidth).height(3*buttheight).padTop(20);
+        table.add(title).width(4*buttwidth).height(3*buttheight).padTop(buttonpad);
         table.row();
-        table.add(newgame).width(buttwidth).height(buttheight).padTop(70);
+        table.add(newgame).width(buttwidth).height(buttheight).padTop(titlepad);
         table.row();
-        table.add(instructions).width(buttwidth).height(buttheight).padTop(50);
+        table.add(instructions).width(buttwidth).height(buttheight).padTop(buttonpad);
         table.row();
-        table.add(credits).width(buttwidth).height(buttheight).padTop(50);
+        table.add(credits).width(buttwidth).height(buttheight).padTop(buttonpad);
         table.row();
-        table.add(exit).width(buttwidth).height(buttheight).padTop(50);
+        table.add(exit).width(buttwidth).height(buttheight).padTop(buttonpad);
+        table.row();
         stage.addActor(table);
 
     }

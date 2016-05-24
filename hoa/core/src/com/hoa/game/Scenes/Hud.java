@@ -142,6 +142,7 @@ public class Hud extends Table implements Disposable{
 
     private float buttwidth;
     private float buttheight;
+    private float invpadding;
 
     private String test;
 
@@ -152,6 +153,7 @@ public class Hud extends Table implements Disposable{
 
         buttheight = 50;
         buttwidth = 200;
+        invpadding = game.screenHeight*2/3;
         //test = game.getZone();
 
 
@@ -232,11 +234,11 @@ public class Hud extends Table implements Disposable{
         table.add(nullLabel);
         table.add(nullLabel);
         table.row();
-        table.add(options).pad(450,0,0,0);
+        table.add(options).pad(invpadding,0,0,0);
         table.add(nullLabel);
         table.add(nullLabel);
 
-        table.add(inventory).pad(450,0,0,0);
+        table.add(inventory).pad(invpadding,0,0,0);
 
         //addActor(sidebar);
         table.row();

@@ -49,14 +49,18 @@ public class Resumemenu extends Table implements Disposable{
 
     private float buttwidth;
     private float buttheight;
+    private float buttonpad;
+    private float titlepad;
 
 
 
 
     public Resumemenu(SpriteBatch spriteBatch){
 
-        buttheight = 50;
-        buttwidth = 200;
+        buttheight = game.screenHeight/12;
+        buttwidth = game.screenWidth/4;
+        buttonpad = game.screenHeight/20;
+        titlepad = game.screenHeight/8.5f;
 
 
         viewport = new FitViewport(HoA.screenWidth, HoA.screenHeight, new OrthographicCamera());
@@ -94,13 +98,13 @@ public class Resumemenu extends Table implements Disposable{
 
         table.setBackground(background);
 
-        table.add(title).width(4*buttwidth).height(3*buttheight).padTop(20);
+        table.add(title).width(4*buttwidth).height(3*buttheight).padTop(buttonpad);
         table.row();
-        table.add(resume).width(buttwidth).height(buttheight).padTop(70);
+        table.add(resume).width(buttwidth).height(buttheight).padTop(titlepad);
         table.row();
-        table.add(mainmenu).width(buttwidth).height(buttheight).padTop(50);
+        table.add(mainmenu).width(buttwidth).height(buttheight).padTop(buttonpad);
         table.row();
-        table.add(exit).width(buttwidth).height(buttheight).padTop(50);
+        table.add(exit).width(buttwidth).height(buttheight).padTop(buttonpad);
         stage.addActor(table);
 
     }
