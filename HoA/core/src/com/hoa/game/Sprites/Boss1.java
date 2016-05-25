@@ -15,6 +15,7 @@ import com.badlogic.gdx.graphics.Texture;
 public class Boss1 extends InteractiveTile {
 
     private Boss boss;
+    private TiledMap map;
 
 
     public Boss1(World world, TiledMap map, Rectangle bounds, HoA game, Boss boss) {
@@ -35,12 +36,14 @@ public class Boss1 extends InteractiveTile {
         fdef.shape = shape;
         body.createFixture(fdef);
 
+        this.map = map;
+
         }
 
         @Override
         public void onCollision() {
             super.game.setPos(boss.getX(), boss.getY());
-            game.setScreen(new CombatScreen(game, boss));
+            game.setScreen(new CombatScreen(game, boss, map));
         }
 
 }

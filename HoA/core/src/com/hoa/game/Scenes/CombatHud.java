@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -31,6 +32,9 @@ import com.hoa.game.Sprites.Boss;
 public class CombatHud extends Table implements Disposable{
 
     public HoA game;
+
+    private TiledMap map;
+
     public Stage stage;
     public Viewport viewport;
 
@@ -59,12 +63,12 @@ public class CombatHud extends Table implements Disposable{
     private Table table;
 
 
+    public CombatHud(SpriteBatch batch, Boss boss , HoA game, TiledMap map){
 
-
-    public CombatHud(SpriteBatch batch, Boss boss , HoA game){
-
-
+        this.map = map;
         this.game = game;
+
+
 
         viewport = new FitViewport(HoA.screenWidth, HoA.screenHeight, new OrthographicCamera());
         stage = new Stage(viewport, batch);
@@ -196,8 +200,11 @@ public class CombatHud extends Table implements Disposable{
 
         int currentxp = game.xp;
         int boss_xp = enemyBoss.getXp();
+        int boss_layer = enemyBoss.getLayer();
 
-        if( (currentxp + boss_xp) >= game.xpthresh){
+
+        //handle level xp end so on
+        if( (currentxp + boss_xp) >= game.xpthresh){  // when you increase level
             game.setLevel(game.level+1);
             game.setXP((currentxp + boss_xp) - game.xpthresh);
             game.setXPThreshold(game.xpthresh * 2);
@@ -205,7 +212,13 @@ public class CombatHud extends Table implements Disposable{
         else{
             game.setXP(game.xp + boss_xp);
         }
+
+
         // deactivate the layers  --> GOD DONUT NEED TO IMPLEMENT LAYER NUMBER IN BOSS CLASS
+
+        map.getLayers().remove(boss_layer);
+        map.getLayers().remove(boss_layer+1);
+
 
     }
 

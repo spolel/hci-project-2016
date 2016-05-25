@@ -42,6 +42,8 @@ public class CombatScreen implements Screen {
     private Stage stage;
     private InputMultiplexer input;
 
+    private TiledMap map;
+
     // Current game camera & screen display, currently a FitViewPort
 
 
@@ -52,11 +54,12 @@ public class CombatScreen implements Screen {
     //Label newGame;
     //Label
 
-    public CombatScreen (HoA game, Boss boss){
+    public CombatScreen (HoA game, Boss boss, TiledMap map){
 
         //actual game variable
         this.game = game;
         this.boss = boss;
+        this.map = map;
 
         stage = new Stage(new FitViewport(HoA.screenWidth, HoA.screenHeight));
         input = new InputMultiplexer();
@@ -64,7 +67,7 @@ public class CombatScreen implements Screen {
         gamePort = new FitViewport(HoA.screenWidth, HoA.screenHeight);
 
         //hud
-        combatscene = new CombatHud(game.batch, boss , game);
+        combatscene = new CombatHud(game.batch, boss , game, map);
 
 
 
