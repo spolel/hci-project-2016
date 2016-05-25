@@ -22,6 +22,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.hoa.game.HoA;
 import com.hoa.game.Sprites.Boss;
+import com.hoa.game.screens.MainLand;
 
 
 /**
@@ -58,7 +59,7 @@ public class CombatHud extends Table implements Disposable{
 
     private int tot = 0;
     private String countertot;
-    boolean killed = false;
+    public boolean killed = false;
 
     private Table table;
 
@@ -111,7 +112,7 @@ public class CombatHud extends Table implements Disposable{
         enemy.addListener(new ClickListener(Input.Keys.LEFT){
             @Override
             public boolean keyUp(InputEvent event, int keycode) {
-                addCounter();
+                damageHandler();
                 return super.keyUp(event, keycode);
             }
         });
@@ -132,10 +133,24 @@ public class CombatHud extends Table implements Disposable{
 
     }
 
-    // method to call in the CombatScreen class
-    public void addCounter() {
+    // method to call in the CombatScreen class with the input just touched method (the clicker)
 
-        if(killed){   // this is to make this if enter only once.
+    // this is the "new" prototype for combat, it should be easier to understand and further modify since it only uses
+    // the key handler to calculate damage
+    // ****NOT TESTED NOR FINISHED****     TODO: combat text, timer, labels, ...
+    public void damageHandler() {
+        if(killed == false) {
+            bossLife = bossLife - game.dmg;
+            if (bossLife <= 0){
+                killed = true;
+            }
+        }
+        else if (killed == true){
+            game.setScreen(new MainLand(game));
+        }
+
+     // Old, working, combatHud uncomment to make CombatHud great again.
+     /**   if(killed){   // this is to make this if enter only once.
 
          if (tot >= bossLife-1 || ((System.currentTimeMillis() - startTime)/1000)<0) {  // boss is dead. This is the click that kills him, or 10 sec have passed.
 
@@ -189,8 +204,8 @@ public class CombatHud extends Table implements Disposable{
                 Counter.setText(bossName + " life : " + giorgio);
             }
 
-        }
-    }
+        } */
+      }
 
 
 

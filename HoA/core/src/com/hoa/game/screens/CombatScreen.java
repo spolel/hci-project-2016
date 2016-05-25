@@ -74,8 +74,10 @@ public class CombatScreen implements Screen {
 
     }
 
-
-
+    // Method to see if the target is killed, used for adding xp after the combat
+    public boolean isKill(){
+        return combatscene.killed;
+    }
 
 
 
@@ -95,14 +97,17 @@ public class CombatScreen implements Screen {
 
         else if (Gdx.input.justTouched()) {
 
-            combatscene.addCounter();
+            combatscene.damageHandler();
         }
 
     }
 
     public void update(float dt){
         handleInput(dt);
-
+        // This is used for the new combat, comment when using old combat.
+        if(isKill() == true) {
+            game.xp = game.xp + boss.getXp();
+        }
     }
 
 
