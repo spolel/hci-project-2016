@@ -45,7 +45,7 @@ public class CombatHud extends Table implements Disposable{
 
 
     private Label Title;
-    private Label Counter;
+    public Label Counter;
     private Label Out;
     public Button enemy;
 //    private Button enemyrender;
@@ -57,7 +57,7 @@ public class CombatHud extends Table implements Disposable{
     private int bossLife;
     private Texture bossTexture;
 
-    private int tot = 0;
+    private int counter = 0;
     private String countertot;
     public boolean killed = false;
 
@@ -133,14 +133,29 @@ public class CombatHud extends Table implements Disposable{
 
     }
 
+    // method to update labels in combat (health, time,...)
+    public void manageLabel(Label Counter){
+        if(killed = false) {
+            String hp = bossName + " life : " + (bossLife - (counter * game.dmg));
+            Counter.setText(hp);
+        }
+     /**   else {
+            String hp = "You defeated " + bossName;
+            Counter.setText(hp);
+        } */
+
+
+    }
+
     // method to call in the CombatScreen class with the input just touched method (the clicker)
 
     // this is the "new" prototype for combat, it should be easier to understand and further modify since it only uses
     // the key handler to calculate damage
-    // ****NOT TESTED NOR FINISHED****     TODO: combat text, timer, labels, ...
+    // ****TESTED NOT FINISHED****     TODO: combat text, timer, labels, ...
     public void damageHandler() {
         if(killed == false) {
             bossLife = bossLife - game.dmg;
+            counter = counter +1;
             if (bossLife <= 0){
                 killed = true;
             }

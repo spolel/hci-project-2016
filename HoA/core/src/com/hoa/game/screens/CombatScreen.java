@@ -108,6 +108,7 @@ public class CombatScreen implements Screen {
         if(isKill() == true) {
             game.xp = game.xp + boss.getXp();
         }
+        combatscene.manageLabel(combatscene.Counter);
     }
 
 
