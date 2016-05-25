@@ -24,6 +24,7 @@ public class Boss {
         this.texture = texture;
         this.x_pos = x_pos;
         this.y_pos = y_pos;
+        this.layer = layer;
         this.xp = xp;
 
     }
