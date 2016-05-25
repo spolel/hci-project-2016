@@ -136,7 +136,7 @@ public class MainLand implements Screen {
 
 // warps to cave
         if (Gdx.input.isKeyJustPressed(Input.Keys.C)) {
-            game.setPos(9200, 8888);
+            game.setPos(32*(420-228),(420-85)*32);
             game.setScreen(new MainLand(game));
         }
 
