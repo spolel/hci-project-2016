@@ -108,7 +108,7 @@ public class SuperClass implements Screen {
         // opens inventory
         if (Gdx.input.isKeyJustPressed(Input.Keys.I) || hud.inventory.isPressed()) {
 
-            game.setScreen(new InventoryScreen(game));
+            game.setScreen(new InventoryScreen(game, this));
 
         }
 

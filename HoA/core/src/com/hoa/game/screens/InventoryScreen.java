@@ -24,11 +24,13 @@ public class InventoryScreen implements Screen {
 
     //hud of the program
     private Inventory inventory;
+    private Screen screen;
 
 
-    public InventoryScreen(HoA game){
+    public InventoryScreen(HoA game, SuperClass screen){
         //actual game variable
         this.game = game;
+        this.screen = screen;
 
         //camera variable
         gamecam = new OrthographicCamera();
@@ -52,7 +54,7 @@ public class InventoryScreen implements Screen {
 
 // warps to cave
         if (Gdx.input.isKeyJustPressed(Input.Keys.I) || Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE) || inventory.exit.isPressed()) {
-            game.setScreen(new MainLand(game));
+            game.setScreen(screen);
         }
 
     }
