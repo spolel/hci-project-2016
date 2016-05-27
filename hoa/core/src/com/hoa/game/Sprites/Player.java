@@ -39,22 +39,22 @@ public class Player extends Sprite{
         runningRight = true;
 
         Array<TextureRegion> frames = new Array<TextureRegion>();
-        for(int i = 1; i < 2; i++)
+        for(int i = 0; i < 2; i++)
             frames.add(new TextureRegion(getTexture(),i * 32, 0, 32 ,32));
         playerRunDown = new Animation(0.1f, frames);
         frames.clear();
 
-        for(int i = 3; i < 4; i++)
+        for(int i = 2; i < 4; i++)
             frames.add(new TextureRegion(getTexture(),i * 32, 0, 32 ,32));
         playerRunLeft = new Animation(0.1f, frames);
         frames.clear();
 
-        for(int i = 5; i < 6; i++)
+        for(int i = 4; i < 6; i++)
             frames.add(new TextureRegion(getTexture(),i * 32, 0, 32 ,32));
         playerRunRight = new Animation(0.1f, frames);
         frames.clear();
 
-        for(int i = 7; i < 8; i++)
+        for(int i = 6; i < 8; i++)
             frames.add(new TextureRegion(getTexture(),i * 32, 0, 32 ,32));
         playerRunUp = new Animation(0.1f, frames);
 
