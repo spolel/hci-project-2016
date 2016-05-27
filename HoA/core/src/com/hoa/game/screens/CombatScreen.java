@@ -107,10 +107,31 @@ public class CombatScreen implements Screen {
         // This is used for the new combat, comment when using old combat.
         if(isKill() == true) {
             game.xp = game.xp + boss.getXp();
-            //levelup
+            levelUp();
+            game.setScreen(new MainLand(game));
         }
         combatscene.manageLabel(combatscene.Counter);
     }
+
+    public void levelUp(){
+        if (game.xp >= game.xpthresh){
+        while(game.xp - game.xpthresh >= 0) {
+            game.xp = game.xp - game.xpthresh;
+            game.xpthresh = game.xpthresh * 2;
+            game.level++;
+        }
+        }
+        if (game.level % 3 == 0 & game.level < 7){
+            if(game.healththresh<4){
+                game.healththresh++;
+                game.health++;
+            }
+            else if (game.health < game.healththresh){
+                game.health++;
+            }
+            }
+        }
+
 
 
     @Override

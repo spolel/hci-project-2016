@@ -42,7 +42,7 @@ public class Boss1 extends InteractiveTile {
 
         @Override
         public void onCollision() {
-            super.game.setPos(boss.getX(), boss.getY());
+
             game.setScreen(new CombatScreen(game, boss, map));
         }
 

@@ -3,6 +3,7 @@ package com.hoa.game.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
@@ -77,8 +78,22 @@ public class MainLand extends SuperClass {
 
                                              //checks if objects is from class interactive tile
                                              if (object.getUserData() != null && InteractiveTile.class.isAssignableFrom(object.getUserData().getClass())) {
-                                                 float x = player.getBody().getPosition().x +30;
-                                                 float y = player.getBody().getPosition().y-30;
+                                                 float x;
+                                                 float y;
+                                                 if (player.getBody().getLinearVelocity().x>0){
+                                                     x = player.getBody().getPosition().x -30;
+                                                 }
+                                                 else if (player.getBody().getLinearVelocity().x<0){
+                                                     x = player.getBody().getPosition().x +30;}
+                                                 else{
+                                                     x = player.getBody().getPosition().x;
+                                                 }
+                                                 if (player.getBody().getLinearVelocity().y>0){
+                                                     y = player.getBody().getPosition().y -30;}
+                                                 else if (player.getBody().getLinearVelocity().y<0){
+                                                     y = player.getBody().getPosition().y +30;}
+                                                 else {
+                                                     y = player.getBody().getPosition().y;}
                                                  game.setPos((int) x, (int) y);
                                                  ((InteractiveTile) object.getUserData()).onCollision();
 
@@ -165,11 +180,13 @@ public class MainLand extends SuperClass {
     public void update(float dt){
         handleInput(dt);
 
+        Boss boss1_test = new Boss(25,"Flaming Ent",new Texture("Sprites/Bosses/Flaming_ent.png"), 12, 9200, 8888, 20);
+
         //attempt at random encounters: should work, just put in the boss info and uncomment
         Random a = new Random();
-        int value = a.nextInt(3);
-        if(value==1){
-            //game.setScreen(new CombatScreen(game,INSERTBOSSINFOHERE ));
+        int value = a.nextInt(100);
+        if(value==3){
+          //  game.setScreen(new CombatScreen(game, boss1_test, map));
         }
 
 

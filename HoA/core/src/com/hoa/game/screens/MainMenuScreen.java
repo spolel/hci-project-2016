@@ -84,8 +84,8 @@ public class MainMenuScreen implements Screen {
         if (Gdx.input.isKeyPressed(Input.Keys.N) || mainmenu.newgame.isPressed()){
             game.setPos(6150, 7100);
             game.setZone("Main Land");
-            game.setHealth(4);
-            game.setHealthThreshold(4);
+            game.setHealth(2);
+            game.setHealthThreshold(2);
             game.setXP(0);
             game.setXPThreshold(20);
             game.setLevel(1);

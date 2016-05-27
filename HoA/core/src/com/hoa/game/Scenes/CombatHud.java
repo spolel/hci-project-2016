@@ -156,6 +156,7 @@ public class CombatHud extends Table implements Disposable{
         if(killed == false) {
             bossLife = bossLife - game.dmg;
             counter = counter +1;
+            manageLabel(Counter);
             if (bossLife <= 0){
                 killed = true;
             }
@@ -226,31 +227,31 @@ public class CombatHud extends Table implements Disposable{
 
 
 
-    private void victory(){
-
-        int currentxp = game.xp;
-        int boss_xp = enemyBoss.getXp();
-        int boss_layer = enemyBoss.getLayer();
-
-
-        //handle level xp end so on
-        if( (currentxp + boss_xp) >= game.xpthresh){  // when you increase level
-            game.setLevel(game.level+1);
-            game.setXP((currentxp + boss_xp) - game.xpthresh);
-            game.setXPThreshold(game.xpthresh * 2);
-        }
-        else{
-            game.setXP(game.xp + boss_xp);
-        }
+//    private void victory(){
+//
+//        int currentxp = game.xp;
+//        int boss_xp = enemyBoss.getXp();
+//        int boss_layer = enemyBoss.getLayer();
+//
+//
+//        //handle level xp end so on
+//        if( (currentxp + boss_xp) >= game.xpthresh){  // when you increase level
+//            game.setLevel(game.level+1);
+//            game.setXP((currentxp + boss_xp) - game.xpthresh);
+//            game.setXPThreshold(game.xpthresh * 2);
+//        }
+//        else{
+//            game.setXP(game.xp + boss_xp);
+//        }
 
 
         // deactivate the layers  --> GOD DONUT NEED TO IMPLEMENT LAYER NUMBER IN BOSS CLASS
-
-        map.getLayers().remove(boss_layer);
-        map.getLayers().remove(boss_layer+1);
-
-
-    }
+//
+//        map.getLayers().remove(boss_layer);
+//        map.getLayers().remove(boss_layer+1);
+//
+//
+//    }
 
     private void defeat() {
 
