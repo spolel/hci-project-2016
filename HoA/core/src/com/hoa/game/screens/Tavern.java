@@ -54,7 +54,7 @@ public class Tavern extends SuperClass {
 
 
         //update tavern position
-        player = new Player(world, this, 600, 1380);
+        player = new Player(world, this, 1216, 544);
 
 
 
@@ -62,7 +62,7 @@ public class Tavern extends SuperClass {
         //map
         mapLoader = new TmxMapLoader();
         //update tavern map
-        map = mapLoader.load("Maps/Tavern.tmx");
+        map = mapLoader.load("Maps/tavern.tmx");
         renderer = new OrthogonalTiledMapRenderer(map);
         gamecam.position.set(gamePort.getWorldWidth()/2, gamePort.getWorldHeight()/2, 0);
 

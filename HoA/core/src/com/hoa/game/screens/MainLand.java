@@ -93,7 +93,7 @@ public class MainLand extends SuperClass {
 
         // warps to tavern
         if (Gdx.input.isKeyJustPressed(Input.Keys.C)) {
-            game.setPos(32*(420-215),(420-90)*32);
+            game.setPos(5792,7520);
             game.setScreen(new MainLand(game));
         }
 
@@ -110,8 +110,14 @@ public class MainLand extends SuperClass {
             game.setPos(8832, 8800);
             game.setScreen(new MainLand(game));
         }
-
-
+//        main map:
+//        Entrata Dungeon 1 -> 8800,8832
+//        Entrata dungeon 2 -> 12160,12384
+//        Entrata taverna -> 5792,7520
+//        individual maps:
+//        uscita taverna -> 1216,544
+//        uscita d1-> 512,1376
+//        uscita d2-> 1376,544
 
 
 
