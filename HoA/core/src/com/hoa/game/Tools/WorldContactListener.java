@@ -7,6 +7,7 @@ import com.hoa.game.Sprites.InteractiveTile;
  * Created by BMW on 10/05/2016.
  */
 public class WorldContactListener implements ContactListener {
+
     @Override
     public void beginContact(Contact contact) {
         Fixture a = contact.getFixtureA();
@@ -21,6 +22,8 @@ public class WorldContactListener implements ContactListener {
             //checks if objects is from class interactive tile
             if (object.getUserData() != null && InteractiveTile.class.isAssignableFrom(object.getUserData().getClass())){
                 ((InteractiveTile) object.getUserData()).onCollision();
+                float x = player.getBody().getPosition().x;
+                float y = player.getBody().getPosition().y;
             }
         }
 

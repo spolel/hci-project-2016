@@ -8,6 +8,7 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.*;
 import com.hoa.game.HoA;
+import com.hoa.game.Sprites.InteractiveTile;
 import com.hoa.game.Sprites.Player;
 import com.badlogic.gdx.math.Vector2;
 import com.hoa.game.Tools.B2WorldCreator;
@@ -34,7 +35,7 @@ public class MainLand extends SuperClass {
     public Player player;
 
 
-    public MainLand(HoA game){
+    public MainLand(final HoA game){
         super(game);
 
         world = new World(new Vector2(0,0), true);
@@ -58,9 +59,33 @@ public class MainLand extends SuperClass {
 
         new B2WorldCreator(world,map, game);
 
-        world.setContactListener(new WorldContactListener(){});
+        world.setContactListener(new WorldContactListener() {
+                                     @Override
 
-    }
+                                     public void beginContact(Contact contact) {
+                                         Fixture a = contact.getFixtureA();
+                                         Fixture b = contact.getFixtureB();
+
+                                         if (a.getUserData() == "top" || a.getUserData() == "bot" || a.getUserData() == "left" || a.getUserData() == "right" ||
+                                                 b.getUserData() == "top" || b.getUserData() == "bot" || b.getUserData() == "left" || b.getUserData() == "right") {
+
+                                             Fixture player = (a.getUserData() == "top" || a.getUserData() == "bot" || a.getUserData() == "left" || a.getUserData() == "right") ? a : b;
+                                             Fixture object = (b.getUserData() == "top" || b.getUserData() == "bot" || b.getUserData() == "left" || b.getUserData() == "right") ? a : b;
+
+                                             //checks if objects is from class interactive tile
+                                             if (object.getUserData() != null && InteractiveTile.class.isAssignableFrom(object.getUserData().getClass())) {
+                                                 float x = player.getBody().getPosition().x +30;
+                                                 float y = player.getBody().getPosition().y-30;
+                                                 game.setPos((int) x, (int) y);
+                                                 ((InteractiveTile) object.getUserData()).onCollision();
+
+                                             }
+                                         }
+
+
+                                     }
+
+                                 });}
 
 
 
@@ -92,9 +117,9 @@ public class MainLand extends SuperClass {
 
 
         // warps to tavern
-        if (Gdx.input.isKeyJustPressed(Input.Keys.C)) {
-            game.setPos(5792,7520);
-            game.setScreen(new MainLand(game));
+        if (Gdx.input.isKeyJustPressed(Input.Keys.U)) {
+            super.game.setPos(5792,7500);
+            super.game.setScreen(new MainLand(super.game));
         }
 
         //warps to volcano
@@ -104,11 +129,22 @@ public class MainLand extends SuperClass {
             super.game.setScreen(new MainLand(super.game));
         }
 
-
         // warps to cave
         if (Gdx.input.isKeyJustPressed(Input.Keys.T)) {
-            game.setPos(8832, 8800);
-            game.setScreen(new MainLand(game));
+            super.game.setPos(8832, 8800);
+            super.game.setScreen(new MainLand(super.game));
+        }
+
+        // warps to ent
+        if (Gdx.input.isKeyJustPressed(Input.Keys.C)) {
+            super.game.setPos(7456, 10720);
+            super.game.setScreen(new MainLand(super.game));
+        }
+
+        // warps to ghost
+        if (Gdx.input.isKeyJustPressed(Input.Keys.V)) {
+            super.game.setPos(7040, 1088);
+            super.game.setScreen(new MainLand(super.game));
         }
 //        main map:
 //        Entrata Dungeon 1 -> 8800,8832
