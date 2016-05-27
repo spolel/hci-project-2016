@@ -8,11 +8,14 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.*;
 import com.hoa.game.HoA;
+import com.hoa.game.Sprites.Boss;
 import com.hoa.game.Sprites.InteractiveTile;
 import com.hoa.game.Sprites.Player;
 import com.badlogic.gdx.math.Vector2;
 import com.hoa.game.Tools.B2WorldCreator;
 import com.hoa.game.Tools.WorldContactListener;
+
+import java.util.Random;
 
 /**
  * Created by BMW on 26/04/2016.
@@ -161,6 +164,13 @@ public class MainLand extends SuperClass {
 
     public void update(float dt){
         handleInput(dt);
+
+        //attempt at random encounters: should work, just put in the boss info and uncomment
+        Random a = new Random();
+        int value = a.nextInt(3);
+        if(value==1){
+            //game.setScreen(new CombatScreen(game,INSERTBOSSINFOHERE ));
+        }
 
 
         /** 60 times a second calculate the physics*/
