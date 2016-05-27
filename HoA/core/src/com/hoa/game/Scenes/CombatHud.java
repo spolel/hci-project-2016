@@ -110,11 +110,11 @@ public class CombatHud extends Table implements Disposable{
         Out.setFontScale(1.2f, 1.2f);
 
         enemy.addListener(new ClickListener(Input.Keys.LEFT){
-            @Override
-            public boolean keyUp(InputEvent event, int keycode) {
-                damageHandler();
-                return super.keyUp(event, keycode);
-            }
+//            @Override
+//            public boolean keyUp(InputEvent event, int keycode) {
+//                damageHandler();
+//                return super.keyUp(event, keycode);
+//            }
         });
 
 

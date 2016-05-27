@@ -26,12 +26,23 @@ import com.hoa.game.Tools.WorldContactListener;
 /**
  * Created by BMW on 26/04/2016.
  */
-public class Cave extends SuperClass {
+public class SuperClass implements Screen {
 
     //game class
     public HoA game;
+    private TextureAtlas atlas;
 
+    // Current game camera & screen display, currently a FitViewPort
+    protected OrthographicCamera gamecam;
+    protected Viewport gamePort;
 
+    //hud of the program
+    protected Hud hud;
+
+    //speed of camera movement
+    protected int speed = 1000;
+    //speed of char
+    protected float speedchar = 10f;
 
     //map loader and renderer
     private TmxMapLoader mapLoader;
@@ -43,35 +54,39 @@ public class Cave extends SuperClass {
     private Box2DDebugRenderer b2dr;
 
     private Player player;
+    private boolean inventory;
 
 
-    public Cave(HoA game){
-        super(game);
-
-        world = new World(new Vector2(0,0), true);
-        //shows outlines debug
-        b2dr = new Box2DDebugRenderer();
+    public SuperClass(HoA game){
+        //sprite
+        atlas = new TextureAtlas("Sprites/packs/player.pack");
 
 
-        player = new Player(world, this, 600, 1380);
+        //actual game variable
+        this.game = game;
+
+        //camera variable
+        gamecam = new OrthographicCamera();
+        gamePort = new FitViewport(HoA.screenWidth, HoA.screenHeight, gamecam);
+
+        //hud
+        hud = new Hud(game.batch, game);
+
+        hud.addListener(new ClickListener() {
+            public void clicked (InputEvent event, float x, float y)
+            {
+            }
+        });
 
 
+        Gdx.input.setInputProcessor(hud.stage);
 
-
-        //map
-        mapLoader = new TmxMapLoader();
-        map = mapLoader.load("Maps/Dungeon_1.tmx");
-        renderer = new OrthogonalTiledMapRenderer(map);
-        gamecam.position.set(gamePort.getWorldWidth()/2, gamePort.getWorldHeight()/2, 0);
-
-
-
-        new B2WorldCreator(world,map, game);
-
-        world.setContactListener(new WorldContactListener(){});
 
     }
 
+    public TextureAtlas getAtlas() {
+        return atlas;
+    }
 
 
 
@@ -83,24 +98,22 @@ public class Cave extends SuperClass {
     //if the else if is removed weird stuff happens
     public void handleInput(float dt){
 
-        super.handleInput(dt);
 
-        if (Gdx.input.isKeyPressed(Input.Keys.W) && player.b2body.getLinearVelocity().y <= super.speed){
-            player.b2body.applyLinearImpulse(new Vector2(0, super.speedchar), player.b2body.getWorldCenter(),true);
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)|| hud.options.isPressed()){
+            game.setPos((int)player.b2body.getPosition().x, (int)player.b2body.getPosition().y);
+
+            game.setScreen(new ResumeMenuScreen(game));
+        }
+
+        // opens inventory
+        if (Gdx.input.isKeyJustPressed(Input.Keys.I) || hud.inventory.isPressed()) {
+
+            game.setScreen(new InventoryScreen(game));
 
         }
-        else if (Gdx.input.isKeyPressed(Input.Keys.S) && player.b2body.getLinearVelocity().y >= -speed){
-            player.b2body.applyLinearImpulse(new Vector2(0, -speedchar), player.b2body.getWorldCenter(),true);
-        }
-        else if (Gdx.input.isKeyPressed(Input.Keys.A) && player.b2body.getLinearVelocity().x >= -speed){
-            player.b2body.applyLinearImpulse(new Vector2(-speedchar,0), player.b2body.getWorldCenter(),true);
-        }
-        else if (Gdx.input.isKeyPressed(Input.Keys.D) && player.b2body.getLinearVelocity().x <= speed){
-            player.b2body.applyLinearImpulse(new Vector2(speedchar, 0), player.b2body.getWorldCenter(),true);
-        }
-        else {
-            player.b2body.setLinearVelocity(0,0);
-        }
+
+
+
 
 
 
@@ -136,24 +149,25 @@ public class Cave extends SuperClass {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         renderer.render();
 
-        super.game.batch.setProjectionMatrix(super.gamecam.combined);
-        super.game.batch.begin();
-        player.draw(super.game.batch);
-        super.game.batch.end();
+        game.batch.setProjectionMatrix(gamecam.combined);
+        game.batch.begin();
+        player.draw(game.batch);
+        game.batch.end();
 
 
+        game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
 
-        super.hud.stage.draw();
+        hud.stage.draw();
 
 
         // render the Box2d lines
-        b2dr.render(world,gamecam.combined);
+        //b2dr.render(world,gamecam.combined);
     }
 
     @Override
     public void resize(int width, int height) {
         gamePort.update(width, height);
-        super.hud = new Hud(super.game.batch, super.game);
+        hud = new Hud(game.batch, game);
 
 
     }
@@ -179,7 +193,7 @@ public class Cave extends SuperClass {
         renderer.dispose();
         world.dispose();
         b2dr.dispose();
-        super.hud.dispose();
+        hud.dispose();
 
     }
 }

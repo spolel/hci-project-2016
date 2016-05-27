@@ -36,7 +36,7 @@ public class EnterCave extends InteractiveTile {
 
     @Override
     public void onCollision() {
-        super.game.setPos(1320,1320);
+        super.game.setPos(game.getPosx(), game.getPosy());
         super.game.setZone("Cave");
         super.game.setScreen(new Cave(game));
     }

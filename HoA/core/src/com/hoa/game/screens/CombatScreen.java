@@ -107,6 +107,7 @@ public class CombatScreen implements Screen {
         // This is used for the new combat, comment when using old combat.
         if(isKill() == true) {
             game.xp = game.xp + boss.getXp();
+            //levelup
         }
         combatscene.manageLabel(combatscene.Counter);
     }
@@ -123,7 +124,7 @@ public class CombatScreen implements Screen {
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        // stage.act(delta);
+        //stage.act(delta);
         //stage.setDebugAll();
 
         //stage.getViewport().apply();

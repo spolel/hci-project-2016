@@ -10,6 +10,7 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.*;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -25,24 +26,11 @@ import com.hoa.game.Tools.WorldContactListener;
 /**
  * Created by BMW on 26/04/2016.
  */
-public class MainLand implements Screen {
+public class MainLand extends SuperClass {
 
     //game class
     public HoA game;
-    public Image textureplayer;
-    private TextureAtlas atlas;
 
-    // Current game camera & screen display, currently a FitViewPort
-    private OrthographicCamera gamecam;
-    private Viewport gamePort;
-
-    //hud of the program
-    private Hud hud;
-
-    //speed of camera movement
-    private int speed = 1000;
-    //speed of char
-    private float speedchar = 10f;
 
     //map loader and renderer
     private TmxMapLoader mapLoader;
@@ -54,49 +42,27 @@ public class MainLand implements Screen {
     private Box2DDebugRenderer b2dr;
 
     private Player player;
-    private boolean inventory;
-    private inventorySidebar inventoryhud;
 
 
     public MainLand(HoA game){
-        //sprite
-        atlas = new TextureAtlas("Sprites/packs/player.pack");
+        super(game);
 
-
-        //actual game variable
-        this.game = game;
-
-        //camera variable
-        gamecam = new OrthographicCamera();
-        gamePort = new FitViewport(HoA.screenWidth, HoA.screenHeight, gamecam);
-
-        //hud
-        hud = new Hud(game.batch, game);
-        inventoryhud = new inventorySidebar(game.batch, game);
-
-        hud.addListener(new ClickListener(){});
-        inventoryhud.addListener(new ClickListener(){});
-
-        Gdx.input.setInputProcessor(hud.stage);
-
-        //world, 0,0 = no gravity, if body at rest calculate no physics
         world = new World(new Vector2(0,0), true);
         //shows outlines debug
         b2dr = new Box2DDebugRenderer();
 
 
         player = new Player(world, this, game.getPosx(), game.getPosy());
-        //texplayer = new Texture("Sprites/pg/HoA_sprite.png");
 
+        //player = new Player(world, this, game.getPosx(), game.getPosy());
 
-        //player = new Player(world, 1200, 1000);
 
 
         //map
         mapLoader = new TmxMapLoader();
         map = mapLoader.load("Maps/Map.tmx");
         renderer = new OrthogonalTiledMapRenderer(map);
-        gamecam.position.set(gamePort.getWorldWidth()/2, gamePort.getWorldHeight()/2, 0);
+        super.gamecam.position.set(gamePort.getWorldWidth()/2, gamePort.getWorldHeight()/2, 0);
 
 
 
@@ -104,10 +70,6 @@ public class MainLand implements Screen {
 
         world.setContactListener(new WorldContactListener(){});
 
-    }
-
-    public TextureAtlas getAtlas() {
-        return atlas;
     }
 
 
@@ -119,64 +81,11 @@ public class MainLand implements Screen {
     //only one key usable now
     //if the else if is removed weird stuff happens
     public void handleInput(float dt){
+        super.handleInput(dt);
 
+        if (Gdx.input.isKeyPressed(Input.Keys.W) && player.b2body.getLinearVelocity().y <= super.speed){
+            player.b2body.applyLinearImpulse(new Vector2(0, super.speedchar), player.b2body.getWorldCenter(),true);
 
-        // PRESS G OPEN THE COMBAT SCREEN, JUST TO TEST
-  //      if (Gdx.input.isKeyJustPressed(Input.Keys.G)){
-   //         game.setPos((int)player.b2body.getPosition().x, (int)player.b2body.getPosition().y)
-    //          game.setScreen(new CombatScreen(game,));
-   //     }
-
-        if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)|| hud.options.isPressed()){
-            game.setPos((int)player.b2body.getPosition().x, (int)player.b2body.getPosition().y);
-
-            game.setScreen(new ResumeMenuScreen(game));
-        }
-
-
-// warps to cave
-        if (Gdx.input.isKeyJustPressed(Input.Keys.C)) {
-            game.setPos(32*(420-228),(420-85)*32);
-            game.setScreen(new MainLand(game));
-        }
-
-
-        // warps to cave
-        if (inventory == false && (Gdx.input.isKeyJustPressed(Input.Keys.I) || hud.inventory.isPressed())) {
-            inventory = true;
-            game.setScreen(new InventoryScreen(game));
-
-
-            //hud = new inventoryHud(game.batch, game);
-            hud.inventory.setSize(200,200);
-            //hud.sidebar.setVisible(true);
-        }
-
-
-        // warps to cave
-        if (Gdx.input.isKeyJustPressed(Input.Keys.T)) {
-            game.setPos(6150, 7100);
-            game.setScreen(new MainLand(game));
-        }
-
-        // warps to cave
-        if (Gdx.input.isKeyJustPressed(Input.Keys.M)) {
-            game.decreaseHealth();
-            game.setPos((int)player.b2body.getPosition().x, (int)player.b2body.getPosition().y);
-            game.setScreen(new MainLand(game));
-        }
-
-        // warps to cave
-        if (Gdx.input.isKeyJustPressed(Input.Keys.N)) {
-            game.addHealth();
-            game.setPos((int)player.b2body.getPosition().x, (int)player.b2body.getPosition().y);
-            game.setScreen(new MainLand(game));
-        }
-
-        if (Gdx.input.isKeyPressed(Input.Keys.W)){ //&& player.b2body.getLinearVelocity().y <= speed){
-            player.b2body.applyLinearImpulse(new Vector2(0, speedchar), player.b2body.getWorldCenter(),true);
-            //player.b2body.
-                   // player.b2body.setLinearVelocity(player.b2body.getLinearVelocity().x, player.b2body.getLinearVelocity().y+1000);
         }
         else if (Gdx.input.isKeyPressed(Input.Keys.S) && player.b2body.getLinearVelocity().y >= -speed){
             player.b2body.applyLinearImpulse(new Vector2(0, -speedchar), player.b2body.getWorldCenter(),true);
@@ -188,9 +97,28 @@ public class MainLand implements Screen {
             player.b2body.applyLinearImpulse(new Vector2(speedchar, 0), player.b2body.getWorldCenter(),true);
         }
         else {
-            //player.b2body.setLinearVelocity(player.b2body.getLinearVelocity().x, player.b2body.getLinearVelocity().y);
             player.b2body.setLinearVelocity(0,0);
         }
+
+
+// warps to cave
+        if (Gdx.input.isKeyJustPressed(Input.Keys.C)) {
+            game.setPos(32*(420-215),(420-90)*32);
+            game.setScreen(new MainLand(game));
+        }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.Y)) {
+            super.game.setPos(600, 1380);
+            super.game.setScreen(new Cave(super.game));
+        }
+
+
+        // warps to cave
+        if (Gdx.input.isKeyJustPressed(Input.Keys.T)) {
+            game.setPos(6150, 7100);
+            game.setScreen(new MainLand(game));
+        }
+
 
 
 
@@ -226,15 +154,15 @@ public class MainLand implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         renderer.render();
 
-        game.batch.setProjectionMatrix(gamecam.combined);
-        game.batch.begin();
-        player.draw(game.batch);
-        game.batch.end();
+        super.game.batch.setProjectionMatrix(super.gamecam.combined);
+        super.game.batch.begin();
+        player.draw(super.game.batch);
+        super.game.batch.end();
 
 
-        game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
+        super.game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
 
-        hud.stage.draw();
+        super.hud.stage.draw();
 
 
         // render the Box2d lines
@@ -244,7 +172,7 @@ public class MainLand implements Screen {
     @Override
     public void resize(int width, int height) {
         gamePort.update(width, height);
-        hud = new Hud(game.batch, game);
+        //hud = new Hud(game.batch, game);
 
 
     }
@@ -270,8 +198,7 @@ public class MainLand implements Screen {
         renderer.dispose();
         world.dispose();
         b2dr.dispose();
-        hud.dispose();
-        inventoryhud.dispose();
+        super.hud.dispose();
 
     }
 }
