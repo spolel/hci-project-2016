@@ -20,7 +20,10 @@ public class Player extends Sprite{
     public World world;
     public Body b2body;
     private TextureRegion playerIdle;
-    private Animation playerRun;
+    private Animation playerRunRight;
+    private Animation playerRunLeft;
+    private Animation playerRunDown;
+    private Animation playerRunUp;
     private float stateTimer;
     private boolean runningRight;
 
@@ -35,12 +38,26 @@ public class Player extends Sprite{
         stateTimer = 0;
         runningRight = true;
 
-//        Array<TextureRegion> frames = new Array<TextureRegion>();
-//        for(int i = 1; i < 4; i++)
-//            frames.add(new TextureRegion(getTexture(),i * 32, 0, 32 ,32));
-//
-//        playerRun = new Animation(0.1f, frames);
-//        frames.clear();
+        Array<TextureRegion> frames = new Array<TextureRegion>();
+        for(int i = 1; i < 2; i++)
+            frames.add(new TextureRegion(getTexture(),i * 32, 0, 32 ,32));
+        playerRunDown = new Animation(0.1f, frames);
+        frames.clear();
+
+        for(int i = 3; i < 4; i++)
+            frames.add(new TextureRegion(getTexture(),i * 32, 0, 32 ,32));
+        playerRunLeft = new Animation(0.1f, frames);
+        frames.clear();
+
+        for(int i = 5; i < 6; i++)
+            frames.add(new TextureRegion(getTexture(),i * 32, 0, 32 ,32));
+        playerRunRight = new Animation(0.1f, frames);
+        frames.clear();
+
+        for(int i = 7; i < 8; i++)
+            frames.add(new TextureRegion(getTexture(),i * 32, 0, 32 ,32));
+        playerRunUp = new Animation(0.1f, frames);
+
 
 
         playerIdle = new TextureRegion(getTexture(), 0, 0, 32, 32);
@@ -53,29 +70,48 @@ public class Player extends Sprite{
     public void update(float dt){
         setPosition(b2body.getPosition().x - getWidth() / 2,b2body.getPosition().y - getHeight() / 2);
 
-//        setRegion(getFrame(dt));
+        setRegion(getFrame(dt));
     }
 
-//    public TextureRegion getFrame(float dt){
-//        currentState = getState();
-//
-//        TextureRegion region;
-//        switch(currentState){
-//            case RUNNING_UP:
-//                region = playerRun
-//        }
-//    }
+    public TextureRegion getFrame(float dt){
+        currentState = getState();
 
-//    public State getState(){
-//        if(b2body.getLinearVelocity().y > 0)
-//            return State.RUNNING_UP;
-//        else if(b2body.getLinearVelocity().y < 0)
-//            return State.RUNNING_DOWN;
-//        else if(b2body.getLinearVelocity().x != 0)
-//            return State.RUNNING_RIGHT;
-//        else
-//            return State.IDLE;
-//    }
+        TextureRegion region;
+        switch(currentState){
+            case RUNNING_UP:
+                region = playerRunUp.getKeyFrame(stateTimer, true);
+                break;
+            case RUNNING_RIGHT:
+                region = playerRunRight.getKeyFrame(stateTimer, true);
+                break;
+            case RUNNING_LEFT:
+                region = playerRunLeft.getKeyFrame(stateTimer, true);
+                break;
+            case RUNNING_DOWN:
+                region = playerRunDown.getKeyFrame(stateTimer, true);
+                break;
+            default:
+                region = playerIdle;
+                break;
+        }
+
+        stateTimer = currentState == previousState ? stateTimer + dt : 0;
+        previousState = currentState;
+        return region;
+    }
+
+    public State getState(){
+        if(b2body.getLinearVelocity().y > 0)
+            return State.RUNNING_UP;
+        else if(b2body.getLinearVelocity().y < 0)
+            return State.RUNNING_DOWN;
+        else if(b2body.getLinearVelocity().x > 0)
+            return State.RUNNING_RIGHT;
+        else if(b2body.getLinearVelocity().x < 0)
+            return State.RUNNING_LEFT;
+        else
+            return State.IDLE;
+    }
 
     /** Defining the player */
     public void definePlayer(int x, int y){
