@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="60" height="60" tilewidth="32" tileheight="32" nextobjectid="46">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="60" height="60" tilewidth="32" tileheight="32" nextobjectid="47">
  <tileset firstgid="1" name="tavern_tileset" tilewidth="32" tileheight="32" tilecount="1056" columns="32">
   <image source="tavern_tileset.png" trans="6b6b6b" width="1024" height="1056"/>
  </tileset>
@@ -76,10 +76,10 @@
  <objectgroup name="Object Layer 3"/>
  <objectgroup name="Object Layer 4"/>
  <objectgroup name="Object Layer 5"/>
- <objectgroup name="Object Layer 6">
-  <object id="1" x="1212.65" y="1405.98" width="39.5431" height="39.5431"/>
+ <objectgroup name="Object Layer 6"/>
+ <objectgroup name="Object Layer 7">
+  <object id="46" x="1207.09" y="1403.25" width="46.8123" height="42.354"/>
  </objectgroup>
- <objectgroup name="Object Layer 7"/>
  <objectgroup name="Object Layer 8"/>
  <layer name="Tile Layer 6" width="60" height="60">
   <data encoding="base64">
