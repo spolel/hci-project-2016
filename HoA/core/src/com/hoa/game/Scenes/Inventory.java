@@ -23,7 +23,7 @@ import com.hoa.game.HoA;
 /**
  * Created by BMW on 17/05/2016.
  */
-public class inventorySidebar extends Table implements Disposable{
+public class Inventory extends Table implements Disposable{
 
     public HoA game;
     public Stage stage;
@@ -60,7 +60,7 @@ public class inventorySidebar extends Table implements Disposable{
 
 
 
-    public inventorySidebar(SpriteBatch spriteBatch, HoA game){
+    public Inventory(SpriteBatch spriteBatch, HoA game){
 
 //        buttheight = 50;
 //        buttwidth = 200;
@@ -101,6 +101,12 @@ public class inventorySidebar extends Table implements Disposable{
         InventoryLabel = new Label("Inventory", new Label.LabelStyle(new BitmapFont(), Color.RED));
         InventoryLabel.setFontScale(2f);
 
+        healthLabel.setFontScale(1.2f);
+        levelLabel.setFontScale(1.2f);
+        xpLabel.setFontScale(1.2f);
+        zoneLabel.setFontScale(1.2f);
+
+
 
 
         //newbutton = new SpriteDrawable( new Sprite(new Texture("Menu/newgamebutton.png")));
@@ -124,10 +130,10 @@ public class inventorySidebar extends Table implements Disposable{
         exit.addListener(new ClickListener() {});
 
 
-        table.add(InventoryLabel).pad(invpadding, padleft, 0, 0).left();
+        table.add(InventoryLabel).pad(invpadding, game.screenWidth/2.5f, 0, 0).left();
         table.row();
         table.add(healthLabel).pad(invpadding, padleft, 0, 0).width(20).left();
-        table.add(health).pad(invpadding, 0, 0, 800).left();
+        table.add(health).pad(invpadding, 0, 0, game.screenWidth*1.5f).left();
         table.add(nullLabel).expandX();
         table.add(nullLabel).expandX();
         table.add(nullLabel).expandX();

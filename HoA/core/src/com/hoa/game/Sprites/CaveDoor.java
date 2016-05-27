@@ -13,9 +13,9 @@ import com.hoa.game.screens.Cave;
 /**
  * Created by BMW on 03/05/2016.
  */
-public class EnterCave extends InteractiveTile {
+public class CaveDoor extends InteractiveTile {
 
-    public EnterCave(World world, TiledMap map, Rectangle bounds, HoA game) {
+    public CaveDoor(World world, TiledMap map, Rectangle bounds, HoA game) {
         super(world, map, bounds, game);
         fixture.setUserData(this);
 
@@ -36,9 +36,9 @@ public class EnterCave extends InteractiveTile {
 
     @Override
     public void onCollision() {
-        super.game.setPos(1320,1320);
+        super.game.setPos(game.getPosx(), game.getPosy());
         super.game.setZone("Cave");
-        super.game.setScreen(new Cave(game));
+        super.game.setScreen(new com.hoa.game.screens.Cave(game));
     }
 
 

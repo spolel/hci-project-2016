@@ -9,6 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.hoa.game.screens.MainLand;
 import com.badlogic.gdx.utils.Array;
+import com.hoa.game.screens.SuperClass;
 
 /**
  * Created by lorenzo on 28/04/16.
@@ -26,7 +27,7 @@ public class Player extends Sprite{
     private Animation playerRunUp;
     private float stateTimer;
 
-    public Player(World world, MainLand screen, int x, int y){
+    public Player(World world, SuperClass screen, int x, int y){
 
         super(screen.getAtlas().findRegion("running_down"));
 
@@ -99,6 +100,7 @@ public class Player extends Sprite{
     }
 
     public State getState(){
+
         if(b2body.getLinearVelocity().y > 0)
             return State.RUNNING_UP;
         else if(b2body.getLinearVelocity().y < 0)
