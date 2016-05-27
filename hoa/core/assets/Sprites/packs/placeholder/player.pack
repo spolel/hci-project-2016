@@ -31,10 +31,3 @@ running_up
   orig: 64, 32
   offset: 0, 0
   index: -1
-idle
-  rotate: false
-  xy: 256, 0
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
