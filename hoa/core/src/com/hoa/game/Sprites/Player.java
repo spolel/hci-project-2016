@@ -58,7 +58,7 @@ public class Player extends Sprite{
 
 
 
-        playerIdle = new TextureRegion(getTexture(), 0, 0, 32, 32);
+        playerIdle = new TextureRegion(getTexture(), 256 , 0, 32, 32);
         setBounds(0, 0, 32, 32);
         setRegion(playerIdle);
 
