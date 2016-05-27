@@ -25,7 +25,6 @@ public class Player extends Sprite{
     private Animation playerRunDown;
     private Animation playerRunUp;
     private float stateTimer;
-    private boolean runningRight;
 
     public Player(World world, MainLand screen, int x, int y){
 
@@ -36,7 +35,6 @@ public class Player extends Sprite{
         currentState = State.IDLE;
         previousState = State.IDLE;
         stateTimer = 0;
-        runningRight = true;
 
         Array<TextureRegion> frames = new Array<TextureRegion>();
         for(int i = 0; i < 2; i++)
