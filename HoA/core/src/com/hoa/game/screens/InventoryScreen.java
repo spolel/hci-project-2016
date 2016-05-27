@@ -5,13 +5,10 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.hoa.game.HoA;
-import com.hoa.game.Scenes.Instruction;
-import com.hoa.game.Scenes.Mainmenu;
-import com.hoa.game.Scenes.inventorySidebar;
+import com.hoa.game.Scenes.Inventory;
 
 /**
  * Created by BMW on 26/04/2016.
@@ -26,7 +23,7 @@ public class InventoryScreen implements Screen {
     private Viewport gamePort;
 
     //hud of the program
-    private inventorySidebar inventory;
+    private Inventory inventory;
 
 
     public InventoryScreen(HoA game){
@@ -38,7 +35,7 @@ public class InventoryScreen implements Screen {
         gamePort = new FitViewport(HoA.screenWidth, HoA.screenHeight, gamecam);
 
         //hud
-        inventory = new inventorySidebar(game.batch, game);
+        inventory = new Inventory(game.batch, game);
 
     }
 
@@ -85,7 +82,7 @@ public class InventoryScreen implements Screen {
     @Override
     public void resize(int width, int height) {
         gamePort.update(width, height);
-        inventory = new inventorySidebar(game.batch, game);
+        inventory = new Inventory(game.batch, game);
 
     }
 

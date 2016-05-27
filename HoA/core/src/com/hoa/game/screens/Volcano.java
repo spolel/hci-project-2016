@@ -6,20 +6,23 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.physics.box2d.*;
-import com.hoa.game.HoA;
-import com.hoa.game.Sprites.Player;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
+import com.badlogic.gdx.physics.box2d.World;
+import com.hoa.game.HoA;
+import com.hoa.game.Scenes.Hud;
+import com.hoa.game.Sprites.Player;
 import com.hoa.game.Tools.B2WorldCreator;
 import com.hoa.game.Tools.WorldContactListener;
 
 /**
  * Created by BMW on 26/04/2016.
  */
-public class MainLand extends SuperClass {
+public class Volcano extends SuperClass {
 
     //game class
     public HoA game;
+
 
 
     //map loader and renderer
@@ -31,10 +34,10 @@ public class MainLand extends SuperClass {
     private World world;
     private Box2DDebugRenderer b2dr;
 
-    public Player player;
+    private Player player;
 
 
-    public MainLand(HoA game){
+    public Volcano(HoA game){
         super(game);
 
         world = new World(new Vector2(0,0), true);
@@ -42,17 +45,16 @@ public class MainLand extends SuperClass {
         b2dr = new Box2DDebugRenderer();
 
 
-        player = new Player(world, this, game.getPosx(), game.getPosy());
+        player = new Player(world, this, 1376, 576);
 
-        //player = new Player(world, this, game.getPosx(), game.getPosy());
 
 
 
         //map
         mapLoader = new TmxMapLoader();
-        map = mapLoader.load("Maps/Map.tmx");
+        map = mapLoader.load("Maps/Dungeon_2.tmx");
         renderer = new OrthogonalTiledMapRenderer(map);
-        super.gamecam.position.set(gamePort.getWorldWidth()/2, gamePort.getWorldHeight()/2, 0);
+        gamecam.position.set(gamePort.getWorldWidth()/2, gamePort.getWorldHeight()/2, 0);
 
 
 
@@ -65,12 +67,14 @@ public class MainLand extends SuperClass {
 
 
 
+
     // This part moves the camera on the wasd key input.
     // created by shughi
     //using raw velocity, stops when stop pressing;
     //only one key usable now
     //if the else if is removed weird stuff happens
     public void handleInput(float dt){
+
         super.handleInput(dt);
 
         if (Gdx.input.isKeyPressed(Input.Keys.W) && player.b2body.getLinearVelocity().y <= super.speed){
@@ -89,28 +93,6 @@ public class MainLand extends SuperClass {
         else {
             player.b2body.setLinearVelocity(0,0);
         }
-
-
-        // warps to tavern
-        if (Gdx.input.isKeyJustPressed(Input.Keys.C)) {
-            game.setPos(32*(420-215),(420-90)*32);
-            game.setScreen(new MainLand(game));
-        }
-
-        //warps to volcano
-        if (Gdx.input.isKeyJustPressed(Input.Keys.Y)) {
-
-            super.game.setPos(12160, 12480);
-            super.game.setScreen(new MainLand(super.game));
-        }
-
-
-        // warps to cave
-        if (Gdx.input.isKeyJustPressed(Input.Keys.T)) {
-            game.setPos(8832, 8800);
-            game.setScreen(new MainLand(game));
-        }
-
 
 
 
@@ -152,7 +134,6 @@ public class MainLand extends SuperClass {
         super.game.batch.end();
 
 
-        super.game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
 
         super.hud.stage.draw();
 
@@ -164,7 +145,7 @@ public class MainLand extends SuperClass {
     @Override
     public void resize(int width, int height) {
         gamePort.update(width, height);
-        //hud = new Hud(game.batch, game);
+        super.hud = new Hud(super.game.batch, super.game);
 
 
     }

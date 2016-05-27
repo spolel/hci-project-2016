@@ -184,7 +184,7 @@ public class Hud extends Table implements Disposable{
 
         options = new Button(optionsbutton);
 
-        sidebar = new inventorySidebar(spriteBatch, game);
+        sidebar = new Inventory(spriteBatch, game);
  //       sidebar.setSize(200, 600);
 
 
@@ -221,9 +221,9 @@ public class Hud extends Table implements Disposable{
         table.add(health).pad(20,20,0,0);
         table.add(nullLabel).expandX();
         table.add(nullLabel).expandX();
-        table.add(nullLabel).expandX();
+        table.add(zoneLabel).expandX();
         //table.add(zoneLabel).expandX().padTop(10);
-//        table.add(new inventorySidebar(spriteBatch, game));
+//        table.add(new Inventory(spriteBatch, game));
 //        //sidebar.setVisible(true);
 //
 //        table.add(sidebar);

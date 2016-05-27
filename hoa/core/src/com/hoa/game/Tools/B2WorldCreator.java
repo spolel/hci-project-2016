@@ -7,12 +7,7 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.*;
 import com.hoa.game.HoA;
-import com.hoa.game.Sprites.CollisionBox;
-import com.hoa.game.Sprites.Door;
-import com.hoa.game.Sprites.EnterCave;
-import com.hoa.game.Sprites.EnterTavern;
-import com.hoa.game.Sprites.Boss1;
-import com.hoa.game.Sprites.Boss;
+import com.hoa.game.Sprites.*;
 
 /**
  * Created by lorenzo on 28/04/16.
@@ -45,7 +40,7 @@ public class B2WorldCreator {
         //d1 entrance
         for(MapObject object : map.getLayers().get(6).getObjects().getByType(RectangleMapObject.class)) {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
-            new EnterCave(world, map, rect, game);
+            new CaveDoor(world, map, rect, game);
         }
 
         //d1 exit
@@ -57,7 +52,7 @@ public class B2WorldCreator {
         //d2 entrance
         for(MapObject object : map.getLayers().get(8).getObjects().getByType(RectangleMapObject.class)) {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
-            new EnterCave(world, map, rect, game);
+            new VolcanoDoor(world, map, rect, game);
             //TEMPORARY
         }
 
@@ -70,7 +65,7 @@ public class B2WorldCreator {
         //tavernentrance
         for(MapObject object : map.getLayers().get(10).getObjects().getByType(RectangleMapObject.class)) {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
-            new EnterTavern(world, map, rect, game);
+            new TavernDoor(world, map, rect, game);
         }
 
         //tavernexit
