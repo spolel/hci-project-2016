@@ -3,31 +3,31 @@ player.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-player-down
+running_down
   rotate: false
   xy: 1, 1
-  size: 32, 32
-  orig: 32, 32
+  size: 64, 32
+  orig: 64, 32
   offset: 0, 0
   index: -1
-player-up
+running_left
   rotate: false
-  xy: 35, 1
-  size: 32, 32
-  orig: 32, 32
+  xy: 67, 1
+  size: 64, 32
+  orig: 64, 32
   offset: 0, 0
   index: -1
-player-left
+running_right
   rotate: false
-  xy: 69, 1
-  size: 32, 32
-  orig: 32, 32
+  xy: 133, 1
+  size: 64, 32
+  orig: 64, 32
   offset: 0, 0
   index: -1
-player-right
+running_up
   rotate: false
-  xy: 103, 1
-  size: 32, 32
-  orig: 32, 32
+  xy: 199, 1
+  size: 64, 32
+  orig: 64, 32
   offset: 0, 0
   index: -1
