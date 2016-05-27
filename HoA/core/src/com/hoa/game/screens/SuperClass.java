@@ -100,15 +100,13 @@ public class SuperClass implements Screen {
 
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)|| hud.options.isPressed()){
-            game.setPos((int)player.b2body.getPosition().x, (int)player.b2body.getPosition().y);
-
-            game.setScreen(new ResumeMenuScreen(game));
+            game.setScreen(new ResumeMenuScreen(game, this));
         }
 
         // opens inventory
         if (Gdx.input.isKeyJustPressed(Input.Keys.I) || hud.inventory.isPressed()) {
 
-            game.setScreen(new InventoryScreen(game));
+            game.setScreen(new InventoryScreen(game, this));
 
         }
 

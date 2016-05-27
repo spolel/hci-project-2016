@@ -30,13 +30,15 @@ public class ResumeMenuScreen implements Screen {
     //hud of the program
     private Resumemenu resumemenu;
 
+    private SuperClass screen;
     //Label newGame;
     //Label
 
-    public ResumeMenuScreen(HoA game){
+    public ResumeMenuScreen(HoA game, SuperClass screen){
 
         //actual game variable
         this.game = game;
+        this.screen = screen;
 
         stage = new Stage(new FitViewport(HoA.screenWidth, HoA.screenHeight));
         input = new InputMultiplexer();
@@ -67,7 +69,7 @@ public class ResumeMenuScreen implements Screen {
         //insert click listener
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.R) || Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE) || resumemenu.resume.isPressed()){
-            game.setScreen(new MainLand(game));
+            game.setScreen(screen);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.M) || resumemenu.mainmenu.isPressed()){
             game.setScreen(new MainMenuScreen(game));
