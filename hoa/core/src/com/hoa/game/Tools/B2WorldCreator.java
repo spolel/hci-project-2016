@@ -1,11 +1,13 @@
 package com.hoa.game.Tools;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.*;
+import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 import com.hoa.game.HoA;
 import com.hoa.game.Sprites.*;
 
@@ -28,8 +30,11 @@ public class B2WorldCreator {
         Texture boss1 = new Texture("Sprites/Bosses/Flaming_ent.png");
         Texture boss2 = new Texture("Sprites/Bosses/Boss2.png");
 
-        Boss boss1_test = new Boss(100*game.level,"Flaming Ent",boss1, 12, 9200, 8888, 100*game.level);
-        Boss boss2_test = new Boss(300*game.level,"Flaming Ent Crying",boss2, 14, 9500, 8888, 300*game.level);
+        SpriteDrawable forest = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
+        SpriteDrawable island = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
+
+        Boss boss1_test = new Boss(100*game.level,"Flaming Ent",boss1, 12, 9200, 8888, 100*game.level, forest);
+        Boss boss2_test = new Boss(300*game.level,"Flaming Ent Crying",boss2, 14, 9500, 8888, 300*game.level, island);
 
 
 

@@ -141,13 +141,13 @@ public class CombatMob implements Screen {
 
             }
             if (game.level % 5 == 0 & game.level < 10) {
-                if (game.healththresh < 4) {
+
                     game.healththresh++;
-                    game.health++;
-                } else if (game.health < game.healththresh) {
+                    game.health++;}
+                 else if (game.health < game.healththresh) {
                     game.health++;
                 }
-            }
+
             combatscene.setOut("You gained " + boss_xp + "XP, and you are now level "+game.level+ "!"+" press ESC to continue.");
         }
         else {

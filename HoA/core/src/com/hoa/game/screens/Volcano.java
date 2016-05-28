@@ -4,12 +4,14 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 import com.hoa.game.HoA;
 import com.hoa.game.Scenes.Hud;
 import com.hoa.game.Sprites.Mob;
@@ -109,8 +111,8 @@ public class Volcano extends SuperClass {
         Random a = new Random();
         int value = a.nextInt(1000);
         if(value==1){
-            Mob fireWisp = new Mob(super.game.level*50, "Fire Wisp", new Texture("Sprites/encounters/fire_thingy.png"), super.game.level*50);
-            super.game.setPos((int)player.b2body.getPosition().x, (int)player.b2body.getPosition().y);
+            SpriteDrawable volcano = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
+            Mob fireWisp = new Mob(super.game.level*50, "Fire Wisp", new Texture("Sprites/encounters/fire_thingy.png"), super.game.level*50, volcano);
             super.game.setScreen(new CombatMob(super.game, fireWisp, this));
         }
 

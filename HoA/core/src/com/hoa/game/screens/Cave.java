@@ -6,6 +6,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -16,6 +17,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.hoa.game.HoA;
@@ -57,7 +59,7 @@ public class Cave extends SuperClass {
         b2dr = new Box2DDebugRenderer();
 
 
-        player = new Player(world, this, 600, 1380);
+        player = new Player(world, this, 520, 1380);
 
 
 
@@ -120,7 +122,8 @@ public class Cave extends SuperClass {
         Random a = new Random();
         int value = a.nextInt(1000);
         if(value==2){
-            Mob Skeleton = new Mob(super.game.level*25, "Skeleton", new Texture("Sprites/encounters/skelly.png"), super.game.level*25);
+            SpriteDrawable cave = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
+            Mob Skeleton = new Mob(super.game.level*25, "Skeleton", new Texture("Sprites/encounters/skelly.png"), super.game.level*25, cave);
             super.game.setScreen(new CombatMob(super.game, Skeleton, this));
         }
 

@@ -4,10 +4,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.*;
+import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 import com.hoa.game.HoA;
 import com.hoa.game.Sprites.Boss;
 import com.hoa.game.Sprites.InteractiveTile;
@@ -193,7 +195,9 @@ public class MainLand extends SuperClass {
         Random a = new Random();
         int value = a.nextInt(1000);
         if(value==0){
-            Mob bandit = new Mob(super.game.level*15, "Bandit", new Texture("Sprites/encounters/bandit.png"), super.game.level*15);
+            SpriteDrawable forest = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
+
+            Mob bandit = new Mob(super.game.level*15, "Bandit", new Texture("Sprites/encounters/bandit.png"), super.game.level*15, forest);
             super.game.setPos((int)player.b2body.getPosition().x, (int)player.b2body.getPosition().y);
             super.game.setScreen(new CombatMob(super.game, bandit, this));
         }

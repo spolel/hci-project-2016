@@ -32,6 +32,7 @@ import com.hoa.game.screens.MainLand;
 
 public class CombatHud extends Table implements Disposable{
 
+    private SpriteDrawable background;
     public HoA game;
 
     private TiledMap map;
@@ -65,6 +66,7 @@ public class CombatHud extends Table implements Disposable{
 
         this.map = map;
         this.game = game;
+        this.background=boss.getBackground();
 
 
 
@@ -128,6 +130,8 @@ public class CombatHud extends Table implements Disposable{
         table.row();
         table.row();
         table.add(Out).expandX().padTop(50);
+
+        table.setBackground(background);
 
 
         stage.addActor(table);

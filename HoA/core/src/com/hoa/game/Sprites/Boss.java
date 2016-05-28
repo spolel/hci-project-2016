@@ -2,6 +2,7 @@ package com.hoa.game.Sprites;
 
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 
 /**
  * Created by shughi on 23/05/2016.
@@ -16,8 +17,9 @@ public class Boss {
     private int x_pos;
     private int y_pos;
     private int xp;
+    private SpriteDrawable background;
 
-    public Boss(int life, String name, Texture texture,int layer, int x_pos, int y_pos, int xp){
+    public Boss(int life, String name, Texture texture, int layer, int x_pos, int y_pos, int xp, SpriteDrawable background){
 
         this.life = life;
         this.name = name;
@@ -26,6 +28,7 @@ public class Boss {
         this.y_pos = y_pos;
         this.layer = layer;
         this.xp = xp;
+        this.background=background;
 
     }
 
@@ -71,4 +74,7 @@ public class Boss {
     }
 
 
+    public SpriteDrawable getBackground() {
+        return background;
+    }
 }

@@ -12,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -45,6 +46,7 @@ public class CombatMobHud extends Table implements Disposable{
     private String mobName;
     private int mobLife;
     private Texture mobTexture;
+    private Drawable background;
 
     private int counter = 0;
     private String countertot;
@@ -60,6 +62,9 @@ public class CombatMobHud extends Table implements Disposable{
         viewport = new FitViewport(HoA.screenWidth, HoA.screenHeight, new OrthographicCamera());
         stage = new Stage(viewport, batch);
         Gdx.input.setInputProcessor(stage);
+
+        background = mob.getBackground();
+
 
 
         enemyMob = mob;
@@ -108,6 +113,7 @@ public class CombatMobHud extends Table implements Disposable{
         table.add(Out).expandX().padTop(50);
 
 
+        table.setBackground(background);
         stage.addActor(table);
 
     }
