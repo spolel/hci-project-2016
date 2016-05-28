@@ -44,13 +44,14 @@ public class CombatScreen implements Screen {
     //hud of the program
     private Boss boss;
 
-    private static final int BATTLE_COUNTDOWN_SECONDS = 10;
+    private static final int BATTLE_COUNTDOWN_SECONDS = 5;
 
     //Label newGame;
     //Label
 
     //game class
     private HoA game;
+    //private CombatScreen current;
     private Viewport gamePort;
     private Stage stage;
     private InputMultiplexer input;
@@ -67,7 +68,8 @@ public class CombatScreen implements Screen {
     long endTime;
     long fightlast;
     private CountDownTimer timer;
-    private boolean running;
+    //private boolean running;
+    private boolean defeated;
 
     public CombatScreen (HoA game, Boss boss, TiledMap map){
 
@@ -76,7 +78,9 @@ public class CombatScreen implements Screen {
         this.game = game;
         this.enemyBoss = boss;
         this.map = map;
+        defeated=false;
 
+        //current = this;
         System.out.println("new combatscreen");
 
         this.bossLife = boss.getLife();
@@ -90,13 +94,14 @@ public class CombatScreen implements Screen {
         //hud
         combatscene = new CombatHud(game.batch, enemyBoss , game, map);
 
-            timer = new CountDownTimer(BATTLE_COUNTDOWN_SECONDS, new Runnable() {
+            timer = new CountDownTimer(BATTLE_COUNTDOWN_SECONDS,( new Runnable() {
                 public void run() {
                     //@TODO this executes when the timer is 0
                     //timer.cancel();
-                    CombatScreen.this.defeat();
+                    defeated=true;
+                   //current.defeat();
                 }
-            });
+            }));
 
             new Timer().scheduleAtFixedRate(timer, 0, 1000);
         }
@@ -170,6 +175,7 @@ public class CombatScreen implements Screen {
 
     public void update(float dt){
         handleInput(dt);
+        defeat();
     }
 
 
@@ -207,9 +213,13 @@ public class CombatScreen implements Screen {
         //   map.getLayers().remove(boss_layer+1);
     }
     public void defeat(){
-        game.decreaseHealth();
-        combatscene.setOut("You lost 1 heart and you are now at " + game.health + " HP! Press ESC to continue.");
-        game.setScreen(new MainMenuScreen(game));
+        if(defeated){
+            defeated=false;
+            game.collisioncount=0;
+            game.decreaseHealth();
+            combatscene.setOut("You lost 1 heart and you are now at " + game.health + " HP! Press ESC to continue.");
+        //game.setScreen(new MainMenuScreen(game));
+            }
     }
 
 

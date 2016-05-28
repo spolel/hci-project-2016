@@ -13,14 +13,10 @@ public class CountDownTimer extends TimerTask {
     public CountDownTimer(int count, Runnable onFinish) {
         this.count = count;
         this.onFinish = onFinish;
-        running = true;
     }
 
     @Override
     public void run() {
-        if(!running){
-            System.out.println("hellu");
-            cancel();}
         count--;
         //@TODO here you can display `count` where you need (alerady in seconds)
         System.out.println("Count is: " + count);
@@ -29,9 +25,6 @@ public class CountDownTimer extends TimerTask {
             onFinish.run();
         }
 
-    }
-    public void stop(){
-        running = false;
     }
 
     public int getCount(){

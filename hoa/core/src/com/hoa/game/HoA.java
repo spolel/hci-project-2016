@@ -82,6 +82,7 @@ public class HoA extends Game {
 		health = health-1;
 		if (health <= 0){
 			this.setScreen(new MainMenuScreen(this));
+            System.out.println("u ded");
 		}
 	}
 
