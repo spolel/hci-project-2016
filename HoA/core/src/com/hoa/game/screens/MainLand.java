@@ -11,6 +11,7 @@ import com.badlogic.gdx.physics.box2d.*;
 import com.hoa.game.HoA;
 import com.hoa.game.Sprites.Boss;
 import com.hoa.game.Sprites.InteractiveTile;
+import com.hoa.game.Sprites.Mob;
 import com.hoa.game.Sprites.Player;
 import com.badlogic.gdx.math.Vector2;
 import com.hoa.game.Tools.B2WorldCreator;
@@ -180,14 +181,26 @@ public class MainLand extends SuperClass {
     public void update(float dt){
         handleInput(dt);
 
-        Boss boss1_test = new Boss(25,"Flaming Ent",new Texture("Sprites/Bosses/Flaming_ent.png"), 12, 9200, 8888, 20);
+        //Boss boss1_test = new Boss(25,"Flaming Ent",new Texture("Sprites/Bosses/Flaming_ent.png"), 12, 9200, 8888, 20);
 
         //attempt at random encounters: should work, just put in the boss info and uncomment
         Random a = new Random();
-        int value = a.nextInt(100);
-        if(value==3){
-          //  game.setScreen(new CombatScreen(game, boss1_test, map));
+        int value = a.nextInt(1000);
+        if(value==0){
+            Mob bandit = new Mob(super.game.level*15, "Bandit", new Texture("Sprites/encounters/bandit.png"), super.game.level*15);
+            super.game.setPos((int)player.b2body.getPosition().x, (int)player.b2body.getPosition().y);
+            super.game.setScreen(new CombatMob(super.game, bandit));
         }
+//        if(value==1){
+//            Mob fireWisp = new Mob(super.game.level*20, "Fire Wisp", new Texture("Sprites/encounters/fire_thingy.png"), super.game.level*20);
+//            super.game.setPos((int)player.b2body.getPosition().x, (int)player.b2body.getPosition().y);
+//            super.game.setScreen(new CombatMob(super.game, fireWisp));
+//        }
+//        if(value==2){
+//            Mob Skeleton = new Mob(super.game.level*15, "Skeleton", new Texture("Sprites/encounters/skelly.png"), super.game.level*15);
+//            super.game.setPos((int)player.b2body.getPosition().x, (int)player.b2body.getPosition().y);
+//            super.game.setScreen(new CombatMob(super.game, Skeleton));
+//        }
 
 
         /** 60 times a second calculate the physics*/

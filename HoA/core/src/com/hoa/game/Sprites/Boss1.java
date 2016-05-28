@@ -8,6 +8,7 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.hoa.game.HoA;
+import com.hoa.game.screens.CombatMob;
 import com.hoa.game.screens.CombatScreen;
 import com.hoa.game.screens.MainLand;
 import com.badlogic.gdx.graphics.Texture;
@@ -44,8 +45,8 @@ public class Boss1 extends InteractiveTile {
         public void onCollision() {
                 game.collisioncount=game.collisioncount+1;
             if (game.collisioncount == 1){
-                System.out.println("colliding with boss1");
                 game.setScreen(new CombatScreen(game, boss, map));
+
             }
 
         }

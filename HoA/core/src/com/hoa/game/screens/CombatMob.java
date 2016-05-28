@@ -85,9 +85,9 @@ public class CombatMob implements Screen {
 
     public void damageHandler(){
         if(killed){   // this is to make this if enter only once.
-            if (tot >= mobLife-1 ) {  // boss is dead. This is the click that kills him, or 10 sec have passed.
+            if (tot >= mobLife-game.dmg ) {  // boss is dead. This is the click that kills him, or 10 sec have passed.
 
-                    String ciao = "You beated the " + mobName;
+                    String ciao = "You defeated the " + mobName;
                     combatscene.setCounter(ciao);
 
             }
@@ -95,7 +95,7 @@ public class CombatMob implements Screen {
         else  {
             if (tot == 0) {  // fight is about to start
 
-                tot = tot + 1;
+                tot = tot + game.dmg;
                 int giorgio = mobLife - tot;
                 String hue = mobName + " life : " + giorgio;
                 combatscene.setCounter(hue);
@@ -103,15 +103,15 @@ public class CombatMob implements Screen {
 
 
             }
-            else if(tot==mobLife-1){
+            else if(tot>=mobLife-game.dmg){
                 killed = true;
 
-                    String ciao = "You beated the " + mobName ;
+                    String ciao = "You defeated the " + mobName ;
                     combatscene.setCounter(ciao);
                     victory();
             }
             else {  // fight is going on
-                tot = tot + 1;
+                tot = tot + game.dmg;
                 int giorgio = mobLife - tot;
                 String hue = mobName + " life : " + giorgio;
                 combatscene.setCounter(hue);
@@ -136,8 +136,10 @@ public class CombatMob implements Screen {
                 game.xp = game.xp - game.xpthresh;
                 game.xpthresh = game.xpthresh * 2;
                 game.level++;
+                game.dmg=game.dmg*game.lvdmg;
+
             }
-            if (game.level % 3 == 0 & game.level < 7) {
+            if (game.level % 5 == 0 & game.level < 10) {
                 if (game.healththresh < 4) {
                     game.healththresh++;
                     game.health++;

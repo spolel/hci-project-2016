@@ -5,6 +5,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -19,9 +20,12 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.hoa.game.HoA;
 import com.hoa.game.Scenes.Hud;
+import com.hoa.game.Sprites.Mob;
 import com.hoa.game.Sprites.Player;
 import com.hoa.game.Tools.B2WorldCreator;
 import com.hoa.game.Tools.WorldContactListener;
+
+import java.util.Random;
 
 /**
  * Created by BMW on 26/04/2016.
@@ -109,6 +113,16 @@ public class Cave extends SuperClass {
 
     public void update(float dt){
         handleInput(dt);
+
+
+
+        Random a = new Random();
+        int value = a.nextInt(1000);
+        if(value==2){
+            Mob Skeleton = new Mob(super.game.level*25, "Skeleton", new Texture("Sprites/encounters/skelly.png"), super.game.level*25);
+            super.game.setPos((int)player.b2body.getPosition().x, (int)player.b2body.getPosition().y);
+            super.game.setScreen(new CombatMob(super.game, Skeleton));
+        }
 
 
         /** 60 times a second calculate the physics*/

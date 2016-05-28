@@ -44,7 +44,7 @@ public class CombatScreen implements Screen {
     //hud of the program
     private Boss boss;
 
-    private static final int BATTLE_COUNTDOWN_SECONDS = 5;
+    private static final int BATTLE_COUNTDOWN_SECONDS = 10;
 
     //Label newGame;
     //Label
@@ -123,12 +123,12 @@ public class CombatScreen implements Screen {
 
     public void damageHandler(){
         if(killed){   // this is to make this if enter only once.
-            if (tot >= bossLife-1 || ((System.currentTimeMillis() - startTime)/1000)<0) {  // boss is dead. This is the click that kills him, or 10 sec have passed.
+            if (tot >= bossLife-game.dmg || ((System.currentTimeMillis() - startTime)/1000)<0) {  // boss is dead. This is the click that kills him, or 10 sec have passed.
                 if (fightlast <= 10) {
-                    String ciao = "You beated the " + bossName + " in : " + fightlast + " seconds!";
+                    String ciao = "You defeated the " + bossName + " in : " + fightlast + " seconds!";
                     combatscene.setCounter(ciao);
                 } else {
-                    String ciao = "" + "Too slow! The " + bossName + " beated you in " + fightlast + " seconds!";  //added the ""+ at the beginning just to avoid a stupid feature on intelliJ about duplicates
+                    String ciao = "" + "Too slow! The " + bossName + " defeated you in " + fightlast + " seconds!";  //added the ""+ at the beginning just to avoid a stupid feature on intelliJ about duplicates
                     combatscene.setCounter(ciao);
                 }
             }
@@ -136,7 +136,7 @@ public class CombatScreen implements Screen {
         else  {
             if (tot == 0) {  // fight is about to start
                 startTime = System.currentTimeMillis();
-                tot = tot + 1;
+                tot = tot + game.dmg;
                 int giorgio = bossLife - tot;
                 String hue = bossName + " life : " + giorgio;
                 combatscene.setCounter(hue);
@@ -156,22 +156,22 @@ public class CombatScreen implements Screen {
                 startedfight=true;
 
             }
-            else if(tot==bossLife-1){
+            else if(tot>=bossLife-game.dmg){
                 endTime = System.currentTimeMillis();
                 fightlast = ((endTime - startTime) / 1000);
                 killed = true;
                 if (fightlast <= 10) {
-                    String ciao = "You beated the " + bossName + " in : " + fightlast + " seconds!";
+                    String ciao = "You defeated the " + bossName + " in : " + fightlast + " seconds!";
                     combatscene.setCounter(ciao);
                     victory();
                 } else {
-                    String ciao = "" + "Too slow! The " + bossName + " beated you in " + fightlast + " seconds!";  //added the ""+ at the beginning just to avoid a stupid feature on intelliJ about duplicates
+                    String ciao = "" + "Too slow! The " + bossName + " defeated you in " + fightlast + " seconds!";  //added the ""+ at the beginning just to avoid a stupid feature on intelliJ about duplicates
                     combatscene.setCounter(ciao);
                     defeat();
                 }
             }
             else {  // fight is going on
-                tot = tot + 1;
+                tot = tot + game.dmg;
                 int giorgio = bossLife - tot;
                 String hue = bossName + " life : " + giorgio;
                 combatscene.setCounter(hue);
@@ -206,8 +206,9 @@ public class CombatScreen implements Screen {
                 game.xp = game.xp - game.xpthresh;
                 game.xpthresh = game.xpthresh * 2;
                 game.level++;
+                game.dmg=game.dmg*game.lvdmg;
             }
-            if (game.level % 3 == 0 & game.level < 7) {
+            if (game.level % 5 == 0 & game.level < 10) {
                 if (game.healththresh < 4) {
                     game.healththresh++;
                     game.health++;
