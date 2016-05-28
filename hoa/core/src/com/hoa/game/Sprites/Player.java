@@ -38,28 +38,28 @@ public class Player extends Sprite{
         stateTimer = 0;
 
         Array<TextureRegion> frames = new Array<TextureRegion>();
-        for(int i = 0; i < 2; i++)
+        for(int i = 0; i < 4; i++)
             frames.add(new TextureRegion(getTexture(),i * 32, 0, 32 ,32));
         playerRunDown = new Animation(0.1f, frames);
         frames.clear();
 
-        for(int i = 2; i < 4; i++)
+        for(int i = 4; i < 8; i++)
             frames.add(new TextureRegion(getTexture(),i * 32, 0, 32 ,32));
         playerRunLeft = new Animation(0.1f, frames);
         frames.clear();
 
-        for(int i = 4; i < 6; i++)
+        for(int i = 8; i < 12; i++)
             frames.add(new TextureRegion(getTexture(),i * 32, 0, 32 ,32));
         playerRunRight = new Animation(0.1f, frames);
         frames.clear();
 
-        for(int i = 6; i < 8; i++)
+        for(int i = 12; i < 16; i++)
             frames.add(new TextureRegion(getTexture(),i * 32, 0, 32 ,32));
         playerRunUp = new Animation(0.1f, frames);
 
 
 
-        playerIdle = new TextureRegion(getTexture(), 256 , 0, 32, 32);
+        playerIdle = new TextureRegion(getTexture(), 512 , 0, 32, 32);
         setBounds(0, 0, 32, 32);
         setRegion(playerIdle);
 
