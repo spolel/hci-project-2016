@@ -26,6 +26,7 @@ public class CombatMob implements Screen {
     private String mobName;
     private Texture mobTexture;
     private int mobXp;
+    private SuperClass current;
 
     //game class
     private HoA game;
@@ -43,9 +44,9 @@ public class CombatMob implements Screen {
     private boolean defeated;
     private boolean startedfight = false;
 
-    public CombatMob (HoA game, Mob mob){
+    public CombatMob (HoA game, Mob mob, SuperClass current){
 
-
+        this.current=current;
 
         this.game = game;
 
@@ -72,7 +73,7 @@ public class CombatMob implements Screen {
 
 
         if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
-            game.setScreen(new MainLand(game));
+            game.setScreen(current);
         }
 
         else if (Gdx.input.justTouched()) {

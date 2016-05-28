@@ -81,9 +81,6 @@ public class CombatScreen implements Screen {
         this.map = map;
         defeated=false;
 
-        //current = this;
-        System.out.println("new combatscreen");
-
         this.bossLife = boss.getLife();
         this.bossName = boss.getName();
 

@@ -3,6 +3,7 @@ package com.hoa.game;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.hoa.game.screens.GameOverScreen;
 import com.hoa.game.screens.MainMenuScreen;
 
 public class HoA extends Game {
@@ -10,6 +11,8 @@ public class HoA extends Game {
 	public static final int screenHeight = 600;
 	public int posx;
 	public int posy;
+	public int insidex;
+	public int insidey;
 	public int health;
 	public int healththresh;
 	public int xp;
@@ -81,8 +84,7 @@ public class HoA extends Game {
 	public void decreaseHealth() {
 		health = health-1;
 		if (health <= 0){
-			this.setScreen(new MainMenuScreen(this));
-            System.out.println("u ded");
+			this.setScreen(new GameOverScreen(this));;
 		}
 	}
 

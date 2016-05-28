@@ -25,6 +25,7 @@ import com.hoa.game.HoA;
  */
 public class Inventory extends Table implements Disposable{
 
+    private int weaponsize;
     public HoA game;
     public Stage stage;
     public Viewport viewport;
@@ -72,6 +73,7 @@ public class Inventory extends Table implements Disposable{
         //test = game.getZone();
         invpadding = game.screenHeight/20;
         padleft = game.screenWidth/16;
+        weaponsize=50;
 
 
        viewport = new FitViewport(HoA.screenWidth, HoA.screenHeight, new OrthographicCamera());
@@ -96,12 +98,12 @@ public class Inventory extends Table implements Disposable{
         switch (game.level){
             case 1: weaponbutton =  new SpriteDrawable(new Sprite(new Texture("Items/ironsword.png")));
                     shieldbutton =  new SpriteDrawable(new Sprite(new Texture("Items/ironsword.png")));
-                    weaponlabel = new Label("Weapon:                Wooden Sword", new Label.LabelStyle(new BitmapFont(), Color.RED));
+                    weaponlabel = new Label("Weapon:                Iron Sword", new Label.LabelStyle(new BitmapFont(), Color.RED));
                     shieldlabel = new Label("Shield:                   Wooden Shield", new Label.LabelStyle(new BitmapFont(), Color.RED));
                     break;
-            case 2: weaponbutton =  new SpriteDrawable(new Sprite(new Texture("Items/ironsword.png")));
+            case 2: weaponbutton =  new SpriteDrawable(new Sprite(new Texture("Items/ironflail.png")));
                 shieldbutton =  new SpriteDrawable(new Sprite(new Texture("Items/ironsword.png")));
-                weaponlabel = new Label("Weapon:                Wooden Mace", new Label.LabelStyle(new BitmapFont(), Color.RED));
+                weaponlabel = new Label("Weapon:                Iron Flail", new Label.LabelStyle(new BitmapFont(), Color.RED));
                 shieldlabel = new Label("Shield:                   Wooden Shield", new Label.LabelStyle(new BitmapFont(), Color.RED));
                 break;
             case 3: weaponbutton =  new SpriteDrawable(new Sprite(new Texture("Items/ironsword.png")));
@@ -109,14 +111,14 @@ public class Inventory extends Table implements Disposable{
                 weaponlabel = new Label("Weapon:                Wooden Spear", new Label.LabelStyle(new BitmapFont(), Color.RED));
                 shieldlabel = new Label("Shield:                   Wooden Shield", new Label.LabelStyle(new BitmapFont(), Color.RED));
                 break;
-            case 4: weaponbutton =  new SpriteDrawable(new Sprite(new Texture("Items/ironsword.png")));
+            case 4: weaponbutton =  new SpriteDrawable(new Sprite(new Texture("Items/goldensword.png")));
                 shieldbutton =  new SpriteDrawable(new Sprite(new Texture("Items/ironsword.png")));
-                weaponlabel = new Label("Weapon:                Iron Sword", new Label.LabelStyle(new BitmapFont(), Color.RED));
+                weaponlabel = new Label("Weapon:                Golden Sword", new Label.LabelStyle(new BitmapFont(), Color.RED));
                 shieldlabel = new Label("Shield:                   Wooden Shield", new Label.LabelStyle(new BitmapFont(), Color.RED));
                 break;
-            case 5: weaponbutton =  new SpriteDrawable(new Sprite(new Texture("Items/ironsword.png")));
+            case 5: weaponbutton =  new SpriteDrawable(new Sprite(new Texture("Items/goldenflail.png")));
                 shieldbutton =  new SpriteDrawable(new Sprite(new Texture("Items/ironsword.png")));
-                weaponlabel = new Label("Weapon:                Iron Mace", new Label.LabelStyle(new BitmapFont(), Color.RED));
+                weaponlabel = new Label("Weapon:                Golden Flail", new Label.LabelStyle(new BitmapFont(), Color.RED));
                 shieldlabel = new Label("Shield:                   Iron Shield", new Label.LabelStyle(new BitmapFont(), Color.RED));
                 break;
             case 6: weaponbutton =  new SpriteDrawable(new Sprite(new Texture("Items/ironsword.png")));
@@ -124,14 +126,14 @@ public class Inventory extends Table implements Disposable{
                 weaponlabel = new Label("Weapon:                Iron Spear", new Label.LabelStyle(new BitmapFont(), Color.RED));
                 shieldlabel = new Label("Shield:                   Iron Shield", new Label.LabelStyle(new BitmapFont(), Color.RED));
                 break;
-            case 7: weaponbutton =  new SpriteDrawable(new Sprite(new Texture("Items/ironsword.png")));
+            case 7: weaponbutton =  new SpriteDrawable(new Sprite(new Texture("Items/diamondsword.png")));
                 shieldbutton =  new SpriteDrawable(new Sprite(new Texture("Items/ironsword.png")));
-                weaponlabel = new Label("Weapon:                Obsidian Sword", new Label.LabelStyle(new BitmapFont(), Color.RED));
+                weaponlabel = new Label("Weapon:                Diamond Sword", new Label.LabelStyle(new BitmapFont(), Color.RED));
                 shieldlabel = new Label("Shield:                   Iron Shield", new Label.LabelStyle(new BitmapFont(), Color.RED));
                 break;
-            case 8: weaponbutton =  new SpriteDrawable(new Sprite(new Texture("Items/ironsword.png")));
+            case 8: weaponbutton =  new SpriteDrawable(new Sprite(new Texture("Items/diamondflail.png")));
                 shieldbutton =  new SpriteDrawable(new Sprite(new Texture("Items/ironsword.png")));
-                weaponlabel = new Label("Weapon:                Obsidian Mace", new Label.LabelStyle(new BitmapFont(), Color.RED));
+                weaponlabel = new Label("Weapon:                Diamond Flail", new Label.LabelStyle(new BitmapFont(), Color.RED));
                 shieldlabel = new Label("Shield:                   Iron Shield", new Label.LabelStyle(new BitmapFont(), Color.RED));
                 break;
             case 9: weaponbutton =  new SpriteDrawable(new Sprite(new Texture("Items/ironsword.png")));
@@ -227,13 +229,13 @@ public class Inventory extends Table implements Disposable{
 
         table.row();
         table.add(weaponlabel).expandX().pad(invpadding, padleft, 0, 0).left();
-        table.add(weapon).expandX().pad(invpadding, 3*padleft, 0, 0).left();
+        table.add(weapon).expandX().pad(invpadding, 3*padleft, 0, 0).left().width(weaponsize).height(weaponsize);
 
         table.add(nullLabel).expandX();
         table.add(nullLabel).expandX();
         table.row();
         table.add(shieldlabel).expandX().pad(invpadding, padleft, 0, 0).left();
-        table.add(shield).expandX().pad(invpadding, 3*padleft, 0, 0).left();
+        table.add(shield).expandX().pad(invpadding, 3*padleft, 0, 0).left().width(weaponsize).height(weaponsize);
 
         table.add(nullLabel).expandX();
         table.add(nullLabel).expandX();
@@ -243,7 +245,7 @@ public class Inventory extends Table implements Disposable{
         table.add(nullLabel).expandX();
         table.add(nullLabel).expandX();
 
-        table.add(exit).pad(game.screenHeight*1/5,0, 0, 6*invpadding);
+        table.add(exit).pad(game.screenHeight*1/7,0, 0, 6*invpadding);
         table.setSize(200,600);
         table.setBackground(background);
 
