@@ -35,10 +35,13 @@ public class Inventory extends Table implements Disposable{
 
     public Button exit;
     public Button health;
-
+    public Button weapon;
+    public Button shield;
 
 
     private Label healthLabel;
+    private Label weaponlabel;
+    private Label shieldlabel;
     private Label levelLabel;
     private Label zoneLabel;
     private Label xpLabel;
@@ -50,6 +53,8 @@ public class Inventory extends Table implements Disposable{
 //    private Drawable xpbuttonimg;
     private Drawable healthbutton;
     private Drawable exitbutton;
+    private Drawable weaponbutton;
+    private Drawable shieldbutton;
 
 
     private float buttwidth;
@@ -88,6 +93,67 @@ public class Inventory extends Table implements Disposable{
                 break;
         }
 
+        switch (game.level){
+            case 1: weaponbutton =  new SpriteDrawable(new Sprite(new Texture("Items/ironsword.png")));
+                    shieldbutton =  new SpriteDrawable(new Sprite(new Texture("Items/ironsword.png")));
+                    weaponlabel = new Label("Weapon:                Wooden Sword", new Label.LabelStyle(new BitmapFont(), Color.RED));
+                    shieldlabel = new Label("Shield:                   Wooden Shield", new Label.LabelStyle(new BitmapFont(), Color.RED));
+                    break;
+            case 2: weaponbutton =  new SpriteDrawable(new Sprite(new Texture("Items/ironsword.png")));
+                shieldbutton =  new SpriteDrawable(new Sprite(new Texture("Items/ironsword.png")));
+                weaponlabel = new Label("Weapon:                Wooden Mace", new Label.LabelStyle(new BitmapFont(), Color.RED));
+                shieldlabel = new Label("Shield:                   Wooden Shield", new Label.LabelStyle(new BitmapFont(), Color.RED));
+                break;
+            case 3: weaponbutton =  new SpriteDrawable(new Sprite(new Texture("Items/ironsword.png")));
+                shieldbutton =  new SpriteDrawable(new Sprite(new Texture("Items/ironsword.png")));
+                weaponlabel = new Label("Weapon:                Wooden Spear", new Label.LabelStyle(new BitmapFont(), Color.RED));
+                shieldlabel = new Label("Shield:                   Wooden Shield", new Label.LabelStyle(new BitmapFont(), Color.RED));
+                break;
+            case 4: weaponbutton =  new SpriteDrawable(new Sprite(new Texture("Items/ironsword.png")));
+                shieldbutton =  new SpriteDrawable(new Sprite(new Texture("Items/ironsword.png")));
+                weaponlabel = new Label("Weapon:                Iron Sword", new Label.LabelStyle(new BitmapFont(), Color.RED));
+                shieldlabel = new Label("Shield:                   Wooden Shield", new Label.LabelStyle(new BitmapFont(), Color.RED));
+                break;
+            case 5: weaponbutton =  new SpriteDrawable(new Sprite(new Texture("Items/ironsword.png")));
+                shieldbutton =  new SpriteDrawable(new Sprite(new Texture("Items/ironsword.png")));
+                weaponlabel = new Label("Weapon:                Iron Mace", new Label.LabelStyle(new BitmapFont(), Color.RED));
+                shieldlabel = new Label("Shield:                   Iron Shield", new Label.LabelStyle(new BitmapFont(), Color.RED));
+                break;
+            case 6: weaponbutton =  new SpriteDrawable(new Sprite(new Texture("Items/ironsword.png")));
+                shieldbutton =  new SpriteDrawable(new Sprite(new Texture("Items/ironsword.png")));
+                weaponlabel = new Label("Weapon:                Iron Spear", new Label.LabelStyle(new BitmapFont(), Color.RED));
+                shieldlabel = new Label("Shield:                   Iron Shield", new Label.LabelStyle(new BitmapFont(), Color.RED));
+                break;
+            case 7: weaponbutton =  new SpriteDrawable(new Sprite(new Texture("Items/ironsword.png")));
+                shieldbutton =  new SpriteDrawable(new Sprite(new Texture("Items/ironsword.png")));
+                weaponlabel = new Label("Weapon:                Obsidian Sword", new Label.LabelStyle(new BitmapFont(), Color.RED));
+                shieldlabel = new Label("Shield:                   Iron Shield", new Label.LabelStyle(new BitmapFont(), Color.RED));
+                break;
+            case 8: weaponbutton =  new SpriteDrawable(new Sprite(new Texture("Items/ironsword.png")));
+                shieldbutton =  new SpriteDrawable(new Sprite(new Texture("Items/ironsword.png")));
+                weaponlabel = new Label("Weapon:                Obsidian Mace", new Label.LabelStyle(new BitmapFont(), Color.RED));
+                shieldlabel = new Label("Shield:                   Iron Shield", new Label.LabelStyle(new BitmapFont(), Color.RED));
+                break;
+            case 9: weaponbutton =  new SpriteDrawable(new Sprite(new Texture("Items/ironsword.png")));
+                shieldbutton =  new SpriteDrawable(new Sprite(new Texture("Items/ironsword.png")));
+                weaponlabel = new Label("Weapon:                Wooden Sword", new Label.LabelStyle(new BitmapFont(), Color.RED));
+                shieldlabel = new Label("Shield:                   Iron Shield", new Label.LabelStyle(new BitmapFont(), Color.RED));
+                break;
+            case 10: weaponbutton =  new SpriteDrawable(new Sprite(new Texture("Items/ironsword.png")));
+                shieldbutton =  new SpriteDrawable(new Sprite(new Texture("Items/ironsword.png")));
+                weaponlabel = new Label("Weapon:                Heart of Ages", new Label.LabelStyle(new BitmapFont(), Color.RED));
+                shieldlabel = new Label("Shield:                   Aegis Shield", new Label.LabelStyle(new BitmapFont(), Color.RED));
+                break;
+            default: weaponbutton =  new SpriteDrawable(new Sprite(new Texture("Items/ironsword.png")));
+                shieldbutton =  new SpriteDrawable(new Sprite(new Texture("Items/ironsword.png")));
+                weaponlabel = new Label("Weapon:                Wooden Sword", new Label.LabelStyle(new BitmapFont(), Color.RED));
+                shieldlabel = new Label("Shield:                   Wooden Shield", new Label.LabelStyle(new BitmapFont(), Color.RED));
+                break;
+        }
+
+        weapon=new Button(weaponbutton);
+        shield = new Button(shieldbutton);
+
         health = new Button (healthbutton);
 
         exitbutton = new SpriteDrawable(new Sprite(new Texture("Icons/exit.png")));
@@ -105,6 +171,8 @@ public class Inventory extends Table implements Disposable{
         levelLabel.setFontScale(1.2f);
         xpLabel.setFontScale(1.2f);
         zoneLabel.setFontScale(1.2f);
+        weaponlabel.setFontScale(1.2f);
+        shieldlabel.setFontScale(1.2f);
 
 
 
@@ -133,7 +201,7 @@ public class Inventory extends Table implements Disposable{
         table.add(InventoryLabel).pad(invpadding, game.screenWidth/2.5f, 0, 0).left();
         table.row();
         table.add(healthLabel).pad(invpadding, padleft, 0, 0).width(20).left();
-        table.add(health).pad(invpadding, 0, 0, game.screenWidth*1.5f).left();
+        table.add(health).pad(invpadding, 0, 0, game.screenWidth*1.4f).left();
         table.add(nullLabel).expandX();
         table.add(nullLabel).expandX();
         table.add(nullLabel).expandX();
@@ -158,12 +226,24 @@ public class Inventory extends Table implements Disposable{
         table.add(nullLabel).expandX();
 
         table.row();
+        table.add(weaponlabel).expandX().pad(invpadding, padleft, 0, 0).left();
+        table.add(weapon).expandX().pad(invpadding, 3*padleft, 0, 0).left();
+
+        table.add(nullLabel).expandX();
+        table.add(nullLabel).expandX();
+        table.row();
+        table.add(shieldlabel).expandX().pad(invpadding, padleft, 0, 0).left();
+        table.add(shield).expandX().pad(invpadding, 3*padleft, 0, 0).left();
+
+        table.add(nullLabel).expandX();
+        table.add(nullLabel).expandX();
+        table.row();
         table.add(nullLabel).expandX();
         table.add(nullLabel).expandX();
         table.add(nullLabel).expandX();
         table.add(nullLabel).expandX();
 
-        table.add(exit).pad(game.screenHeight*4/10,0, 0, 6*invpadding);
+        table.add(exit).pad(game.screenHeight*1/5,0, 0, 6*invpadding);
         table.setSize(200,600);
         table.setBackground(background);
 

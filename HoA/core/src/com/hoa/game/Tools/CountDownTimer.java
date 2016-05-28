@@ -1,5 +1,7 @@
 package com.hoa.game.Tools;
 
+import com.hoa.game.HoA;
+
 import java.util.TimerTask;
 
 /**
@@ -19,7 +21,7 @@ public class CountDownTimer extends TimerTask {
     public void run() {
         count--;
         //@TODO here you can display `count` where you need (alerady in seconds)
-        System.out.println("Count is: " + count);
+        //System.out.println("Count is: " + count);
         if (count <= 0){
             cancel();
             onFinish.run();
