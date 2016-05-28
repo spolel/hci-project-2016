@@ -70,6 +70,7 @@ public class CombatScreen implements Screen {
     private CountDownTimer timer;
     //private boolean running;
     private boolean defeated;
+    private boolean startedfight = false;
 
     public CombatScreen (HoA game, Boss boss, TiledMap map){
 
@@ -94,16 +95,7 @@ public class CombatScreen implements Screen {
         //hud
         combatscene = new CombatHud(game.batch, enemyBoss , game, map);
 
-            timer = new CountDownTimer(BATTLE_COUNTDOWN_SECONDS,( new Runnable() {
-                public void run() {
-                    //@TODO this executes when the timer is 0
-                    //timer.cancel();
-                    defeated=true;
-                   //current.defeat();
-                }
-            }));
 
-            new Timer().scheduleAtFixedRate(timer, 0, 1000);
         }
 
 
@@ -149,6 +141,20 @@ public class CombatScreen implements Screen {
                 String hue = bossName + " life : " + giorgio;
                 combatscene.setCounter(hue);
                 combatscene.setOut("Currently Fighting!");
+
+                timer = new CountDownTimer(BATTLE_COUNTDOWN_SECONDS,( new Runnable() {
+                    public void run() {
+                        //@TODO this executes when the timer is 0
+                        //timer.cancel();
+                        defeated=true;
+                        killed = true;
+                        //current.defeat();
+                    }
+                }));
+
+                new Timer().scheduleAtFixedRate(timer, 0, 1000);
+                startedfight=true;
+
             }
             else if(tot==bossLife-1){
                 endTime = System.currentTimeMillis();
@@ -176,6 +182,14 @@ public class CombatScreen implements Screen {
     public void update(float dt){
         handleInput(dt);
         defeat();
+        if(startedfight){timerf();}
+    }
+
+    public void timerf(){
+
+        String text = "time: "+ timer.getCount();
+        combatscene.setTimer(text);
+
     }
 
 

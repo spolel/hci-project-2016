@@ -44,6 +44,7 @@ public class CombatHud extends Table implements Disposable{
     public Label Counter;
     private Label Out;
     public Button enemy;
+    private Label Timer;
 //    private Button enemyrender;
 
 
@@ -96,9 +97,11 @@ public class CombatHud extends Table implements Disposable{
         table.setFillParent(true);
 
         String title1 = "You are fighting now: " + bossName ;
+
         Title =new Label(title1, new Label.LabelStyle(new BitmapFont(), Color.BLACK));
         Counter =new Label(countertot, new Label.LabelStyle(new BitmapFont(), Color.RED));
         Out = new Label("press ESC to return to the game, click to add counter", new Label.LabelStyle(new BitmapFont(), Color.BLACK));
+        Timer = new Label("Timer: xx",new Label.LabelStyle(new BitmapFont(), Color.BLACK));
 
 
         Title.setFontScale(1.2f, 1.2f);
@@ -117,7 +120,9 @@ public class CombatHud extends Table implements Disposable{
 
         table.add(Title).expandX().padTop(100);
         table.row();
-        table.add(Counter).expandX().padTop(50);
+        table.add(Counter).expandX().padTop(30);
+        table.row();
+        table.add(Timer).expandX().padTop(30);
         table.row();
         table.add(enemy);
         table.row();
@@ -152,6 +157,9 @@ public class CombatHud extends Table implements Disposable{
     }
     public void setOut(String text){
         Out.setText(text);
+    }
+    public void setTimer(String text){
+        Timer.setText(text);
     }
 
 //    // method to call in the CombatScreen class with the input just touched method (the clicker)
