@@ -27,8 +27,11 @@ import com.hoa.game.Scenes.CombatHud;
 import com.hoa.game.Sprites.Boss;
 import com.hoa.game.Sprites.Player;
 import com.hoa.game.Tools.B2WorldCreator;
+import com.hoa.game.Tools.CountDownTimer;
 import com.hoa.game.Tools.WorldContactListener;
 import com.badlogic.gdx.graphics.Texture;
+
+import java.util.Timer;
 
 /**
  * Created by shughi on 17/05/2016.
@@ -36,30 +39,48 @@ import com.badlogic.gdx.graphics.Texture;
 public class CombatScreen implements Screen {
 
     //game class
-    private HoA game;
-    private Viewport gamePort;
-
-    private Stage stage;
-    private InputMultiplexer input;
-
-    private TiledMap map;
-
-    // Current game camera & screen display, currently a FitViewPort
 
 
     //hud of the program
-    private CombatHud combatscene;
     private Boss boss;
+
+    private static final int BATTLE_COUNTDOWN_SECONDS = 10;
 
     //Label newGame;
     //Label
 
+    //game class
+    private HoA game;
+    private Viewport gamePort;
+    private Stage stage;
+    private InputMultiplexer input;
+    private TiledMap map;
+    // Current game camera & screen display, currently a FitViewPort
+    //hud of the program
+    private CombatHud combatscene;
+    private Boss enemyBoss;
+    private String bossName;
+    private int bossLife;
+    public boolean killed = false;
+    private int tot = 0;
+    long startTime;
+    long endTime;
+    long fightlast;
+    private CountDownTimer timer;
+    private boolean running;
+
     public CombatScreen (HoA game, Boss boss, TiledMap map){
+
 
         //actual game variable
         this.game = game;
-        this.boss = boss;
+        this.enemyBoss = boss;
         this.map = map;
+
+        System.out.println("new combatscreen");
+
+        this.bossLife = boss.getLife();
+        this.bossName = boss.getName();
 
         stage = new Stage(new FitViewport(HoA.screenWidth, HoA.screenHeight));
         input = new InputMultiplexer();
@@ -67,18 +88,18 @@ public class CombatScreen implements Screen {
         gamePort = new FitViewport(HoA.screenWidth, HoA.screenHeight);
 
         //hud
-        combatscene = new CombatHud(game.batch, boss , game, map);
+        combatscene = new CombatHud(game.batch, enemyBoss , game, map);
 
+            timer = new CountDownTimer(BATTLE_COUNTDOWN_SECONDS, new Runnable() {
+                public void run() {
+                    //@TODO this executes when the timer is 0
+                    //timer.cancel();
+                    CombatScreen.this.defeat();
+                }
+            });
 
-
-
-    }
-
-    // Method to see if the target is killed, used for adding xp after the combat
-    public boolean isKill(){
-        return combatscene.killed;
-    }
-
+            new Timer().scheduleAtFixedRate(timer, 0, 1000);
+        }
 
 
 
@@ -97,40 +118,100 @@ public class CombatScreen implements Screen {
 
         else if (Gdx.input.justTouched()) {
 
-            combatscene.damageHandler();
+            damageHandler();
         }
 
+    }
+
+
+    public void damageHandler(){
+        if(killed){   // this is to make this if enter only once.
+            if (tot >= bossLife-1 || ((System.currentTimeMillis() - startTime)/1000)<0) {  // boss is dead. This is the click that kills him, or 10 sec have passed.
+                if (fightlast <= 10) {
+                    String ciao = "You beated the " + bossName + " in : " + fightlast + " seconds!";
+                    combatscene.setCounter(ciao);
+                } else {
+                    String ciao = "" + "Too slow! The " + bossName + " beated you in " + fightlast + " seconds!";  //added the ""+ at the beginning just to avoid a stupid feature on intelliJ about duplicates
+                    combatscene.setCounter(ciao);
+                }
+            }
+        }
+        else  {
+            if (tot == 0) {  // fight is about to start
+                startTime = System.currentTimeMillis();
+                tot = tot + 1;
+                int giorgio = bossLife - tot;
+                String hue = bossName + " life : " + giorgio;
+                combatscene.setCounter(hue);
+                combatscene.setOut("Currently Fighting!");
+            }
+            else if(tot==bossLife-1){
+                endTime = System.currentTimeMillis();
+                fightlast = ((endTime - startTime) / 1000);
+                killed = true;
+                if (fightlast <= 10) {
+                    String ciao = "You beated the " + bossName + " in : " + fightlast + " seconds!";
+                    combatscene.setCounter(ciao);
+                    victory();
+                } else {
+                    String ciao = "" + "Too slow! The " + bossName + " beated you in " + fightlast + " seconds!";  //added the ""+ at the beginning just to avoid a stupid feature on intelliJ about duplicates
+                    combatscene.setCounter(ciao);
+                    defeat();
+                }
+            }
+            else {  // fight is going on
+                tot = tot + 1;
+                int giorgio = bossLife - tot;
+                String hue = bossName + " life : " + giorgio;
+                combatscene.setCounter(hue);
+            }
+        }
     }
 
     public void update(float dt){
         handleInput(dt);
-        // This is used for the new combat, comment when using old combat.
-        if(isKill() == true) {
-            game.xp = game.xp + boss.getXp();
-            levelUp();
-            game.setScreen(new MainLand(game));
-        }
-        combatscene.manageLabel(combatscene.Counter);
     }
 
-    public void levelUp(){
-        if (game.xp >= game.xpthresh){
-        while(game.xp - game.xpthresh >= 0) {
-            game.xp = game.xp - game.xpthresh;
-            game.xpthresh = game.xpthresh * 2;
-            game.level++;
-        }
-        }
-        if (game.level % 3 == 0 & game.level < 7){
-            if(game.healththresh<4){
-                game.healththresh++;
-                game.health++;
+
+    public void victory(){
+        System.out.println("hello");
+        game.collisioncount=0;
+        timer.cancel();
+        int boss_xp = enemyBoss.getXp();
+        int boss_layer = enemyBoss.getLayer();
+        //handle level xp end so on
+        if( (game.xp + boss_xp) >= game.xpthresh){  // when you increase level
+            game.xp = game.xp + boss_xp;
+            while (game.xp - game.xpthresh >= 0) {  // if you increase more than 1 level
+                game.xp = game.xp - game.xpthresh;
+                game.xpthresh = game.xpthresh * 2;
+                game.level++;
             }
-            else if (game.health < game.healththresh){
-                game.health++;
+            if (game.level % 3 == 0 & game.level < 7) {
+                if (game.healththresh < 4) {
+                    game.healththresh++;
+                    game.health++;
+                } else if (game.health < game.healththresh) {
+                    game.health++;
+                }
             }
-            }
+            combatscene.setOut("You gained " + boss_xp + "XP, and you are now level "+game.level+ "!"+" press ESC to continue.");
         }
+        else{
+            game.setXP(game.xp + boss_xp);
+            combatscene.setOut("You gained " + boss_xp + "XP, press ESC to continue.");
+        }
+        // deactivate the layers  --> GOD DONUT NEED TO IMPLEMENT LAYER NUMBER IN BOSS CLASS
+        // NOT WORKING
+        //   map.getLayers().remove(boss_layer);
+        //   map.getLayers().remove(boss_layer+1);
+    }
+    public void defeat(){
+        game.decreaseHealth();
+        combatscene.setOut("You lost 1 heart and you are now at " + game.health + " HP! Press ESC to continue.");
+        game.setScreen(new MainMenuScreen(game));
+    }
+
 
 
 
@@ -179,7 +260,7 @@ public class CombatScreen implements Screen {
 
     @Override
     public void dispose() {
-        // combatscene.dispose();
+        combatscene.dispose();
 
     }
 }

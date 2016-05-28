@@ -18,10 +18,12 @@ public class HoA extends Game {
 	public int lvdmg = 1;
 	public int dmg = 1 * lvdmg;
 	public String zone;
+	public int collisioncount;
 
 	public SpriteBatch batch;
 
-	public int getPosx() {
+
+    public int getPosx() {
 		return posx;
 	}
 
@@ -79,7 +81,7 @@ public class HoA extends Game {
 	public void decreaseHealth() {
 		health = health-1;
 		if (health <= 0){
-			Gdx.app.exit();
+			this.setScreen(new MainMenuScreen(this));
 		}
 	}
 

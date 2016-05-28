@@ -39,10 +39,6 @@ public class CombatHud extends Table implements Disposable{
     public Stage stage;
     public Viewport viewport;
 
-    long startTime;
-    long endTime;
-    long fightlast;
-
 
     private Label Title;
     public Label Counter;
@@ -147,23 +143,34 @@ public class CombatHud extends Table implements Disposable{
 
     }
 
-    // method to call in the CombatScreen class with the input just touched method (the clicker)
 
-    // this is the "new" prototype for combat, it should be easier to understand and further modify since it only uses
-    // the key handler to calculate damage
-    // ****TESTED NOT FINISHED****     TODO: combat text, timer, labels, ...
-    public void damageHandler() {
-        if(killed == false) {
-            bossLife = bossLife - game.dmg;
-            counter = counter +1;
-            manageLabel(Counter);
-            if (bossLife <= 0){
-                killed = true;
-            }
-        }
-        else if (killed == true){
-            game.setScreen(new MainLand(game));
-        }
+    public void setTitle(String text){
+        Title.setText(text);
+    }
+    public void setCounter(String text){
+        Counter.setText(text);
+    }
+    public void setOut(String text){
+        Out.setText(text);
+    }
+
+//    // method to call in the CombatScreen class with the input just touched method (the clicker)
+//
+//    // this is the "new" prototype for combat, it should be easier to understand and further modify since it only uses
+//    // the key handler to calculate damage
+//    // ****TESTED NOT FINISHED****     TODO: combat text, timer, labels, ...
+//    public void damageHandler() {
+//        if(killed == false) {
+//            bossLife = bossLife - game.dmg;
+//            counter = counter +1;
+//            manageLabel(Counter);
+//            if (bossLife <= 0){
+//                killed = true;
+//            }
+//        }
+//        else if (killed == true){
+//            game.setScreen(new MainLand(game));
+//        }
 
      // Old, working, combatHud uncomment to make CombatHud great again.
      /**   if(killed){   // this is to make this if enter only once.
@@ -221,7 +228,7 @@ public class CombatHud extends Table implements Disposable{
             }
 
         } */
-      }
+     // }
 
 
 
@@ -253,16 +260,12 @@ public class CombatHud extends Table implements Disposable{
 //
 //    }
 
-    private void defeat() {
 
-        game.decreaseHealth();
+//
+//    public Button getEnemy(){
+//        return enemy;
+//    }
 
-    }
-
-    public Button getEnemy(){
-        return enemy;
-    }
-    
 
     @Override
     public void dispose() {

@@ -94,8 +94,8 @@ public class MainLand extends SuperClass {
                                                      y = player.getBody().getPosition().y +30;}
                                                  else {
                                                      y = player.getBody().getPosition().y;}
-                                                 game.setPos((int) x, (int) y);
-                                                 ((InteractiveTile) object.getUserData()).onCollision();
+                                                    game.setPos((int) x, (int) y);
+                                                    ((InteractiveTile) object.getUserData()).onCollision();
 
                                              }
                                          }
@@ -191,7 +191,7 @@ public class MainLand extends SuperClass {
 
 
         /** 60 times a second calculate the physics*/
-        world.step(1/32f,0 ,0);
+        world.step(1/64f,0 ,0);
 
         player.update(dt);
 

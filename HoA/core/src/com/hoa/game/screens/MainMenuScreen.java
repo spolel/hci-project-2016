@@ -90,6 +90,7 @@ public class MainMenuScreen implements Screen {
             game.setXPThreshold(20);
             game.setLevel(1);
             game.setScreen(new MainLand(game));
+            game.collisioncount=0;
         }
 
         if (Gdx.input.isKeyPressed(Input.Keys.I) || mainmenu.instructions.isPressed()){
