@@ -148,8 +148,8 @@ public class Inventory extends Table implements Disposable{
                 break;
             default: weaponbutton =  new SpriteDrawable(new Sprite(new Texture("Items/sausage.png")));
                 shieldbutton =  new SpriteDrawable(new Sprite(new Texture("Items/bruco.gif")));
-                weaponlabel = new Label("Weapon: Mighty Sausage of Slaughter", new Label.LabelStyle(new BitmapFont(), Color.RED));
-                shieldlabel = new Label("Shield: Poisoned Bruco of Sorrow", new Label.LabelStyle(new BitmapFont(), Color.RED));
+                weaponlabel = new Label("Weapon 1: Mighty Sausage of Slaughter", new Label.LabelStyle(new BitmapFont(), Color.RED));
+                shieldlabel = new Label("Weapon 2: Poisoned Bruco of Sorrow", new Label.LabelStyle(new BitmapFont(), Color.RED));
                 break;
         }
 

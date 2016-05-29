@@ -120,7 +120,7 @@ public class Cave extends SuperClass {
 
 
         Random a = new Random();
-        int value = a.nextInt(1000);
+        int value = a.nextInt(3000);
         if(value==2){
             SpriteDrawable cave = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
             Mob Skeleton = new Mob(super.game.level*25, "Skeleton", new Texture("Sprites/encounters/skelly.png"), super.game.level*25, cave);
@@ -164,7 +164,7 @@ public class Cave extends SuperClass {
 
 
         // render the Box2d lines
-        b2dr.render(world,gamecam.combined);
+        //b2dr.render(world,gamecam.combined);
     }
 
     @Override

@@ -150,7 +150,7 @@ public class Tavern extends SuperClass {
 
 
         // render the Box2d lines
-        b2dr.render(world,gamecam.combined);
+        //b2dr.render(world,gamecam.combined);
     }
 
     @Override
