@@ -28,12 +28,13 @@ public class Volcano extends SuperClass {
 
     //game class
     public HoA game;
+    public B2WorldCreator worldcreator;
 
 
 
     //map loader and renderer
     private TmxMapLoader mapLoader;
-    private TiledMap map;
+    public TiledMap map;
     public OrthogonalTiledMapRenderer renderer;
 
     //box2d
@@ -64,7 +65,7 @@ public class Volcano extends SuperClass {
 
 
 
-        new B2WorldCreator(world,map, game, this);
+        this.worldcreator = new B2WorldCreator(world,map, game, this);
 
         world.setContactListener(new WorldContactListener(){});
 
@@ -101,6 +102,11 @@ public class Volcano extends SuperClass {
         }
 
 
+//        // warps to bk
+//        if (Gdx.input.isKeyJustPressed(Input.Keys.T)) {
+//            player.b2body.getPosition().x = 1568;
+//            player.b2body.getPosition().y = 1888;
+//        }
 
 
     }
@@ -112,7 +118,7 @@ public class Volcano extends SuperClass {
         int value = a.nextInt(3000);
         if(value==1){
             SpriteDrawable volcano = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
-            Mob fireWisp = new Mob(super.game.level*50, "Fire Wisp", new Texture("Sprites/encounters/fire_thingy.png"), super.game.level*50, volcano);
+            Mob fireWisp = new Mob(super.game.level*super.game.level*50, "Fire Wisp", new Texture("Sprites/encounters/fire_thingy.png"), super.game.level*50, volcano);
             super.game.setScreen(new CombatMob(super.game, fireWisp, this));
         }
 

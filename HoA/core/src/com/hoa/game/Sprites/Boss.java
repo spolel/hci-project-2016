@@ -14,18 +14,14 @@ public class Boss {
     private String name;
     private Texture texture;
     private int layer;
-    private int x_pos;
-    private int y_pos;
     private int xp;
     private SpriteDrawable background;
 
-    public Boss(int life, String name, Texture texture, int layer, int x_pos, int y_pos, int xp, SpriteDrawable background){
+    public Boss(int life, String name, Texture texture, int layer, int xp, SpriteDrawable background){
 
         this.life = life;
         this.name = name;
         this.texture = texture;
-        this.x_pos = x_pos;
-        this.y_pos = y_pos;
         this.layer = layer;
         this.xp = xp;
         this.background=background;
@@ -51,16 +47,6 @@ public class Boss {
 
         return texture;
 
-    }
-
-    public int getX(){
-
-        return x_pos;
-    }
-
-    public int getY(){
-
-        return y_pos;
     }
 
     public int getLayer(){

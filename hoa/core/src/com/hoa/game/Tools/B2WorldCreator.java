@@ -30,14 +30,25 @@ public class B2WorldCreator {
     public B2WorldCreator(World world, TiledMap map, HoA game, SuperClass current){
         this.current=current;
 
-        Texture boss1 = new Texture("Sprites/Bosses/Flaming_ent.png");
-        Texture boss2 = new Texture("Sprites/Bosses/slime.png");
+        Texture fEnt = new Texture("Sprites/Bosses/Flaming_ent.png");
+        Texture slime = new Texture("Sprites/Bosses/slime.png");
+        Texture BK = new Texture("Sprites/Bosses/blood knight.png");
+        Texture wizard = new Texture("Sprites/Bosses/frostmage.png");
+        Texture ghost = new Texture("Sprites/Bosses/ghost.png");
+
 
         SpriteDrawable forest = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
         SpriteDrawable island = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
+        SpriteDrawable cave = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
+        SpriteDrawable volcano = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
+        SpriteDrawable iceland = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
 
-        Boss boss1_test = new Boss(100*game.level,"Flaming Ent",boss1, 12, 9200, 8888, 100*game.level, forest);
-        Boss boss2_test = new Boss(300*game.level,"Flaming Ent Crying",boss2, 14, 9500, 8888, 300*game.level, island);
+        Boss flamingEnt = new Boss(35*game.level*game.level,"Flaming Ent",fEnt, 12, 100*game.level, forest);
+        Boss spookiGhost = new Boss(40*game.level*game.level,"Spooki Ghost",ghost, 14, 150*game.level, island);
+        Boss Slime = new Boss(45*game.level*game.level,"Slimee",slime, 12, 200*game.level, cave);
+        Boss bloodKnight = new Boss(50*game.level*game.level,"Blood Knight",BK, 12, 250*game.level, volcano);
+        Boss frostMage = new Boss(55*game.level*game.level,"Frost Mage",wizard, 12, 500*game.level, iceland);
+
 
 
 
@@ -89,7 +100,7 @@ public class B2WorldCreator {
         //Boss1
         for(MapObject object : map.getLayers().get(12).getObjects().getByType(RectangleMapObject.class)) {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
-            new Boss1(world, map, rect, game, boss1_test, current);
+            new Boss1(world, map, rect, game, flamingEnt, current);
         }
 
         //bonus
@@ -101,7 +112,7 @@ public class B2WorldCreator {
         //Boss2
         for(MapObject object : map.getLayers().get(14).getObjects().getByType(RectangleMapObject.class)) {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
-            new Boss1(world, map, rect, game, boss2_test,current);
+            new Boss1(world, map, rect, game, spookiGhost,current);
         }
 
         //bonus
@@ -114,7 +125,7 @@ public class B2WorldCreator {
         //Boss3
         for(MapObject object : map.getLayers().get(16).getObjects().getByType(RectangleMapObject.class)) {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
-            new Boss1(world, map, rect, game, boss2_test,current);
+            new Boss1(world, map, rect, game, bloodKnight,current);
         }
 
         //bonus
@@ -126,7 +137,7 @@ public class B2WorldCreator {
         //Boss4
         for(MapObject object : map.getLayers().get(18).getObjects().getByType(RectangleMapObject.class)) {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
-            new Boss1(world, map, rect, game, boss2_test,current);
+            new Boss1(world, map, rect, game, Slime, current);
         }
 
         //bonus
@@ -138,7 +149,7 @@ public class B2WorldCreator {
         //Boss5
         for(MapObject object : map.getLayers().get(20).getObjects().getByType(RectangleMapObject.class)) {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
-            new Boss1(world, map, rect, game, boss2_test,current);
+            new Boss1(world, map, rect, game, frostMage,current);
         }
 
         //bonus

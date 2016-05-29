@@ -11,7 +11,6 @@ public class HoA extends Game {
 	public static final int screenHeight = 600;
 	public int posx;
 	public int posy;
-	public int inventory;
 	public int health;
 	public int healththresh;
 	public int xp;

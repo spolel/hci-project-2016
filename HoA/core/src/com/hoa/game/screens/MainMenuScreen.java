@@ -87,11 +87,11 @@ public class MainMenuScreen implements Screen {
             game.setHealth(2);
             game.setHealthThreshold(2);
             game.setXP(0);
-            game.setXPThreshold(20);
+            game.setXPThreshold(50);
             game.setLevel(1);
             game.collisioncount=0;
             game.dmg=1;
-            game.lvdmg=2;
+            game.lvdmg=4;
             game.setScreen(new MainLand(game));
 
         }

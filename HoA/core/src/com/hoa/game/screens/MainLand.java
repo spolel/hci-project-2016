@@ -27,13 +27,14 @@ import java.util.Random;
  */
 public class MainLand extends SuperClass {
 
+    public B2WorldCreator worldcreator;
     //game class
     public HoA game;
 
 
     //map loader and renderer
     private TmxMapLoader mapLoader;
-    private TiledMap map;
+    public TiledMap map;
     public OrthogonalTiledMapRenderer renderer;
 
     //box2d
@@ -65,7 +66,7 @@ public class MainLand extends SuperClass {
 
 
 
-        new B2WorldCreator(world,map, game, this);
+        this.worldcreator= new B2WorldCreator(world,map, game, this);
 
         world.setContactListener(new WorldContactListener() {
                                      @Override
@@ -169,6 +170,12 @@ public class MainLand extends SuperClass {
             super.game.setScreen(new MainLand(super.game));
         }
 
+        // warps to mage
+        if (Gdx.input.isKeyJustPressed(Input.Keys.B)) {
+            super.game.setPos(2528, 11488);
+            super.game.setScreen(new MainLand(super.game));
+        }
+
         //levelup
         if (Gdx.input.isKeyJustPressed(Input.Keys.L)) {
             super.game.level++;
@@ -194,7 +201,7 @@ public class MainLand extends SuperClass {
 
         //attempt at random encounters: should work, just put in the boss info and uncomment
         Random a = new Random();
-        int value = a.nextInt(3000);
+        int value = a.nextInt(2500);
         if(value==0){
             SpriteDrawable forest = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
 

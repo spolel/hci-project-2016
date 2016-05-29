@@ -31,6 +31,7 @@ public class SuperClass implements Screen {
     //game class
     public HoA game;
     private TextureAtlas atlas;
+    public B2WorldCreator worldcreator;
 
     // Current game camera & screen display, currently a FitViewPort
     protected OrthographicCamera gamecam;
@@ -47,11 +48,11 @@ public class SuperClass implements Screen {
 
     //map loader and renderer
     private TmxMapLoader mapLoader;
-    private TiledMap map;
+    public TiledMap map;
     public OrthogonalTiledMapRenderer renderer;
 
     //box2d
-    private World world;
+    public World world;
     private Box2DDebugRenderer b2dr;
 
     private Player player;

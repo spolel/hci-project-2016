@@ -34,6 +34,7 @@ import java.util.Random;
  */
 public class Cave extends SuperClass {
 
+    public B2WorldCreator worldcreator;
     //game class
     public HoA game;
 
@@ -41,7 +42,7 @@ public class Cave extends SuperClass {
 
     //map loader and renderer
     private TmxMapLoader mapLoader;
-    private TiledMap map;
+    public TiledMap map;
     public OrthogonalTiledMapRenderer renderer;
 
     //box2d
@@ -72,7 +73,7 @@ public class Cave extends SuperClass {
 
 
 
-        new B2WorldCreator(world,map, game, this);
+        this.worldcreator=new B2WorldCreator(world,map, game, this);
 
         world.setContactListener(new WorldContactListener(){});
 
@@ -110,7 +111,11 @@ public class Cave extends SuperClass {
 
 
 
-
+//        // warps to slimee
+//        if (Gdx.input.isKeyJustPressed(Input.Keys.T)) {
+//            player.b2body.getPosition().x = 1024;
+//            player.b2body.getPosition().y = 3424;
+//        }
 
     }
 
@@ -123,7 +128,7 @@ public class Cave extends SuperClass {
         int value = a.nextInt(3000);
         if(value==2){
             SpriteDrawable cave = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
-            Mob Skeleton = new Mob(super.game.level*25, "Skeleton", new Texture("Sprites/encounters/skelly.png"), super.game.level*25, cave);
+            Mob Skeleton = new Mob(super.game.level*super.game.level*25, "Skeleton", new Texture("Sprites/encounters/skelly.png"), super.game.level*25, cave);
             super.game.setScreen(new CombatMob(super.game, Skeleton, this));
         }
 
