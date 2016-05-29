@@ -51,7 +51,7 @@ public class Credit extends Table implements Disposable{
         viewport = new FitViewport(HoA.screenWidth, HoA.screenHeight, new OrthographicCamera());
         stage = new Stage(viewport, spriteBatch);
 
-        background = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
+        background = new SpriteDrawable(new Sprite(new Texture("Menu/credits.jpg")));
 
 
 
@@ -93,7 +93,7 @@ public class Credit extends Table implements Disposable{
         table.setBackground(background);
 
         table.add();
-        table.add(back).width(buttwidth).height(buttheight).pad(500,400,0,0);
+        table.add(back).width(buttwidth).height(buttheight).pad(520,400,0,0);
         table.add();
 
         stage.addActor(table);

@@ -59,7 +59,7 @@ public class Instruction extends Table implements Disposable{
         Gdx.input.setInputProcessor(stage);
 
 
-        background = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
+        background = new SpriteDrawable(new Sprite(new Texture("Menu/instructionsmenu.jpg")));
 
 
 
