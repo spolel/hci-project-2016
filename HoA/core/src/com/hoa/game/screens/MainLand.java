@@ -198,9 +198,25 @@ public class MainLand extends SuperClass {
         if(value==0){
             SpriteDrawable forest = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
 
-            Mob bandit = new Mob(super.game.level*15, "Bandit", new Texture("Sprites/encounters/bandit.png"), super.game.level*15, forest);
+            Mob bandit = new Mob(super.game.level*super.game.level*15, "Bandit", new Texture("Sprites/encounters/bandit.png"), super.game.level*15, forest);
             super.game.setPos((int)player.b2body.getPosition().x, (int)player.b2body.getPosition().y);
             super.game.setScreen(new CombatMob(super.game, bandit, this));
+        }
+
+        if(value==1){
+            SpriteDrawable forest = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
+
+            Mob bandit3 = new Mob(super.game.level*super.game.level*25, "Bandit Chief", new Texture("Sprites/encounters/bandit3.png"), super.game.level*25, forest);
+            super.game.setPos((int)player.b2body.getPosition().x, (int)player.b2body.getPosition().y);
+            super.game.setScreen(new CombatMob(super.game, bandit3, this));
+        }
+
+        if(value==2){
+            SpriteDrawable forest = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
+
+            Mob bandit3 = new Mob(super.game.level*super.game.level*30, "Ninja", new Texture("Sprites/encounters/ninja.png"), super.game.level*30, forest);
+            super.game.setPos((int)player.b2body.getPosition().x, (int)player.b2body.getPosition().y);
+            super.game.setScreen(new CombatMob(super.game, bandit3, this));
         }
 //        if(value==1){
 //            Mob fireWisp = new Mob(super.game.level*20, "Fire Wisp", new Texture("Sprites/encounters/fire_thingy.png"), super.game.level*20);
