@@ -110,6 +110,7 @@ public class CombatScreen implements Screen {
 
         if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
             game.collisioncount=0;
+            current.hud=new Hud(game.batch, game);
             game.setScreen(current);
         }
 
