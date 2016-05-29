@@ -12,7 +12,9 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.hoa.game.HoA;
 import com.hoa.game.Scenes.CombatMobHud;
+import com.hoa.game.Scenes.Hud;
 import com.hoa.game.Sprites.Mob;
+import com.hoa.game.Tools.B2WorldCreator;
 import com.hoa.game.Tools.CountDownTimer;
 
 /**
@@ -73,6 +75,8 @@ public class CombatMob implements Screen {
 
 
         if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
+           // current.worldcreator=new B2WorldCreator(current.world, current.map, game, current);
+            current.hud=new Hud(game.batch, game);
             game.setScreen(current);
         }
 
