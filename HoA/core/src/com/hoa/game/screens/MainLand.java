@@ -201,8 +201,8 @@ public class MainLand extends SuperClass {
 
         //attempt at random encounters: should work, just put in the boss info and uncomment
         Random a = new Random();
-        int value = a.nextInt(2500);
-        if(value==0){
+        int value = a.nextInt(10000);
+        if(1<value & value<50){
             SpriteDrawable forest = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
 
             Mob bandit = new Mob(super.game.level*super.game.level*15, "Bandit", new Texture("Sprites/encounters/bandit.png"), super.game.level*15, forest);
@@ -210,7 +210,7 @@ public class MainLand extends SuperClass {
             super.game.setScreen(new CombatMob(super.game, bandit, this));
         }
 
-        if(value==1){
+        if(50<value & value<100){
             SpriteDrawable forest = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
 
             Mob bandit3 = new Mob(super.game.level*super.game.level*25, "Bandit Chief", new Texture("Sprites/encounters/bandit3.png"), super.game.level*25, forest);
@@ -218,12 +218,20 @@ public class MainLand extends SuperClass {
             super.game.setScreen(new CombatMob(super.game, bandit3, this));
         }
 
-        if(value==2){
+        if(100<value & value<150){
             SpriteDrawable forest = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
 
-            Mob bandit3 = new Mob(super.game.level*super.game.level*30, "Ninja", new Texture("Sprites/encounters/ninja.png"), super.game.level*30, forest);
+            Mob ninja = new Mob(super.game.level*super.game.level*30, "Ninja", new Texture("Sprites/encounters/ninja.png"), super.game.level*30, forest);
             super.game.setPos((int)player.b2body.getPosition().x, (int)player.b2body.getPosition().y);
-            super.game.setScreen(new CombatMob(super.game, bandit3, this));
+            super.game.setScreen(new CombatMob(super.game, ninja, this));
+        }
+
+        if(value>150){
+            SpriteDrawable forest = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
+
+            Boss berserkbandit = new Boss(super.game.level*super.game.level*69, "Berserk Bandit", new Texture("Sprites/encounters/bandit2.png"), 1, super.game.level*30, forest);
+            super.game.setPos((int)player.b2body.getPosition().x, (int)player.b2body.getPosition().y);
+            super.game.setScreen(new CombatScreen(super.game, berserkbandit, map, this));
         }
 //        if(value==1){
 //            Mob fireWisp = new Mob(super.game.level*20, "Fire Wisp", new Texture("Sprites/encounters/fire_thingy.png"), super.game.level*20);

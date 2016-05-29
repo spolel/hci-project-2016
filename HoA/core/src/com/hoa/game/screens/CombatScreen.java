@@ -233,7 +233,13 @@ public class CombatScreen implements Screen {
             defeated=false;
             game.collisioncount=0;
             game.decreaseHealth();
-            combatscene.setOut("You lost 1 heart and you are now at " + game.health + " HP! Press ESC to continue.");
+            if (bossName == "Berserk Bandit") {
+                combatscene.setOut("You got rekt son! Press ESC to continue.");
+
+            }
+            else {
+                combatscene.setOut("You lost 1 heart and you are now at " + game.health + " HP! Press ESC to continue.");
+            }
         //game.setScreen(new MainMenuScreen(game));
             }
     }
