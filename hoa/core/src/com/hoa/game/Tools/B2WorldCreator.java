@@ -80,7 +80,7 @@ public class B2WorldCreator {
         //tavernexit
         for(MapObject object : map.getLayers().get(11).getObjects().getByType(RectangleMapObject.class)) {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
-            new Door(world, map, rect, game);
+            new TavernExit(world, map, rect, game);
         }
 
         //Boss1
@@ -107,5 +107,71 @@ public class B2WorldCreator {
             new Door(world, map, rect, game);
         }
 
+        //FROM BOSS3 TILL BOSS 5 STILL TO IMPLEMENT
+        //Boss3
+        for(MapObject object : map.getLayers().get(16).getObjects().getByType(RectangleMapObject.class)) {
+            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+            new Boss1(world, map, rect, game, boss2_test);
+        }
+
+        //bonus
+        for(MapObject object : map.getLayers().get(17).getObjects().getByType(RectangleMapObject.class)) {
+            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+            new Door(world, map, rect, game);
+        }
+
+        //Boss4
+        for(MapObject object : map.getLayers().get(18).getObjects().getByType(RectangleMapObject.class)) {
+            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+            new Boss1(world, map, rect, game, boss2_test);
+        }
+
+        //bonus
+        for(MapObject object : map.getLayers().get(19).getObjects().getByType(RectangleMapObject.class)) {
+            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+            new Door(world, map, rect, game);
+        }
+
+        //Boss5
+        for(MapObject object : map.getLayers().get(20).getObjects().getByType(RectangleMapObject.class)) {
+            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+            new Boss1(world, map, rect, game, boss2_test);
+        }
+
+        //bonus
+        for(MapObject object : map.getLayers().get(21).getObjects().getByType(RectangleMapObject.class)) {
+            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+            new Door(world, map, rect, game);
+        }
+
+        //teleport 1
+        for(MapObject object : map.getLayers().get(22).getObjects().getByType(RectangleMapObject.class)) {
+            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+            new TeleportMountain(world, map, rect, game);
+        }
+
+        //teleport 2
+        for(MapObject object : map.getLayers().get(23).getObjects().getByType(RectangleMapObject.class)) {
+            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+            new TeleportVolcano(world, map, rect, game);
+        }
+
+        //teleport 3
+        for(MapObject object : map.getLayers().get(24).getObjects().getByType(RectangleMapObject.class)) {
+            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+            new TeleportIsland(world, map, rect, game);
+        }
+
+        //teleport 4
+        for(MapObject object : map.getLayers().get(25).getObjects().getByType(RectangleMapObject.class)) {
+            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+            new TeleportForest(world, map, rect, game);
+        }
+
+        //teleport 5
+        for(MapObject object : map.getLayers().get(26).getObjects().getByType(RectangleMapObject.class)) {
+            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+            new TeleportIceland(world, map, rect, game);
+        }
     }
 }

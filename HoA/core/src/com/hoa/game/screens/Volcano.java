@@ -109,7 +109,7 @@ public class Volcano extends SuperClass {
         handleInput(dt);
 
         Random a = new Random();
-        int value = a.nextInt(1000);
+        int value = a.nextInt(3000);
         if(value==1){
             SpriteDrawable volcano = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
             Mob fireWisp = new Mob(super.game.level*50, "Fire Wisp", new Texture("Sprites/encounters/fire_thingy.png"), super.game.level*50, volcano);
@@ -153,7 +153,7 @@ public class Volcano extends SuperClass {
 
 
         // render the Box2d lines
-        b2dr.render(world,gamecam.combined);
+        //b2dr.render(world,gamecam.combined);
     }
 
     @Override

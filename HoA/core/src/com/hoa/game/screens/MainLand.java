@@ -193,7 +193,7 @@ public class MainLand extends SuperClass {
 
         //attempt at random encounters: should work, just put in the boss info and uncomment
         Random a = new Random();
-        int value = a.nextInt(1000);
+        int value = a.nextInt(5000);
         if(value==0){
             SpriteDrawable forest = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
 
@@ -250,7 +250,7 @@ public class MainLand extends SuperClass {
 
 
         // render the Box2d lines
-        b2dr.render(world,gamecam.combined);
+        //b2dr.render(world,gamecam.combined);
     }
 
     @Override
