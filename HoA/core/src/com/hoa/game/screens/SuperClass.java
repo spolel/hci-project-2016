@@ -35,6 +35,7 @@ public class SuperClass implements Screen {
     // Current game camera & screen display, currently a FitViewPort
     protected OrthographicCamera gamecam;
     protected Viewport gamePort;
+    protected SuperClass current;
 
     //hud of the program
     protected Hud hud;
@@ -64,6 +65,7 @@ public class SuperClass implements Screen {
 
         //actual game variable
         this.game = game;
+        this.current = this;
 
         //camera variable
         gamecam = new OrthographicCamera();
@@ -106,7 +108,11 @@ public class SuperClass implements Screen {
         // opens inventory
         if (Gdx.input.isKeyJustPressed(Input.Keys.I) || hud.inventory.isPressed()) {
 
-            game.setScreen(new InventoryScreen(game, this));
+            game.inventory++;
+            if(game.inventory==1) {
+                //System.out.println("new inventory");
+                game.setScreen(new InventoryScreen(game, this));
+            }
 
         }
 

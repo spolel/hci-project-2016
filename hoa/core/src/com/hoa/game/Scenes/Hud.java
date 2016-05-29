@@ -237,11 +237,11 @@ public class Hud extends Table implements Disposable{
 //        table.add(nullLabel);
 //        table.add(nullLabel);
         table.row();
-        table.add(options).pad(invpadding,10,0,0);
+        //table.add(options).pad(invpadding,10,0,0);
         table.add(nullLabel);
         table.add(nullLabel);
 
-        table.add(inventory).pad(invpadding,0,0,10);
+        //table.add(inventory).pad(invpadding,0,0,10);
 
         //addActor(sidebar);
         table.row();

@@ -11,8 +11,7 @@ public class HoA extends Game {
 	public static final int screenHeight = 600;
 	public int posx;
 	public int posy;
-	public int insidex;
-	public int insidey;
+	public int inventory;
 	public int health;
 	public int healththresh;
 	public int xp;
@@ -22,6 +21,7 @@ public class HoA extends Game {
 	public int dmg;
 	public String zone;
 	public int collisioncount;
+
 
 	public SpriteBatch batch;
 

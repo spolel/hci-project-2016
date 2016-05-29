@@ -43,7 +43,7 @@ public class Boss1 extends InteractiveTile {
 
         @Override
         public void onCollision() {
-                game.collisioncount=game.collisioncount+1;
+                game.collisioncount++;
             if (game.collisioncount == 1){
                 game.setScreen(new CombatScreen(game, boss, map));
 
