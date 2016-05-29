@@ -205,7 +205,7 @@ public class MainLand extends SuperClass {
         if(1<value & value<5){
             SpriteDrawable forest = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
 
-            Mob bandit = new Mob(super.game.level*super.game.level*15, "Bandit", new Texture("Sprites/encounters/bandit.png"), super.game.level*15, forest);
+            Mob bandit = new Mob(super.game.level*super.game.level*15, "Bandit", new Texture("Sprites/encounters/bandits/bandit.png"), super.game.level*15, forest);
             super.game.setPos((int)player.b2body.getPosition().x, (int)player.b2body.getPosition().y);
             super.game.setScreen(new CombatMob(super.game, bandit, this));
         }
@@ -213,7 +213,7 @@ public class MainLand extends SuperClass {
         if(5<value & value<10){
             SpriteDrawable forest = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
 
-            Mob bandit3 = new Mob(super.game.level*super.game.level*25, "Bandit Chief", new Texture("Sprites/encounters/bandit3.png"), super.game.level*25, forest);
+            Mob bandit3 = new Mob(super.game.level*super.game.level*25, "Bandit Chief", new Texture("Sprites/encounters/bandits/bandit3.png"), super.game.level*25, forest);
             super.game.setPos((int)player.b2body.getPosition().x, (int)player.b2body.getPosition().y);
             super.game.setScreen(new CombatMob(super.game, bandit3, this));
         }
@@ -229,7 +229,7 @@ public class MainLand extends SuperClass {
         if(value==1){
             SpriteDrawable forest = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
 
-            Boss berserkbandit = new Boss(super.game.level*super.game.level*69, "Berserk Bandit", new Texture("Sprites/encounters/bandit2.png"), 1, super.game.level*30, forest);
+            Boss berserkbandit = new Boss(super.game.level*super.game.level*69, "Berserk Bandit", new Texture("Sprites/encounters/bandits/bandit2.png"), 1, super.game.level*30, forest);
             super.game.setPos((int)player.b2body.getPosition().x, (int)player.b2body.getPosition().y);
             super.game.setScreen(new CombatScreen(super.game, berserkbandit, map, this));
         }
