@@ -28,7 +28,7 @@ public class B2WorldCreator {
     public B2WorldCreator(World world, TiledMap map, HoA game){
 
         Texture boss1 = new Texture("Sprites/Bosses/Flaming_ent.png");
-        Texture boss2 = new Texture("Sprites/Bosses/Boss2.png");
+        Texture boss2 = new Texture("Sprites/Bosses/slime.png");
 
         SpriteDrawable forest = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
         SpriteDrawable island = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
