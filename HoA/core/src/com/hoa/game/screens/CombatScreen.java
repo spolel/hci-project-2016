@@ -112,6 +112,8 @@ public class CombatScreen implements Screen {
             game.collisioncount=0;
             current.hud=new Hud(game.batch, game);
             game.setScreen(current);
+            //current.worldcreator=new B2WorldCreator(current.world, map, game, current);
+
         }
 
         else if (Gdx.input.justTouched()) {

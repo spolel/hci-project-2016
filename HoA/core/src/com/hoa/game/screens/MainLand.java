@@ -179,6 +179,8 @@ public class MainLand extends SuperClass {
         //levelup
         if (Gdx.input.isKeyJustPressed(Input.Keys.L)) {
             super.game.level++;
+            super.game.dmg=super.game.dmg+ super.game.lvdmg;
+
         }
 
 //        main map:
@@ -201,8 +203,8 @@ public class MainLand extends SuperClass {
 
         //attempt at random encounters: should work, just put in the boss info and uncomment
         Random a = new Random();
-        int value = a.nextInt(10000);
-        if(1<value & value<5){
+        int value = a.nextInt(100000);
+        if(10<value & value<50){
             SpriteDrawable forest = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
 
             Mob bandit = new Mob(super.game.level*super.game.level*15, "Bandit", new Texture("Sprites/encounters/bandits/bandit.png"), super.game.level*15, forest);
@@ -210,7 +212,7 @@ public class MainLand extends SuperClass {
             super.game.setScreen(new CombatMob(super.game, bandit, this));
         }
 
-        if(5<value & value<10){
+        if(50<value & value<100){
             SpriteDrawable forest = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
 
             Mob bandit3 = new Mob(super.game.level*super.game.level*25, "Bandit Chief", new Texture("Sprites/encounters/bandits/bandit3.png"), super.game.level*25, forest);
@@ -218,7 +220,7 @@ public class MainLand extends SuperClass {
             super.game.setScreen(new CombatMob(super.game, bandit3, this));
         }
 
-        if(10<value & value<15){
+        if(100<value & value<150){
             SpriteDrawable forest = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
 
             Mob ninja = new Mob(super.game.level*super.game.level*30, "Ninja", new Texture("Sprites/encounters/ninja.png"), super.game.level*30, forest);
