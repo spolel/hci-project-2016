@@ -10,6 +10,7 @@ import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 import com.hoa.game.HoA;
 import com.hoa.game.Sprites.*;
+import com.hoa.game.screens.SuperClass;
 
 /**
  * Created by lorenzo on 28/04/16.
@@ -22,10 +23,12 @@ public class B2WorldCreator {
     PolygonShape shape = new PolygonShape();
     FixtureDef fdef = new FixtureDef();
     Body body;
+    protected SuperClass current;
 
     // Boss definition down here
 
-    public B2WorldCreator(World world, TiledMap map, HoA game){
+    public B2WorldCreator(World world, TiledMap map, HoA game, SuperClass current){
+        this.current=current;
 
         Texture boss1 = new Texture("Sprites/Bosses/Flaming_ent.png");
         Texture boss2 = new Texture("Sprites/Bosses/slime.png");
@@ -86,7 +89,7 @@ public class B2WorldCreator {
         //Boss1
         for(MapObject object : map.getLayers().get(12).getObjects().getByType(RectangleMapObject.class)) {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
-            new Boss1(world, map, rect, game, boss1_test);
+            new Boss1(world, map, rect, game, boss1_test, current);
         }
 
         //bonus
@@ -98,7 +101,7 @@ public class B2WorldCreator {
         //Boss2
         for(MapObject object : map.getLayers().get(14).getObjects().getByType(RectangleMapObject.class)) {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
-            new Boss1(world, map, rect, game, boss2_test);
+            new Boss1(world, map, rect, game, boss2_test,current);
         }
 
         //bonus
@@ -111,7 +114,7 @@ public class B2WorldCreator {
         //Boss3
         for(MapObject object : map.getLayers().get(16).getObjects().getByType(RectangleMapObject.class)) {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
-            new Boss1(world, map, rect, game, boss2_test);
+            new Boss1(world, map, rect, game, boss2_test,current);
         }
 
         //bonus
@@ -123,7 +126,7 @@ public class B2WorldCreator {
         //Boss4
         for(MapObject object : map.getLayers().get(18).getObjects().getByType(RectangleMapObject.class)) {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
-            new Boss1(world, map, rect, game, boss2_test);
+            new Boss1(world, map, rect, game, boss2_test,current);
         }
 
         //bonus
@@ -135,7 +138,7 @@ public class B2WorldCreator {
         //Boss5
         for(MapObject object : map.getLayers().get(20).getObjects().getByType(RectangleMapObject.class)) {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
-            new Boss1(world, map, rect, game, boss2_test);
+            new Boss1(world, map, rect, game, boss2_test,current);
         }
 
         //bonus

@@ -12,14 +12,16 @@ import com.hoa.game.screens.CombatMob;
 import com.hoa.game.screens.CombatScreen;
 import com.hoa.game.screens.MainLand;
 import com.badlogic.gdx.graphics.Texture;
+import com.hoa.game.screens.SuperClass;
 
 public class Boss1 extends InteractiveTile {
 
     private Boss boss;
     private TiledMap map;
+    protected SuperClass current;
 
 
-    public Boss1(World world, TiledMap map, Rectangle bounds, HoA game, Boss boss) {
+    public Boss1(World world, TiledMap map, Rectangle bounds, HoA game, Boss boss, SuperClass current) {
         super(world, map, bounds, game);
         fixture.setUserData(this);
 
@@ -38,6 +40,7 @@ public class Boss1 extends InteractiveTile {
         body.createFixture(fdef);
 
         this.map = map;
+        this.current = current;
 
         }
 
@@ -45,7 +48,7 @@ public class Boss1 extends InteractiveTile {
         public void onCollision() {
                 game.collisioncount++;
             if (game.collisioncount == 1){
-                game.setScreen(new CombatScreen(game, boss, map));
+                game.setScreen(new CombatScreen(game, boss, map, current));
 
             }
 

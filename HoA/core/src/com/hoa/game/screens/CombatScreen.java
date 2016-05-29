@@ -71,8 +71,9 @@ public class CombatScreen implements Screen {
     //private boolean running;
     private boolean defeated;
     private boolean startedfight = false;
+    private SuperClass current;
 
-    public CombatScreen (HoA game, Boss boss, TiledMap map){
+    public CombatScreen (HoA game, Boss boss, TiledMap map, SuperClass current){
 
 
         //actual game variable
@@ -80,6 +81,7 @@ public class CombatScreen implements Screen {
         this.enemyBoss = boss;
         this.map = map;
         defeated=false;
+        this.current=current;
 
         this.bossLife = boss.getLife();
         this.bossName = boss.getName();
@@ -108,7 +110,7 @@ public class CombatScreen implements Screen {
 
         if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
             game.collisioncount=0;
-            game.setScreen(new MainLand(game));
+            game.setScreen(current);
         }
 
         else if (Gdx.input.justTouched()) {
@@ -192,7 +194,7 @@ public class CombatScreen implements Screen {
 
 
     public void victory(){
-        System.out.println("hello");
+        //System.out.println("hello");
         game.collisioncount=0;
         timer.cancel();
         int boss_xp = enemyBoss.getXp();
@@ -202,7 +204,7 @@ public class CombatScreen implements Screen {
             game.xp = game.xp + boss_xp;
             while (game.xp - game.xpthresh >= 0) {  // if you increase more than 1 level
                 game.xp = game.xp - game.xpthresh;
-                game.xpthresh = game.xpthresh * 2;
+                game.xpthresh = game.xpthresh + game.xpthresh*(game.level-1);
                 game.level++;
                 game.dmg=game.dmg*game.lvdmg;
             }

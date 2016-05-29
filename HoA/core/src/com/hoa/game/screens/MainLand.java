@@ -11,6 +11,7 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 import com.hoa.game.HoA;
+import com.hoa.game.Scenes.Hud;
 import com.hoa.game.Sprites.Boss;
 import com.hoa.game.Sprites.InteractiveTile;
 import com.hoa.game.Sprites.Mob;
@@ -64,7 +65,7 @@ public class MainLand extends SuperClass {
 
 
 
-        new B2WorldCreator(world,map, game);
+        new B2WorldCreator(world,map, game, this);
 
         world.setContactListener(new WorldContactListener() {
                                      @Override
@@ -223,6 +224,7 @@ public class MainLand extends SuperClass {
 
         gamecam.update();
         renderer.setView(gamecam);
+
     }
 
 

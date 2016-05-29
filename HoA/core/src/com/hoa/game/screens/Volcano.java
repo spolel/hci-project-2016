@@ -64,7 +64,7 @@ public class Volcano extends SuperClass {
 
 
 
-        new B2WorldCreator(world,map, game);
+        new B2WorldCreator(world,map, game, this);
 
         world.setContactListener(new WorldContactListener(){});
 
