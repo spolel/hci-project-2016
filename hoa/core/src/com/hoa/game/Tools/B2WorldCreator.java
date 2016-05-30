@@ -43,11 +43,12 @@ public class B2WorldCreator {
         SpriteDrawable volcano = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
         SpriteDrawable iceland = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
 
-        Boss flamingEnt = new Boss((game.level)*50,"Flaming Ent",fEnt, 12, 100*game.level, forest);
-        Boss spookiGhost = new Boss(100+(game.level)*100,"Spooki Ghost",ghost, 14, 150*game.level, island);
-        Boss Slime = new Boss(300+(game.level)*1000,"Slimee",slime, 12, 200*game.level, cave);
-        Boss bloodKnight = new Boss(5000+(game.level)*10000,"Blood Knight",BK, 12, 250*game.level, volcano);
-        Boss frostMage = new Boss(400000+(game.level)*100000,"Frost Mage",wizard, 12, 500*game.level, iceland);
+        Boss flamingEnt = new Boss((game.level)*50,"Flaming Ent",fEnt, 12, 100, forest);
+        Boss spookiGhost = new Boss(200+(game.level)*100,"Spooki Ghost",ghost, 14, 300, island);
+        Boss Slime = new Boss(2000+(game.level)*200,"Slimee",slime, 12, 500, cave);
+        Boss bloodKnight = new Boss(50000+(game.level)*2000,"Blood Knight",BK, 12, 1000, volcano);
+        Boss frostMage = new Boss(1000000+(game.level)*300000,"Frost Mage",wizard, 12, 69696969, iceland);
+
 
 
 

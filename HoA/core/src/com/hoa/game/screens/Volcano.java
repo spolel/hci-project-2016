@@ -18,6 +18,7 @@ import com.hoa.game.Sprites.Mob;
 import com.hoa.game.Sprites.Player;
 import com.hoa.game.Tools.B2WorldCreator;
 import com.hoa.game.Tools.WorldContactListener;
+import static java.lang.Math.log;
 
 import java.util.Random;
 
@@ -118,7 +119,8 @@ public class Volcano extends SuperClass {
         int value = a.nextInt(3000);
         if(value==1){
             SpriteDrawable volcano = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
-            Mob fireWisp = new Mob(super.game.level*super.game.level*50, "Fire Wisp", new Texture("Sprites/encounters/fire_thingy.png"), super.game.level*50, volcano);
+            Mob fireWisp = new Mob(super.game.dmg*(int)log(super.game.level+10)*50, "Fire Wisp", new Texture("Sprites/encounters/fire_thingy.png"), super.game.level*super.game.level*20, volcano);
+
             super.game.setScreen(new CombatMob(super.game, fireWisp, this));
         }
 
