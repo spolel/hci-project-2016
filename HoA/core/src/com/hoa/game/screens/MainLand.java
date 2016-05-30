@@ -212,11 +212,11 @@ public class MainLand extends SuperClass {
 
         //attempt at random encounters: should work, just put in the boss info and uncomment
         Random a = new Random();
-        int value = a.nextInt(100000);
+        int value = a.nextInt(10000);
         if(10<value & value<50){
             SpriteDrawable forest = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
 
-            Mob bandit = new Mob(super.game.level*super.game.level*5, "Bandit", new Texture("Sprites/encounters/bandits/bandit.png"), super.game.level*15, forest);
+            Mob bandit = new Mob(super.game.dmg*(int)log(super.game.level+10)*15, "Bandit", new Texture("Sprites/encounters/bandits/bandit.png"), super.game.level*15, forest);
             super.game.setPos((int)player.b2body.getPosition().x, (int)player.b2body.getPosition().y);
             super.game.setScreen(new CombatMob(super.game, bandit, this));
         }
@@ -224,12 +224,12 @@ public class MainLand extends SuperClass {
         if(50<value & value<100){
             SpriteDrawable forest = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
 
-            Mob bandit3 = new Mob(super.game.level*super.game.level*10, "Bandit Chief", new Texture("Sprites/encounters/bandits/bandit3.png"), super.game.level*25, forest);
+            Mob bandit3 = new Mob(super.game.dmg*(int)log(super.game.level+10)*15, "Bandit Chief", new Texture("Sprites/encounters/bandits/bandit3.png"), super.game.level*25, forest);
             super.game.setPos((int)player.b2body.getPosition().x, (int)player.b2body.getPosition().y);
             super.game.setScreen(new CombatMob(super.game, bandit3, this));
         }
 
-        if(100<value & value<600){
+        if(100<value & value<150){
             SpriteDrawable forest = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
 
             Mob ninja = new Mob(super.game.dmg*(int)log(super.game.level+10)*15, "Ninja", new Texture("Sprites/encounters/ninja.png"), super.game.level*30, forest);

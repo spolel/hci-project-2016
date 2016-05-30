@@ -17,7 +17,7 @@ public class Boss {
     private int xp;
     private SpriteDrawable background;
 
-    public Boss(int life, String name, Texture texture, int layer, int xp, SpriteDrawable background){
+    public Boss(double life, String name, Texture texture, int layer, int xp, SpriteDrawable background){
 
         this.life = life;
         this.name = name;
