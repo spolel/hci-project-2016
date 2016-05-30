@@ -29,6 +29,7 @@ public class Player extends Sprite{
 
     public Player(World world, SuperClass screen, int x, int y){
         // getting the pack
+        
         super(screen.getAtlas().findRegion("running_down"));
 
         this.world = world;
@@ -157,6 +158,7 @@ public class Player extends Sprite{
 
     }
 }
+
 
 
 
