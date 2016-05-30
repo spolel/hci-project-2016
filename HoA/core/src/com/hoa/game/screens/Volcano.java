@@ -86,16 +86,20 @@ public class Volcano extends SuperClass {
         super.handleInput(dt);
 
         if ((Gdx.input.isKeyPressed(Input.Keys.W)|Gdx.input.isKeyPressed(Input.Keys.UP)) && player.b2body.getLinearVelocity().y <= super.speed){
+            rndEncVolcano();
             player.b2body.applyLinearImpulse(new Vector2(0, super.speedchar), player.b2body.getWorldCenter(),true);
 
         }
         else if ((Gdx.input.isKeyPressed(Input.Keys.S)|Gdx.input.isKeyPressed(Input.Keys.DOWN)) && player.b2body.getLinearVelocity().y >= -speed){
+            rndEncVolcano();
             player.b2body.applyLinearImpulse(new Vector2(0, -speedchar), player.b2body.getWorldCenter(),true);
         }
         else if ((Gdx.input.isKeyPressed(Input.Keys.A)|Gdx.input.isKeyPressed(Input.Keys.LEFT)) && player.b2body.getLinearVelocity().x >= -speed){
+            rndEncVolcano();
             player.b2body.applyLinearImpulse(new Vector2(-speedchar,0), player.b2body.getWorldCenter(),true);
         }
         else if ((Gdx.input.isKeyPressed(Input.Keys.D)|Gdx.input.isKeyPressed(Input.Keys.RIGHT)) && player.b2body.getLinearVelocity().x <= speed){
+            rndEncVolcano();
             player.b2body.applyLinearImpulse(new Vector2(speedchar, 0), player.b2body.getWorldCenter(),true);
         }
         else {
@@ -111,10 +115,7 @@ public class Volcano extends SuperClass {
 
 
     }
-
-    public void update(float dt){
-        handleInput(dt);
-
+    public void rndEncVolcano(){
         Random a = new Random();
         int value = a.nextInt(3000);
         if(value==1){
@@ -123,6 +124,11 @@ public class Volcano extends SuperClass {
 
             super.game.setScreen(new CombatMob(super.game, fireWisp, this));
         }
+    }
+
+    public void update(float dt){
+        handleInput(dt);
+
 
 
         /** 60 times a second calculate the physics*/
