@@ -76,7 +76,7 @@ public class CombatMob implements Screen {
     public void handleInput(float dt){
 
 
-        if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
+        if (Gdx.input.isKeyPressed(Input.Keys.E)){
            // current.worldcreator=new B2WorldCreator(current.world, current.map, game, current);
             current.hud=new Hud(game.batch, game);
             game.setScreen(current);
@@ -155,11 +155,11 @@ public class CombatMob implements Screen {
                     game.health++;
                 }
 
-            combatscene.setOut("You gained " + boss_xp + "XP, and you are now level "+game.level+ "!"+" press ESC to continue.");
+            combatscene.setOut("You gained " + boss_xp + "XP, and you are now level "+game.level+ "!"+" press E to continue.");
         }
         else {
             game.setXP(game.xp + boss_xp);
-            combatscene.setOut("You gained " + boss_xp + "XP, press ESC to continue.");
+            combatscene.setOut("You gained " + boss_xp + "XP, press E to continue.");
         }
     }
 

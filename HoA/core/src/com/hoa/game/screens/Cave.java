@@ -87,7 +87,7 @@ public class Cave extends SuperClass {
         int value = a.nextInt(3000);
         if(value==2){
             SpriteDrawable cave = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
-            Mob Skeleton = new Mob(super.game.dmg*(int)log(super.game.level+10)*40, "Skeleton", new Texture("Sprites/encounters/skelly.png"), super.game.level*super.game.level*15, cave);
+            Mob Skeleton = new Mob(super.game.dmg*(int)log(super.game.level+10)*25, "Skeleton", new Texture("Sprites/encounters/skelly.png"), super.game.level*super.game.level*15, cave);
             super.game.setScreen(new CombatMob(super.game, Skeleton, this));
         }
     }

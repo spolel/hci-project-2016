@@ -110,7 +110,7 @@ public class CombatScreen implements Screen {
 
         //insert click listener
 
-        if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
+        if (Gdx.input.isKeyPressed(Input.Keys.E)){
             game.collisioncount=0;
 
 
@@ -261,11 +261,11 @@ public class CombatScreen implements Screen {
                     game.health++;
                 }
 
-            combatscene.setOut("You gained " + boss_xp + "XP, and you are now level "+game.level+ "!"+" press ESC to continue.");
+            combatscene.setOut("You gained " + boss_xp + "XP, and you are now level "+game.level+ "!"+" press E to continue.");
         }
         else{
             game.setXP(game.xp + boss_xp);
-            combatscene.setOut("You gained " + boss_xp + "XP, press ESC to continue.");
+            combatscene.setOut("You gained " + boss_xp + "XP, press E to continue.");
         }
         // deactivate the layers  --> GOD DONUT NEED TO IMPLEMENT LAYER NUMBER IN BOSS CLASS
         // NOT WORKING
@@ -278,11 +278,11 @@ public class CombatScreen implements Screen {
             game.collisioncount=0;
             game.decreaseHealth();
             if (bossName == "Berserk Bandit") {
-                combatscene.setOut("You got rekt son! Press ESC to continue.");
+                combatscene.setOut("You got rekt son! Press E to continue.");
 
             }
             else {
-                combatscene.setOut("You lost 1 heart and you are now at " + game.health + " HP! Press ESC to continue.");
+                combatscene.setOut("You lost 1 heart and you are now at " + game.health + " HP! Press E to continue.");
             }
         //game.setScreen(new MainMenuScreen(game));
             }
