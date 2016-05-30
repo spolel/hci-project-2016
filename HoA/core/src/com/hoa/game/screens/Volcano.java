@@ -21,6 +21,8 @@ import com.hoa.game.Tools.WorldContactListener;
 
 import java.util.Random;
 
+import static java.lang.Math.log;
+
 /**
  * Created by BMW on 26/04/2016.
  */
@@ -118,7 +120,7 @@ public class Volcano extends SuperClass {
         int value = a.nextInt(3000);
         if(value==1){
             SpriteDrawable volcano = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
-            Mob fireWisp = new Mob(super.game.level*super.game.level*50, "Fire Wisp", new Texture("Sprites/encounters/fire_thingy.png"), super.game.level*50, volcano);
+            Mob fireWisp = new Mob(super.game.dmg*(int)log(super.game.level+10)*50, "Fire Wisp", new Texture("Sprites/encounters/fire_thingy.png"), super.game.level*super.game.level*20, volcano);
             super.game.setScreen(new CombatMob(super.game, fireWisp, this));
         }
 

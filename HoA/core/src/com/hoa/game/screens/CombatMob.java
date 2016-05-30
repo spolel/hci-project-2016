@@ -141,8 +141,9 @@ public class CombatMob implements Screen {
             game.xp = game.xp + boss_xp;
             while (game.xp - game.xpthresh >= 0) {  // if you increase more than 1 level
                 game.xp = game.xp - game.xpthresh;
-                game.xpthresh = game.xpthresh + game.xpthresh*(game.level-1);
                 game.level++;
+                game.xpthresh = game.xpthresh + game.xpthresh*(game.level-1);
+
                 double damage=game.dmg*log(10+game.dmg);
                 game.dmg = (int) damage;
 
