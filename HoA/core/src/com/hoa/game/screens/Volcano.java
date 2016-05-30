@@ -41,7 +41,7 @@ public class Volcano extends SuperClass {
     private World world;
     private Box2DDebugRenderer b2dr;
 
-    private Player player;
+    public Player player;
 
 
     public Volcano(HoA game){
@@ -183,6 +183,9 @@ public class Volcano extends SuperClass {
     @Override
     public void hide() {
 
+    }
+    public World getWorld(){
+        return this.world;
     }
 
     @Override

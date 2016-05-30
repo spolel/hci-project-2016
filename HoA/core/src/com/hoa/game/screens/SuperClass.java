@@ -55,7 +55,7 @@ public class SuperClass implements Screen {
     public World world;
     private Box2DDebugRenderer b2dr;
 
-    private Player player;
+    public Player player;
     private boolean inventory;
 
 

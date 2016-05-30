@@ -49,7 +49,7 @@ public class Cave extends SuperClass {
     private World world;
     private Box2DDebugRenderer b2dr;
 
-    private Player player;
+    public Player player;
 
 
     public Cave(HoA game){
@@ -193,6 +193,9 @@ public class Cave extends SuperClass {
     @Override
     public void hide() {
 
+    }
+    public World getWorld(){
+        return this.world;
     }
 
     @Override

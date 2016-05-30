@@ -111,7 +111,7 @@ public class MainLand extends SuperClass {
                                  });}
 
 
-
+//add diagonal movement?
 
     // This part moves the camera on the wasd key input.
     // created by shughi
@@ -136,6 +136,12 @@ public class MainLand extends SuperClass {
         }
         else {
             player.b2body.setLinearVelocity(0,0);
+        }
+
+
+        // map
+        if (Gdx.input.isKeyJustPressed(Input.Keys.M)) {
+            super.game.setScreen(new MapScreen(super.game, this));
         }
 
 
@@ -294,6 +300,10 @@ public class MainLand extends SuperClass {
         //hud = new Hud(game.batch, game);
 
 
+    }
+
+    public World getWorld(){
+        return this.world;
     }
 
     @Override

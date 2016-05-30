@@ -110,9 +110,49 @@ public class CombatScreen implements Screen {
 
         if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
             game.collisioncount=0;
-            current.hud=new Hud(game.batch, game);
-            game.setScreen(current);
-            //current.worldcreator=new B2WorldCreator(current.world, map, game, current);
+
+
+            String zone = game.getZone();
+            if (zone.equals("Main Land")) {
+
+
+
+                MainLand m = (MainLand) current;
+                World world = m.getWorld();
+                SuperClass b = new MainLand(game);
+                int x = (int)m.player.b2body.getPosition().x;
+                int y = (int)m.player.b2body.getPosition().y;
+                b.player= new Player(world, b, x, y);
+                b.hud=new Hud(game.batch, game);
+                game.setScreen(b);
+
+            }
+
+
+            if (zone.equals("Volcano")) {
+
+                Volcano m = (Volcano) current;
+                World world = m.getWorld();
+                SuperClass b = new Volcano(game);
+                int x = (int)m.player.b2body.getPosition().x;
+                int y = (int)m.player.b2body.getPosition().y;
+                b.player= new Player(world, b, x, y);
+                b.hud=new Hud(game.batch, game);
+                game.setScreen(b);
+            }
+
+             if (zone.equals("Cave")) {
+
+                 Cave m = (Cave) current;
+                 World world = m.getWorld();
+                 SuperClass b = new Cave(game);
+                 int x = (int)m.player.b2body.getPosition().x;
+                 int y = (int)m.player.b2body.getPosition().y;
+                 b.player= new Player(world, b, x, y);
+                 b.hud=new Hud(game.batch, game);
+                 game.setScreen(b);
+             }
+
 
         }
 
