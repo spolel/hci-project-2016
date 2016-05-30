@@ -88,41 +88,29 @@ public class Cave extends SuperClass {
     //using raw velocity, stops when stop pressing;
     //only one key usable now
     //if the else if is removed weird stuff happens
-    public void handleInput(float dt){
+    public void handleInput(float dt) {
 
         super.handleInput(dt);
 
-        if ((Gdx.input.isKeyPressed(Input.Keys.W)|Gdx.input.isKeyPressed(Input.Keys.UP)) && player.b2body.getLinearVelocity().y <= super.speed){
-            player.b2body.applyLinearImpulse(new Vector2(0, super.speedchar), player.b2body.getWorldCenter(),true);
+        if ((Gdx.input.isKeyPressed(Input.Keys.W) | Gdx.input.isKeyPressed(Input.Keys.UP)) && player.b2body.getLinearVelocity().y <= super.speed) {
+            rndEncCave();
+            player.b2body.applyLinearImpulse(new Vector2(0, super.speedchar), player.b2body.getWorldCenter(), true);
 
+        } else if ((Gdx.input.isKeyPressed(Input.Keys.S) | Gdx.input.isKeyPressed(Input.Keys.DOWN)) && player.b2body.getLinearVelocity().y >= -speed) {
+            rndEncCave();
+            player.b2body.applyLinearImpulse(new Vector2(0, -speedchar), player.b2body.getWorldCenter(), true);
+        } else if ((Gdx.input.isKeyPressed(Input.Keys.A) | Gdx.input.isKeyPressed(Input.Keys.LEFT)) && player.b2body.getLinearVelocity().x >= -speed) {
+            rndEncCave();
+            player.b2body.applyLinearImpulse(new Vector2(-speedchar, 0), player.b2body.getWorldCenter(), true);
+        } else if ((Gdx.input.isKeyPressed(Input.Keys.D) | Gdx.input.isKeyPressed(Input.Keys.RIGHT)) && player.b2body.getLinearVelocity().x <= speed) {
+            rndEncCave();
+            player.b2body.applyLinearImpulse(new Vector2(speedchar, 0), player.b2body.getWorldCenter(), true);
+        } else {
+            player.b2body.setLinearVelocity(0, 0);
         }
-        else if ((Gdx.input.isKeyPressed(Input.Keys.S)|Gdx.input.isKeyPressed(Input.Keys.DOWN)) && player.b2body.getLinearVelocity().y >= -speed){
-            player.b2body.applyLinearImpulse(new Vector2(0, -speedchar), player.b2body.getWorldCenter(),true);
-        }
-        else if ((Gdx.input.isKeyPressed(Input.Keys.A)|Gdx.input.isKeyPressed(Input.Keys.LEFT)) && player.b2body.getLinearVelocity().x >= -speed){
-            player.b2body.applyLinearImpulse(new Vector2(-speedchar,0), player.b2body.getWorldCenter(),true);
-        }
-        else if ((Gdx.input.isKeyPressed(Input.Keys.D)|Gdx.input.isKeyPressed(Input.Keys.RIGHT)) && player.b2body.getLinearVelocity().x <= speed){
-            player.b2body.applyLinearImpulse(new Vector2(speedchar, 0), player.b2body.getWorldCenter(),true);
-        }
-        else {
-            player.b2body.setLinearVelocity(0,0);
-        }
-
-
-
-//        // warps to slimee
-//        if (Gdx.input.isKeyJustPressed(Input.Keys.T)) {
-//            player.b2body.getPosition().x = 1024;
-//            player.b2body.getPosition().y = 3424;
-//        }
-
     }
 
-    public void update(float dt){
-        handleInput(dt);
-
-
+    public void rndEncCave(){
 
         Random a = new Random();
         int value = a.nextInt(3000);
@@ -131,6 +119,20 @@ public class Cave extends SuperClass {
             Mob Skeleton = new Mob(super.game.level*super.game.level*25, "Skeleton", new Texture("Sprites/encounters/skelly.png"), super.game.level*25, cave);
             super.game.setScreen(new CombatMob(super.game, Skeleton, this));
         }
+
+    }
+
+//        // warps to slimee
+//        if (Gdx.input.isKeyJustPressed(Input.Keys.T)) {
+//            player.b2body.getPosition().x = 1024;
+//            player.b2body.getPosition().y = 3424;
+//        }
+
+
+
+    public void update(float dt){
+        handleInput(dt);
+
 
 
         /** 60 times a second calculate the physics*/

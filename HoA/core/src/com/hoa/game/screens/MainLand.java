@@ -125,16 +125,20 @@ public class MainLand extends SuperClass {
         super.handleInput(dt);
 
         if ((Gdx.input.isKeyPressed(Input.Keys.W)|Gdx.input.isKeyPressed(Input.Keys.UP)) && player.b2body.getLinearVelocity().y <= super.speed){
+            rndomEnc();
             player.b2body.applyLinearImpulse(new Vector2(0, super.speedchar), player.b2body.getWorldCenter(),true);
 
         }
         else if ((Gdx.input.isKeyPressed(Input.Keys.S)|Gdx.input.isKeyPressed(Input.Keys.DOWN)) && player.b2body.getLinearVelocity().y >= -speed){
+            rndomEnc();
             player.b2body.applyLinearImpulse(new Vector2(0, -speedchar), player.b2body.getWorldCenter(),true);
         }
         else if ((Gdx.input.isKeyPressed(Input.Keys.A)|Gdx.input.isKeyPressed(Input.Keys.LEFT)) && player.b2body.getLinearVelocity().x >= -speed){
+            rndomEnc();
             player.b2body.applyLinearImpulse(new Vector2(-speedchar,0), player.b2body.getWorldCenter(),true);
         }
         else if ((Gdx.input.isKeyPressed(Input.Keys.D)|Gdx.input.isKeyPressed(Input.Keys.RIGHT)) && player.b2body.getLinearVelocity().x <= speed){
+            rndomEnc();
             player.b2body.applyLinearImpulse(new Vector2(speedchar, 0), player.b2body.getWorldCenter(),true);
         }
         else {
@@ -144,6 +148,7 @@ public class MainLand extends SuperClass {
 
         // map
         if (Gdx.input.isKeyJustPressed(Input.Keys.M)) {
+
             super.game.setScreen(new MapScreen(super.game, this));
         }
 
@@ -205,12 +210,7 @@ public class MainLand extends SuperClass {
 
     }
 
-    public void update(float dt){
-        handleInput(dt);
-
-        //Boss boss1_test = new Boss(25,"Flaming Ent",new Texture("Sprites/Bosses/Flaming_ent.png"), 12, 9200, 8888, 20);
-
-        //attempt at random encounters: should work, just put in the boss info and uncomment
+    public void rndomEnc(){
         Random a = new Random();
         int value = a.nextInt(10000);
         if(10<value & value<50){
@@ -244,6 +244,14 @@ public class MainLand extends SuperClass {
             super.game.setPos((int)player.b2body.getPosition().x, (int)player.b2body.getPosition().y);
             super.game.setScreen(new CombatScreen(super.game, berserkbandit, map, this));
         }
+    }
+    public void update(float dt){
+        handleInput(dt);
+
+        //Boss boss1_test = new Boss(25,"Flaming Ent",new Texture("Sprites/Bosses/Flaming_ent.png"), 12, 9200, 8888, 20);
+
+        //attempt at random encounters: should work, just put in the boss info and uncomment
+
 //        if(value==1){
 //            Mob fireWisp = new Mob(super.game.level*20, "Fire Wisp", new Texture("Sprites/encounters/fire_thingy.png"), super.game.level*20);
 //            super.game.setPos((int)player.b2body.getPosition().x, (int)player.b2body.getPosition().y);
