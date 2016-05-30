@@ -22,6 +22,9 @@ import com.hoa.game.Tools.WorldContactListener;
 
 import java.util.Random;
 
+import static java.lang.Math.log;
+import static java.lang.Math.sqrt;
+
 /**
  * Created by BMW on 26/04/2016.
  */
@@ -185,7 +188,7 @@ public class MainLand extends SuperClass {
         //levelup
         if (Gdx.input.isKeyJustPressed(Input.Keys.L)) {
             super.game.level++;
-            super.game.dmg=super.game.dmg+ super.game.lvdmg;
+            super.game.dmg=super.game.dmg*(int)log(10+super.game.dmg);
 
         }
 
@@ -213,7 +216,7 @@ public class MainLand extends SuperClass {
         if(10<value & value<50){
             SpriteDrawable forest = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
 
-            Mob bandit = new Mob(super.game.level*super.game.level*15, "Bandit", new Texture("Sprites/encounters/bandits/bandit.png"), super.game.level*15, forest);
+            Mob bandit = new Mob(super.game.level*super.game.level*5, "Bandit", new Texture("Sprites/encounters/bandits/bandit.png"), super.game.level*15, forest);
             super.game.setPos((int)player.b2body.getPosition().x, (int)player.b2body.getPosition().y);
             super.game.setScreen(new CombatMob(super.game, bandit, this));
         }
@@ -221,15 +224,15 @@ public class MainLand extends SuperClass {
         if(50<value & value<100){
             SpriteDrawable forest = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
 
-            Mob bandit3 = new Mob(super.game.level*super.game.level*25, "Bandit Chief", new Texture("Sprites/encounters/bandits/bandit3.png"), super.game.level*25, forest);
+            Mob bandit3 = new Mob(super.game.level*super.game.level*10, "Bandit Chief", new Texture("Sprites/encounters/bandits/bandit3.png"), super.game.level*25, forest);
             super.game.setPos((int)player.b2body.getPosition().x, (int)player.b2body.getPosition().y);
             super.game.setScreen(new CombatMob(super.game, bandit3, this));
         }
 
-        if(100<value & value<150){
+        if(100<value & value<600){
             SpriteDrawable forest = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
 
-            Mob ninja = new Mob(super.game.level*super.game.level*30, "Ninja", new Texture("Sprites/encounters/ninja.png"), super.game.level*30, forest);
+            Mob ninja = new Mob(super.game.dmg*(int)log(super.game.level+10)*15, "Ninja", new Texture("Sprites/encounters/ninja.png"), super.game.level*30, forest);
             super.game.setPos((int)player.b2body.getPosition().x, (int)player.b2body.getPosition().y);
             super.game.setScreen(new CombatMob(super.game, ninja, this));
         }

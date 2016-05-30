@@ -17,6 +17,8 @@ import com.hoa.game.Sprites.Mob;
 import com.hoa.game.Tools.B2WorldCreator;
 import com.hoa.game.Tools.CountDownTimer;
 
+import static java.lang.Math.log;
+
 /**
  * Created by shughi on 17/05/2016.
  */
@@ -24,7 +26,7 @@ public class CombatMob implements Screen {
 
     private Mob mob;
 
-    private int mobLife;
+    private double mobLife;
     private String mobName;
     private Texture mobTexture;
     private int mobXp;
@@ -101,7 +103,7 @@ public class CombatMob implements Screen {
             if (tot == 0) {  // fight is about to start
 
                 tot = tot + game.dmg;
-                int giorgio = mobLife - tot;
+                double giorgio = mobLife - tot;
                 String hue = mobName + " life : " + giorgio;
                 combatscene.setCounter(hue);
                 combatscene.setOut("Currently Fighting!");
@@ -117,7 +119,7 @@ public class CombatMob implements Screen {
             }
             else {  // fight is going on
                 tot = tot + game.dmg;
-                int giorgio = mobLife - tot;
+                double giorgio = mobLife - tot;
                 String hue = mobName + " life : " + giorgio;
                 combatscene.setCounter(hue);
             }
@@ -141,7 +143,8 @@ public class CombatMob implements Screen {
                 game.xp = game.xp - game.xpthresh;
                 game.xpthresh = game.xpthresh + game.xpthresh*(game.level-1);
                 game.level++;
-                game.dmg=game.dmg+ game.lvdmg;
+                double damage=game.dmg*log(10+game.dmg);
+                game.dmg = (int) damage;
 
             }
             if (game.level % 5 == 0 & game.level < 10) {

@@ -44,7 +44,7 @@ public class CombatMobHud extends Table implements Disposable{
     private Mob enemyMob;
 
     private String mobName;
-    private int mobLife;
+    private double mobLife;
     private Texture mobTexture;
     private Drawable background;
 

@@ -8,13 +8,13 @@ import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
  */
 public class Mob {
 
-    private int life;
+    private double life;
     private String name;
     private Texture texture;
     private int xp;
     private SpriteDrawable background;
 
-    public Mob(int life, String name, Texture texture, int xp, SpriteDrawable background){
+    public Mob(double life, String name, Texture texture, int xp, SpriteDrawable background){
 
         this.life = life;
         this.name = name;
@@ -24,7 +24,7 @@ public class Mob {
 
     }
 
-    public int getLife(){
+    public double getLife(){
 
         return life;
     }

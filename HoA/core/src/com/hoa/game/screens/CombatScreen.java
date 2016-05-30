@@ -33,6 +33,8 @@ import com.badlogic.gdx.graphics.Texture;
 
 import java.util.Timer;
 
+import static java.lang.Math.log;
+
 /**
  * Created by shughi on 17/05/2016.
  */
@@ -61,7 +63,7 @@ public class CombatScreen implements Screen {
     private CombatHud combatscene;
     private Boss enemyBoss;
     private String bossName;
-    private int bossLife;
+    private double bossLife;
     public boolean killed = false;
     private int tot = 0;
     long startTime;
@@ -180,7 +182,7 @@ public class CombatScreen implements Screen {
             if (tot == 0) {  // fight is about to start
                 startTime = System.currentTimeMillis();
                 tot = tot + game.dmg;
-                int giorgio = bossLife - tot;
+                double giorgio = bossLife - tot;
                 String hue = bossName + " life : " + giorgio;
                 combatscene.setCounter(hue);
                 combatscene.setOut("Currently Fighting!");
@@ -215,7 +217,7 @@ public class CombatScreen implements Screen {
             }
             else {  // fight is going on
                 tot = tot + game.dmg;
-                int giorgio = bossLife - tot;
+                double giorgio = bossLife - tot;
                 String hue = bossName + " life : " + giorgio;
                 combatscene.setCounter(hue);
             }
@@ -249,7 +251,7 @@ public class CombatScreen implements Screen {
                 game.xp = game.xp - game.xpthresh;
                 game.xpthresh = game.xpthresh + game.xpthresh*(game.level-1);
                 game.level++;
-                game.dmg=game.dmg*game.lvdmg;
+                game.dmg=game.dmg*(int)log(10+game.dmg);
             }
             if (game.level % 5 == 0 & game.level < 10) {
 

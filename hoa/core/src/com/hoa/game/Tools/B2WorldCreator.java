@@ -47,7 +47,7 @@ public class B2WorldCreator {
         Boss spookiGhost = new Boss(40*game.level*game.level,"Spooki Ghost",ghost, 14, 150*game.level, island);
         Boss Slime = new Boss(45*game.level*game.level,"Slimee",slime, 12, 200*game.level, cave);
         Boss bloodKnight = new Boss(50*game.level*game.level,"Blood Knight",BK, 12, 250*game.level, volcano);
-        Boss frostMage = new Boss(55*game.level*game.level,"Frost Mage",wizard, 12, 500*game.level, iceland);
+        Boss frostMage = new Boss(400000+(game.level)*100000,"Frost Mage",wizard, 12, 500*game.level, iceland);
 
 
 

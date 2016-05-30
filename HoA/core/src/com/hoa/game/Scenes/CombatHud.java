@@ -52,7 +52,7 @@ public class CombatHud extends Table implements Disposable{
     private Boss enemyBoss;
 
     private String bossName;
-    private int bossLife;
+    private double bossLife;
     private Texture bossTexture;
 
     private int counter = 0;

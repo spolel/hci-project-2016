@@ -91,7 +91,7 @@ public class MainMenuScreen implements Screen {
             game.setLevel(1);
             game.collisioncount=0;
             game.dmg=1;
-            game.lvdmg=4;
+           // game.lvdmg=4;
             game.setScreen(new MainLand(game));
 
         }

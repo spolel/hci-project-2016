@@ -10,7 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 
 public class Boss {
 
-    private int life;
+    private double life;
     private String name;
     private Texture texture;
     private int layer;
@@ -37,7 +37,7 @@ public class Boss {
 
     }
 
-    public int getLife(){
+    public double getLife(){
 
         return life;
 
