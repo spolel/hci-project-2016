@@ -80,6 +80,12 @@ public class MainMenuScreen implements Screen {
 
         //insert click listener
 
+        if (mainmenu.instructions.isOver()){
+           //mainmenu.
+
+
+        }
+
 
         if (Gdx.input.isKeyPressed(Input.Keys.N) || mainmenu.newgame.isPressed()){
             game.setPos(6150, 7100);
@@ -87,7 +93,7 @@ public class MainMenuScreen implements Screen {
             game.setHealth(2);
             game.setHealthThreshold(2);
             game.setXP(0);
-            game.setXPThreshold(50);
+            game.setXPThreshold(40);
             game.setLevel(1);
             game.collisioncount=0;
             game.dmg=1;

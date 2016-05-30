@@ -58,7 +58,7 @@ public class Inventory extends Table implements Disposable{
     private Drawable shieldbutton;
 
 
-    private float buttwidth;
+    public float buttwidth;
     private float invpadding;
     private float padleft;
 

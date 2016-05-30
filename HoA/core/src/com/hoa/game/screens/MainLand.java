@@ -116,7 +116,7 @@ public class MainLand extends SuperClass {
 
         public void rndEcn(){
             Random a = new Random();
-            int value = a.nextInt(300000);
+            int value = a.nextInt(20000);
             if(10<value & value<50){
                 SpriteDrawable forest = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
 
@@ -128,7 +128,7 @@ public class MainLand extends SuperClass {
             if(50<value & value<100){
                 SpriteDrawable forest = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
 
-                Mob bandit3 = new Mob(super.game.dmg*(int)log(super.game.level+10)*10, "Bandit Chief", new Texture("Sprites/encounters/bandits/bandit3.png"), super.game.level*super.game.level*10, forest);
+                Mob bandit3 = new Mob(super.game.dmg*(int)log(super.game.level+10)*8, "Bandit Chief", new Texture("Sprites/encounters/bandits/bandit3.png"), super.game.level*super.game.level*8, forest);
                 super.game.setPos((int)player.b2body.getPosition().x, (int)player.b2body.getPosition().y);
                 super.game.setScreen(new CombatMob(super.game, bandit3, this));
             }
@@ -136,7 +136,7 @@ public class MainLand extends SuperClass {
             if(100<value & value<150){
                 SpriteDrawable forest = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
 
-                Mob ninja = new Mob(super.game.dmg*(int)log(super.game.level+10)*15, "Ninja", new Texture("Sprites/encounters/ninja.png"), super.game.level*super.game.level*15, forest);
+                Mob ninja = new Mob(super.game.dmg*(int)log(super.game.level+10)*10, "Ninja", new Texture("Sprites/encounters/ninja.png"), super.game.level*super.game.level*10, forest);
                 super.game.setPos((int)player.b2body.getPosition().x, (int)player.b2body.getPosition().y);
                 super.game.setScreen(new CombatMob(super.game, ninja, this));
             }

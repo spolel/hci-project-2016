@@ -54,10 +54,10 @@ public class Mainmenu extends Table implements Disposable{
     private Drawable exbutton;
     private Drawable titlebutt;
 
-    private float buttwidth;
-    private float buttheight;
-    private float buttonpad;
-    private final float titlepad;
+    public float buttwidth;
+    public float buttheight;
+    public float buttonpad;
+    public final float titlepad;
 
 
 
