@@ -28,7 +28,7 @@ public class Player extends Sprite{
     private float stateTimer;
 
     public Player(World world, SuperClass screen, int x, int y){
-
+        // getting the pack
         super(screen.getAtlas().findRegion("running_down"));
 
         this.world = world;
