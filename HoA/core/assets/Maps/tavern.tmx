@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="60" height="60" tilewidth="32" tileheight="32" nextobjectid="47">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="60" height="60" tilewidth="32" tileheight="32" nextobjectid="51">
  <tileset firstgid="1" name="tavern_tileset" tilewidth="32" tileheight="32" tilecount="1056" columns="32">
   <image source="tavern_tileset.png" trans="6b6b6b" width="1024" height="1056"/>
  </tileset>
@@ -46,7 +46,7 @@
   <object id="18" x="742.014" y="1138.29" width="27.2948" height="44.4804"/>
   <object id="19" x="766.276" y="1131.22" width="128.387" height="82.8953"/>
   <object id="20" x="802.669" y="1206.03" width="28.3057" height="36.393"/>
-  <object id="21" x="607.562" y="1250.51" width="161.747" height="117.266"/>
+  <object id="21" x="607.562" y="1250.51" width="161.747" height="90.3839"/>
   <object id="22" x="767.287" y="1250.51" width="30.3275" height="51.5568"/>
   <object id="23" x="959.361" y="1356.65" width="130.408" height="52.5677"/>
   <object id="24" x="993.732" y="832.996" width="24.262" height="193.085"/>
@@ -71,6 +71,9 @@
   <object id="43" x="1152.45" y="582.289" width="93.0044" height="56.6114"/>
   <object id="44" x="1380.91" y="745.047" width="31.3385" height="79.8625"/>
   <object id="45" x="1091.79" y="604.529" width="24.262" height="21.2293"/>
+  <object id="47" x="1152.99" y="1333.11" width="87.8363" height="11.1185"/>
+  <object id="48" x="1287.53" y="1333.11" width="118.968" height="10.0067"/>
+  <object id="50" x="644.874" y="1338.67" width="85.6126" height="28.9082"/>
  </objectgroup>
  <objectgroup name="Object Layer 2"/>
  <objectgroup name="Object Layer 3"/>
