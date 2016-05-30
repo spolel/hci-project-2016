@@ -80,7 +80,15 @@ public class Cave extends SuperClass {
     }
 
 
-
+    public void rndEncCave(){
+        Random a = new Random();
+        int value = a.nextInt(3000);
+        if(value==2){
+            SpriteDrawable cave = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
+            Mob Skeleton = new Mob(super.game.level*super.game.level*25, "Skeleton", new Texture("Sprites/encounters/skelly.png"), super.game.level*25, cave);
+            super.game.setScreen(new CombatMob(super.game, Skeleton, this));
+        }
+    }
 
 
     // This part moves the camera on the wasd key input.
@@ -93,16 +101,20 @@ public class Cave extends SuperClass {
         super.handleInput(dt);
 
         if ((Gdx.input.isKeyPressed(Input.Keys.W)|Gdx.input.isKeyPressed(Input.Keys.UP)) && player.b2body.getLinearVelocity().y <= super.speed){
+            rndEncCave();
             player.b2body.applyLinearImpulse(new Vector2(0, super.speedchar), player.b2body.getWorldCenter(),true);
 
         }
         else if ((Gdx.input.isKeyPressed(Input.Keys.S)|Gdx.input.isKeyPressed(Input.Keys.DOWN)) && player.b2body.getLinearVelocity().y >= -speed){
+            rndEncCave();
             player.b2body.applyLinearImpulse(new Vector2(0, -speedchar), player.b2body.getWorldCenter(),true);
         }
         else if ((Gdx.input.isKeyPressed(Input.Keys.A)|Gdx.input.isKeyPressed(Input.Keys.LEFT)) && player.b2body.getLinearVelocity().x >= -speed){
+            rndEncCave();
             player.b2body.applyLinearImpulse(new Vector2(-speedchar,0), player.b2body.getWorldCenter(),true);
         }
         else if ((Gdx.input.isKeyPressed(Input.Keys.D)|Gdx.input.isKeyPressed(Input.Keys.RIGHT)) && player.b2body.getLinearVelocity().x <= speed){
+            rndEncCave();
             player.b2body.applyLinearImpulse(new Vector2(speedchar, 0), player.b2body.getWorldCenter(),true);
         }
         else {
@@ -122,15 +134,6 @@ public class Cave extends SuperClass {
     public void update(float dt){
         handleInput(dt);
 
-
-
-        Random a = new Random();
-        int value = a.nextInt(3000);
-        if(value==2){
-            SpriteDrawable cave = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
-            Mob Skeleton = new Mob(super.game.level*super.game.level*25, "Skeleton", new Texture("Sprites/encounters/skelly.png"), super.game.level*25, cave);
-            super.game.setScreen(new CombatMob(super.game, Skeleton, this));
-        }
 
 
         /** 60 times a second calculate the physics*/
