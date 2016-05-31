@@ -117,7 +117,7 @@ public class Volcano extends SuperClass {
     }
     public void rndEncVolcano(){
         Random a = new Random();
-        int value = a.nextInt(10000);
+        int value = a.nextInt(50000);
         if(value<150){
             SpriteDrawable volcano = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
             Mob fireWisp = new Mob(super.game.dmg*(int)log(super.game.level+10)*50, "Fire Wisp", new Texture("Sprites/encounters/fire_thingy.png"), super.game.level*super.game.level*20, volcano);

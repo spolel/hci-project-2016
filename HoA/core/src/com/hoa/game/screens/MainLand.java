@@ -116,7 +116,7 @@ public class MainLand extends SuperClass {
 
         public void rndEcn(){
             Random a = new Random();
-            int value = a.nextInt(40000);
+            int value = a.nextInt(100000);
             if(10<value & value<50){
                 SpriteDrawable forest = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
 
@@ -187,49 +187,49 @@ public class MainLand extends SuperClass {
         }
 
 
-        // warps to tavern
-        if (Gdx.input.isKeyJustPressed(Input.Keys.U)) {
-            super.game.setPos(5792,7500);
-            super.game.setScreen(new MainLand(super.game));
-        }
-
-        //warps to volcano
-        if (Gdx.input.isKeyJustPressed(Input.Keys.Y)) {
-
-            super.game.setPos(12160, 12480);
-            super.game.setScreen(new MainLand(super.game));
-        }
-
-        // warps to cave
-        if (Gdx.input.isKeyJustPressed(Input.Keys.T)) {
-            super.game.setPos(8832, 8800);
-            super.game.setScreen(new MainLand(super.game));
-        }
-
-        // warps to ent
-        if (Gdx.input.isKeyJustPressed(Input.Keys.C)) {
-            super.game.setPos(7456, 10720);
-            super.game.setScreen(new MainLand(super.game));
-        }
-
-        // warps to ghost
-        if (Gdx.input.isKeyJustPressed(Input.Keys.V)) {
-            super.game.setPos(7040, 1088);
-            super.game.setScreen(new MainLand(super.game));
-        }
-
-        // warps to mage
-        if (Gdx.input.isKeyJustPressed(Input.Keys.B)) {
-            super.game.setPos(2528, 11488);
-            super.game.setScreen(new MainLand(super.game));
-        }
-
-        //levelup
-        if (Gdx.input.isKeyJustPressed(Input.Keys.L)) {
-            super.game.level++;
-            super.game.dmg=super.game.dmg*(int)log(10+super.game.dmg);
-
-        }
+//        // warps to tavern
+//        if (Gdx.input.isKeyJustPressed(Input.Keys.U)) {
+//            super.game.setPos(5792,7500);
+//            super.game.setScreen(new MainLand(super.game));
+//        }
+//
+//        //warps to volcano
+//        if (Gdx.input.isKeyJustPressed(Input.Keys.Y)) {
+//
+//            super.game.setPos(12160, 12480);
+//            super.game.setScreen(new MainLand(super.game));
+//        }
+//
+//        // warps to cave
+//        if (Gdx.input.isKeyJustPressed(Input.Keys.T)) {
+//            super.game.setPos(8832, 8800);
+//            super.game.setScreen(new MainLand(super.game));
+//        }
+//
+//        // warps to ent
+//        if (Gdx.input.isKeyJustPressed(Input.Keys.C)) {
+//            super.game.setPos(7456, 10720);
+//            super.game.setScreen(new MainLand(super.game));
+//        }
+//
+//        // warps to ghost
+//        if (Gdx.input.isKeyJustPressed(Input.Keys.V)) {
+//            super.game.setPos(7040, 1088);
+//            super.game.setScreen(new MainLand(super.game));
+//        }
+//
+//        // warps to mage
+//        if (Gdx.input.isKeyJustPressed(Input.Keys.B)) {
+//            super.game.setPos(2528, 11488);
+//            super.game.setScreen(new MainLand(super.game));
+//        }
+//
+//        //levelup
+//        if (Gdx.input.isKeyJustPressed(Input.Keys.L)) {
+//            super.game.level++;
+//            super.game.dmg=super.game.dmg*(int)log(10+super.game.dmg);
+//
+//        }
 
 //        main map:
 //        Entrata Dungeon 1 -> 8800,8832
