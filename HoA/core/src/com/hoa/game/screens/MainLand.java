@@ -116,7 +116,7 @@ public class MainLand extends SuperClass {
 
         public void rndEcn(){
             Random a = new Random();
-            int value = a.nextInt(20000);
+            int value = a.nextInt(40000);
             if(10<value & value<50){
                 SpriteDrawable forest = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
 
