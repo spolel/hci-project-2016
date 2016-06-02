@@ -55,6 +55,7 @@ public class InventoryScreen implements Screen {
 // warps to cave
         if (Gdx.input.isKeyJustPressed(Input.Keys.I) || Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE) || inventory.exit.isPressed()) {
             game.setScreen(screen);
+            this.dispose();
         }
 
     }

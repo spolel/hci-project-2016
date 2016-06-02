@@ -58,6 +58,7 @@ public class MapScreen implements Screen {
 // warps to cave
         if (Gdx.input.isKeyJustPressed(Input.Keys.M) || Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
             game.setScreen(current);
+            this.dispose();
         }
 
     }

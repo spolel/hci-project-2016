@@ -89,17 +89,17 @@ public class MainLand extends SuperClass {
                                                  float x;
                                                  float y;
                                                  if (player.getBody().getLinearVelocity().x>0){
-                                                     x = player.getBody().getPosition().x -30;
+                                                     x = player.getBody().getPosition().x -40;
                                                  }
                                                  else if (player.getBody().getLinearVelocity().x<0){
-                                                     x = player.getBody().getPosition().x +30;}
+                                                     x = player.getBody().getPosition().x +40;}
                                                  else{
                                                      x = player.getBody().getPosition().x;
                                                  }
                                                  if (player.getBody().getLinearVelocity().y>0){
-                                                     y = player.getBody().getPosition().y -30;}
+                                                     y = player.getBody().getPosition().y -40;}
                                                  else if (player.getBody().getLinearVelocity().y<0){
-                                                     y = player.getBody().getPosition().y +30;}
+                                                     y = player.getBody().getPosition().y +40;}
                                                  else {
                                                      y = player.getBody().getPosition().y;}
                                                     game.setPos((int) x, (int) y);

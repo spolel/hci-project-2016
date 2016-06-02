@@ -120,7 +120,7 @@ public class Volcano extends SuperClass {
         int value = a.nextInt(50000);
         if(value<150){
             SpriteDrawable volcano = new SpriteDrawable(new Sprite(new Texture("Menu/background.jpg")));
-            Mob fireWisp = new Mob(super.game.dmg*(int)log(super.game.level+10)*50, "Fire Wisp", new Texture("Sprites/encounters/fire_thingy.png"), super.game.level*super.game.level*20, volcano);
+            Mob fireWisp = new Mob(super.game.dmg*(int)log(super.game.level+10)*50, "Fire Wisp", new Texture("Sprites/encounters/fire_thingy.png"), super.game.level*super.game.level*40, volcano);
 
             super.game.setScreen(new CombatMob(super.game, fireWisp, this));
         }

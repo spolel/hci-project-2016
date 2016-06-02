@@ -70,9 +70,11 @@ public class ResumeMenuScreen implements Screen {
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.R) || Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE) || resumemenu.resume.isPressed()){
             game.setScreen(screen);
+            this.dispose();
         }
         if (Gdx.input.isKeyPressed(Input.Keys.M) || resumemenu.mainmenu.isPressed()){
             game.setScreen(new MainMenuScreen(game));
+            this.dispose();
         }
         // exit game
         else if (Gdx.input.isKeyPressed(Input.Keys.E) || resumemenu.exit.isPressed()){

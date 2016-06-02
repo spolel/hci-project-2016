@@ -55,6 +55,7 @@ public class CreditScreen implements Screen {
 // warps to cave
         if (Gdx.input.isKeyJustPressed(Input.Keys.B) || credit.back.isPressed()) {
             game.setScreen(new MainMenuScreen(game));
+            this.dispose();
         }
 
     }

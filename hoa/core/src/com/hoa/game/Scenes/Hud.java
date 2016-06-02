@@ -122,6 +122,7 @@ public class Hud extends Table implements Disposable{
     public Button options;
     public Button health;
     public Table sidebar;
+    public Hud hud;
 
 
 

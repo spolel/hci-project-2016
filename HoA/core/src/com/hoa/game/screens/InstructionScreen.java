@@ -55,6 +55,7 @@ public class InstructionScreen implements Screen {
 // warps to cave
         if (Gdx.input.isKeyJustPressed(Input.Keys.B) || instruction.back.isPressed()) {
             game.setScreen(new MainMenuScreen(game));
+            this.dispose();
         }
 
     }

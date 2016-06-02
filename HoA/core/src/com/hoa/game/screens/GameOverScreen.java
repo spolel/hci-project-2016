@@ -80,6 +80,7 @@ public class GameOverScreen implements Screen {
 
         if (Gdx.input.isKeyPressed(Input.Keys.M) || gameover.mainmenu.isPressed()){
         game.setScreen(new MainMenuScreen(game));
+            this.dispose();
 
         }
         // exit game

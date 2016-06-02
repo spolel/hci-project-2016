@@ -1,5 +1,6 @@
 package com.hoa.game.Sprites;
 
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.BodyDef;
@@ -38,6 +39,7 @@ public class Door extends InteractiveTile {
     public void onCollision() {
         super.game.setZone("Main Land");
         super.game.setScreen(new MainLand(game));
+
                 //map = mapLoader.load("Maps/Test_cave.tmx");
     }
 

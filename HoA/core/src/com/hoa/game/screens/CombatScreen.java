@@ -119,14 +119,15 @@ public class CombatScreen implements Screen {
 
 
 
-                MainLand m = (MainLand) current;
-                World world = m.getWorld();
-                SuperClass b = new MainLand(game);
-                int x = (int)m.player.b2body.getPosition().x;
-                int y = (int)m.player.b2body.getPosition().y;
-                b.player= new Player(world, b, x, y);
-                b.hud=new Hud(game.batch, game);
-                game.setScreen(b);
+//                MainLand m = (MainLand) current;
+//                World world = m.getWorld();
+//                SuperClass b = new MainLand(game);
+//                int x = (int)m.player.b2body.getPosition().x;
+//                int y = (int)m.player.b2body.getPosition().y;
+//                b.player= new Player(world, b, x, y);
+                current.hud=new Hud(game.batch, game);
+                game.setScreen(current);
+                this.dispose();
 
             }
 
@@ -141,6 +142,7 @@ public class CombatScreen implements Screen {
                 b.player= new Player(world, b, x, y);
                 b.hud=new Hud(game.batch, game);
                 game.setScreen(b);
+                this.dispose();
             }
 
              if (zone.equals("Cave")) {
@@ -153,6 +155,7 @@ public class CombatScreen implements Screen {
                  b.player= new Player(world, b, x, y);
                  b.hud=new Hud(game.batch, game);
                  game.setScreen(b);
+                 this.dispose();
              }
 
 
